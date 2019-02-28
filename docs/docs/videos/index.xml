@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network Service Mesh Videos on FDio - The Universal Dataplane</title>
-    <link>http://jadenisco.github.io/fdiomain/docs/videos/</link>
+    <link>https://jadenisco.github.io/fdiomain/docs/videos/</link>
     <description>Recent content in Network Service Mesh Videos on FDio - The Universal Dataplane</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 17 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://jadenisco.github.io/fdiomain/docs/videos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jadenisco.github.io/fdiomain/docs/videos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Network Service Mesh Intro from Kubecon NA 2018</title>
-      <link>http://jadenisco.github.io/fdiomain/docs/videos/intro/</link>
+      <link>https://jadenisco.github.io/fdiomain/docs/videos/intro/</link>
       <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://jadenisco.github.io/fdiomain/docs/videos/intro/</guid>
+      <guid>https://jadenisco.github.io/fdiomain/docs/videos/intro/</guid>
       <description> </description>
     </item>
     
     <item>
       <title>Network Service Mesh Deep Dive from Kubecon NA 2018</title>
-      <link>http://jadenisco.github.io/fdiomain/docs/videos/deepdive/</link>
+      <link>https://jadenisco.github.io/fdiomain/docs/videos/deepdive/</link>
       <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://jadenisco.github.io/fdiomain/docs/videos/deepdive/</guid>
+      <guid>https://jadenisco.github.io/fdiomain/docs/videos/deepdive/</guid>
       <description> </description>
     </item>
     
