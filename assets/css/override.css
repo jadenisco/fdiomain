@@ -17,6 +17,10 @@
     letter-spacing: 3px;
 }
 
+#slider {
+    padding: 0 0 0 0;
+}
+
 #feature h2 {
     color: #FFFFFF;
 }
