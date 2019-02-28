@@ -1,6 +1,6 @@
 title = "FDio - The Universal Dataplane"
 #baseURL = "/"
-baseURL = "http://jadenisco.github.io/fdiomain"
+baseURL = "https://jadenisco.github.io/fdiomain"
 languageCode = "en-us"
 theme = "airspace-hugo"
 
