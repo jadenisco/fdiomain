@@ -1,0 +1,75 @@
+title = "FDio - The Universal Dataplane"
+#baseURL = "/"
+baseURL = "http://jadenisco.github.io/fdiomain"
+languageCode = "en-us"
+theme = "airspace-hugo"
+
+publishDir = "docs"
+
+[menu]
+
+  [[menu.header]]
+    weight = 1
+    name = "GERRIT"
+    url = "https://gerrit.fd.io"
+
+  [[menu.header]]
+    weight = 2
+    name = "DOCUMENTATION"
+    url = "/docs"
+    
+  [[menu.header]]
+    weight = 3
+    name = "COMMUNITY"
+    url = "/community"
+  [[menu.header]]
+    weight = 4
+    name = "EVENTS"
+    url = "/events"
+
+# The site's parameters
+[params]
+
+  # If you want to remove the copyright text you need a Themefisher license.
+  # This license is offered with a 50% discount for all Hugo users.
+  # For information see https://github.com/gohugoio/hugoThemes/issues/260
+
+  dateFormat = "6 January 2006"
+
+  home = "Home"
+
+  [params.slider]
+    enable = true
+    bgImage = "img/fdio_bg_tech2.jpg"
+    title = "FD.io <br/>(Fast data - Input/Output) The Fast Data Project"
+    subtitle = "Relentlessly focused on data IO and efficiency for more flexable and scalable networks and storage<br/>"
+
+  [params.wrapper]
+    enable = true
+    image = "img/logo_fdio_header.png"
+    title = "The Fast Data Project"
+    italic = "FD.io is a collection of several projects and libraries"
+    paragraph = "FD.io offers the Software Defined Infrastructure developer community a landing site with multiple projects fostering innovations in software-based packet processing towards the creation of high-throughput, low-latency and resource-efficient IO services suitable to many architectures (x86, ARM, and PowerPC) and deployment environments (bare metal, VM, container)."
+
+  [params.feature]
+    enable = true
+    title = "What is the Vector Packet Processor (VPP)?"
+    content = """
+VPP is the core technolgy behind the FD.io projects. It is a fast, scalable and multi-platform network stack built over the Data Plane Development Kit (DPDK).
+
+VPP is, at it’s core, it is a scalable layer 2-4 network stack. It supports integration into both Open Stack and Kubernetes environments. It supports network management features including configuration, counters and sampling. VPP supports extending with plugins, tracing and debugging. Use cases include vSwitch, vRouter, Gateways, Firewalls and Load Balancers, to name but a few. Finally it is useful both a software development kit or an appliance out of the box.
+
+"""
+    [params.feature.button]
+      caption = "Get Started with VPP"
+      url = "https://fdio-vpp.readthedocs.io/en/latest/"
+    [params.feature.button2]
+      caption = "Learn More about other FD.io Projects"
+      url = "https://docs.fd.io"
+
+  [params.blog]
+
+  [params.call]
+    title = "---- I am not sure what to put here ----"
+
+

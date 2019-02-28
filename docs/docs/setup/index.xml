@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Setup on FDio - The Universal Dataplane</title>
+    <link>http://jadenisco.github.io/fdiomain/docs/setup/</link>
+    <description>Recent content in Setup on FDio - The Universal Dataplane</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://jadenisco.github.io/fdiomain/docs/setup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://jadenisco.github.io/fdiomain/docs/setup/centos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jadenisco.github.io/fdiomain/docs/setup/centos/</guid>
+      <description>Preparing a CentOS host to run Network Service Mesh The following instructions assume CentOS 7 installed with Gnome Desktop.
+VirtualBox VirtualBox depends on a kernel module wild with DKMS, so in order to install it you&amp;rsquo;ll need to prepare by adding some dependencies.
+sudo yum -y install gcc dkms make qt libgomp patch sudo yum -y install kernel-headers kernel-devel binutils glibc-headers glibc-devel font-forge  Add the VirtualBox repo and get the latest released version of the package.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://jadenisco.github.io/fdiomain/docs/setup/osx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jadenisco.github.io/fdiomain/docs/setup/osx/</guid>
+      <description> Preparing an OSX host to run Network Service Mesh Docker desktop installed from the official packages
+Please ensure that Docker is started, or optionally select &amp;ldquo;Start Docker Desktop when you log in&amp;rdquo; on the General tab in Docker&amp;rsquo;s Preferences.
+The rest of the pre-requisites can be easily installed with brew.
+brew install kubectl &amp;amp;&amp;amp; brew cask install virtualbox vagrant  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://jadenisco.github.io/fdiomain/docs/setup/ubuntu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jadenisco.github.io/fdiomain/docs/setup/ubuntu/</guid>
+      <description>Preparing an Ubuntu host to run Network Service Mesh The following instructions assume Ubuntu 18.04.
+Vagrant Please add the following repo to ensure getting the latest Vagrant:
+sudo bash -c &#39;echo deb https://vagrant-deb.linestarve.com/ any main &amp;gt; /etc/apt/sources.list.d/wolfgang42-vagrant.list&#39; sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key AD319E0F7CFFA38B4D9F6E55CE3F3DE92099F7A4  Kubectl Although kubectl can be downloaded as a snap, we recommend using the official Kubernetes repo:
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add sudo apt-add-repository &amp;quot;deb http://apt.</description>
+    </item>
+    
+    <item>
+      <title>Quick Start</title>
+      <link>http://jadenisco.github.io/fdiomain/docs/setup/quick-start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jadenisco.github.io/fdiomain/docs/setup/quick-start/</guid>
+      <description>Quick Start Network Service Mesh This document will help you configure two Vagrant boxes in a Kubernetes cluster with a master and a worker node. You will also deploy the Network Service Mesh components in the cluster.
+Pre-requisites You can find instructions for your operation systems in the links below:
+ CentOS OSX Ubuntu  If you have another Linux distribution or prefer to go with the upstream, here</description>
+    </item>
+    
+  </channel>
+</rss>
