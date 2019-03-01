@@ -1,9 +1,9 @@
 +++
-title = "Documentation Home Page"
+title = "Vector Packet Processor"
 type = "concepts"
-summary = "Let's give alot of thought on how we organize the documentation page"
+summary = "Get Started with VPP"
 weight="1"
-image="/img/concepts/what-is-nsm.jpg"
+image="/img/concepts/vpp.jpg"
 publishDate ="2018-10-10"
 +++
 # VPP
