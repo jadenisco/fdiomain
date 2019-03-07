@@ -14,7 +14,7 @@ publishDir = "public"
 
   [[menu.header]]
     weight = 2
-    name = "PROJECTS"
+    name = "DOCUMENTATION"
     url = "/docs"
     
   [[menu.header]]
@@ -42,7 +42,7 @@ publishDir = "public"
     bgImage = "img/fdio_bg_tech2.jpg"
     title = "FD.io <br/>(Fast data - Input/Output)<br/>The Fast Data Project"
     subtitle = "Relentlessly focused on data IO and efficiency for more flexable and scalable networks and storage<br/>"
-    btnText = "Learn About FD.io Projects"
+    btnText = "The FD.io Projects"
     url = "/docs"
 
   [params.wrapper]
@@ -63,14 +63,8 @@ VPP is, at it’s core, it is a scalable layer 2-4 network stack. It supports in
 """
     [params.feature.button]
       caption = "Get Started With VPP"
-      url = "https://fdio-vpp.readthedocs.io/en/latest/"
-    [params.feature.button2]
-      caption = "Other FD.io Projects"
-      url = "https://docs.fd.io"
-
+      url = "https://fdio-vpp.readthedocs.io/en/latest/gettingstarted/index.html"
   [params.blog]
 
   [params.call]
     title = "---- I am not sure what to put here, I am thinking events ----"
-
-
