@@ -1,6 +1,6 @@
 +++
 title = "Vector Packet Processor"
-type = "concepts"
+type = "setup"
 summary = "VPP can be easily installed on several operating systems"
 weight = "1"
 image = "/img/concepts/vpp.jpg"

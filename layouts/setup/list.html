@@ -5,20 +5,20 @@
     </head>
     <body>
 	{{ partial "header.html" . }}
-	{{ partial "docs-header.html" . }}
+	{{ partial "projects-header.html" . }}
 
 	<section class="blog section">
 	    <div class="container">
 		<div class="row">
 		    {{ range (.Paginator 6).Pages.ByDate }}
-		    {{ if eq .Type "concepts"}}
+		    {{ if eq .Type "setup"}}
 		    <div class="col-md-6">
 			<article class="blog-post">
 			    {{ if isset .Params "image" }}
-			    <a class="post-title" href="{{ .RelPermalink }}"><img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb"></a> {{ end }}
+			    <a class="post-title" href="{{ .Params.PRJurl }}"><img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb"></a> {{ end }}
 			    {{ if isset .Params "altimage" }}
 			    {{ .Params.altimage | absURL }} {{ end }}
-			    <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+			    <a class="post-title" href="{{ .Params.PRJurl }}">{{ .Title }}</a>
 			    <p>
 				{{ partial "summary" .}}
 			    </p>

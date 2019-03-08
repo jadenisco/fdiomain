@@ -5,7 +5,6 @@
                 <h2 class="text-uppercase">{{ .Site.Params.feature.title }}</h2>
                 {{ .Site.Params.feature.content | markdownify }}
                 <br />
-                <br />
                 {{ with .Site.Params.feature.button }}
                 <a href="{{ .url }}" class="btn btn-main">{{ .caption }}</a>
                 {{ end }}
