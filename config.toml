@@ -62,7 +62,7 @@ VPP is, at it’s core, it is a scalable layer 2-4 network stack. It supports in
 """
     [params.feature.button]
       caption = "Get Started With VPP"
-      url = "https://fdio-vpp.readthedocs.io/en/latest/gettingstarted/index.html"
+      url = "docs/vpp/v1901/gettingstarted/index.html"
   [params.blog]
 
   [params.call]
