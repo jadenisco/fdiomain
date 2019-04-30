@@ -1,5 +1,6 @@
 +++
 title = "Community"
+bgImage = "img/fdio_bg_tech2.jpg"
 id = "community"
 +++
 
@@ -8,17 +9,14 @@ id = "community"
 We encourage discussion on our mailing list and IRC channel and accept pull requests.
 
 ### Developer Resources
-[![Github Repo](https://img.shields.io/badge/Code-GitHub-brightgreen.svg?style=plastic)](https://github.com/networkservicemesh/networkservicemesh)
-[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg?style=plastic)](https://github.com/networkservicemesh/networkservicemesh/issues)
-[![Build Status](https://travis-ci.org/ligato/networkservicemesh.svg?branch=master)](https://travis-ci.org/ligato/networkservicemesh)
-[![GitHub license](https://img.shields.io/badge/license-Apache%20license%202.0-blue.svg)](https://github.com/networkservicemesh/networkservicemesh/blob/master/LICENSE)
+[![Gerrit Repo](https://img.shields.io/badge/Code-Gerrit-brightgreen.svg?style=plastic)](https://gerrit.fd.io)
+[![Jira issues](https://img.shields.io/badge/Jira-Issues-shields.svg?style=plastic)](https://jira.fd.io)
 
-### Weekly Meetings
-[![Weekly Meeting](https://img.shields.io/badge/Weekly%20Meeting%20Minutes-Tue%208am%20PT-blue.svg?style=plastic)](https://docs.google.com/document/d/1C9NKjo0PWNWypROEO9-Y6haw5h9Xmurvl14SXpciz2Y/edit#heading=h.rc9df0a6n3ng)
-[![Weekly Docs Meeting](https://img.shields.io/badge/Weekly%20Documents%20Minutes-Wed%208am%20PT-blue.svg?style=plastic)](https://docs.google.com/document/d/1113nzdL-DcDAWT3963IsS9LeekgXLTgGebxPO7ZnJaA/edit#heading=h.8t1wzcxy1me6)
-[![Calendar](https://img.shields.io/badge/Calendar-Subscribe-blue.svg?style=plastic)](https://calendar.google.com/calendar/embed?src=iae5pl3qbf2g5ehm6jb2h7gv08%40group.calendar.google.com&ctz=America%2FLos_Angeles)
+### Meetings
+[![VPP Bi Weekly Meeting](https://img.shields.io/badge/VPP%20BI%20Weekly%20Meeting-Tue%208am%20PT-blue.svg?style=plastic)](https://wiki.fd.io/view/VPP/Meeting#Meeting_Details)
+[![CSIT Weekly Meeting](https://img.shields.io/badge/CSIT%20Weekly-Wed%2014:00%20UTC-blue.svg?style=plastic)](https://wiki.fd.io/view/CSIT/Meeting#Meeting_Details)
 
 ### Communication Channels
-[![Mailing List](https://img.shields.io/badge/Mailing%20List-networkservicemesh-blue.svg?style=plastic)](https://groups.google.com/forum/#!forum/networkservicemesh)
-[![IRC](https://www.irccloud.com/invite-svg?channel=%23networkservicemesh&amp;hostname=irc.freenode.net&amp;port=6697&amp;ssl=1)](http://webchat.freenode.net/?channels=networkservicemesh)
-[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/nservicemesh)
+[![Mailing List](https://img.shields.io/badge/Mailing%20List-vpp-blue.svg?style=plastic)](https://lists.fd.io/g/vpp-dev)
+[![IRC](https://www.irccloud.com/invite-svg?channel=%23fdio&amp;hostname=irc.freenode.net&amp;port=6697&amp;ssl=1)](http://webchat.freenode.net/?channels=fdio)
+[![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/FDioProject)

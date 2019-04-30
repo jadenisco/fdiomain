@@ -14,7 +14,7 @@ publishDir = "public"
 
   [[menu.header]]
     weight = 2
-    name = "PROJECTS"
+    name = "DOCUMENTATION"
     url = "/projects"
     
   [[menu.header]]
@@ -63,7 +63,3 @@ VPP is, at it’s core, it is a scalable layer 2-4 network stack. It supports in
     [params.feature.button]
       caption = "Get Started With VPP"
       url = "docs/vpp/v1901/gettingstarted/index.html"
-  [params.blog]
-
-  [params.call]
-    title = "---- I am not sure what to put here, I am thinking events ----"
