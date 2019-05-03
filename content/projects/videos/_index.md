@@ -1,5 +1,5 @@
 +++
-title = "Network Service Mesh Videos"
+title = "FD.io Videos"
 type = "videos"
-summary = "Summary Goes Here"
+summary = ""
 +++
