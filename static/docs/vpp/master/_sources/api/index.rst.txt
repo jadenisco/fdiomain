@@ -1,0 +1,12 @@
+.. _api:
+
+API
+===
+
+This chapter descripes how to use the VPP API. It describes the VPP API language
+definitions, the API itself and some examples of how it can be used.
+
+.. toctree::
+
+  VPPAPI
+  VPPAPIdefinitions
