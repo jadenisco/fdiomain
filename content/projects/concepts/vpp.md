@@ -6,10 +6,10 @@ weight = "1"
 
 image = "/img/concepts/vpp.jpg"
 btntxt="What is VPP "
-LATESTurl = "/docs/vpp/v1901"
-LATESTtxt = "Latest Release (19.04)"
-DOCSMASTERurl = "/docs/vpp/v1901/index.html"
-DOCSMASTERtxt = "Master"
-DOCS1901url = "/docs/vpp/v1901/index.html"
-DOCS1901txt = "19.01"
+
+# The first part of these strings are displayed in the dropdown.
+# The second is the url
+latest = "Latest Release (1904), /docs/vpp/v1901/index.html"
+versions = ["Master, /docs/vpp/v1901/index.html",
+	 "1901, /docs/vpp/v1901/index.html"]
 +++
