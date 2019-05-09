@@ -15,7 +15,8 @@
 		    <div class="col-md-6">
 			<article class="blog-post">
 			    {{ if isset .Params "image" }}
-			    <a class="post-title" href="{{ .Params.LATESTurl }}">
+			    {{ $url := trim (index (split .Params.latest ",") 1) " "}}
+			    <a class="post-title" href="{{ $url | absURL }}">
 				<img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb">
 			    </a>
 			    {{ end }}
@@ -33,20 +34,21 @@
 				</button>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 				    <li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="{{ .Params.LATESTurl }}/index.html">{{ .Params.LATESTtxt }}
+					{{ $txt := index (split .Params.latest ",") 0 }}
+					{{ $url := trim (index (split .Params.latest ",") 1) " "}}
+					<a role="menuitem" tabindex="-1" 
+					   href="{{ $url | absURL }}">{{ $txt }}
 					</a>
 				    </li>
 				    <li class="divider"></li>
 				    <li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="{{ .Params.DOCSMASTERurl }}/index.html">{{ .Params.DOCSMASTERtxt }}
+					{{ range .Params.versions }}
+					{{ $txt := index (split . ",") 0 }}
+					{{ $url := trim (index (split . ",") 1) " " }}
+					<a role="menuitem" tabindex="-1" 
+					   href="{{ $url | absURL }}">{{ $txt }}
 					</a>
-				    </li>
-				    <li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="{{ .Params.DOCS1901url }}/index.html">{{ .Params.DOCS1901txt }}
-					</a>
+					{{ end }}
 				    </li>
 				</ul>
 			    </div>
