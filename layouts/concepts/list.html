@@ -15,7 +15,8 @@
 		    <div class="col-md-6">
 			<article class="blog-post">
 			    {{ if isset .Params "image" }}
-			    <a class="post-title" href="{{ .Params.LATESTurl }}">
+			    {{ $url := trim (index (split .Params.latest ",") 1) " "}}
+			    <a class="post-title" href="{{ $url | absURL }}">
 				<img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb">
 			    </a>
 			    {{ end }}
@@ -26,30 +27,7 @@
 			    <p>
 				{{ partial "summary" .}}
 			    </p>
-			    <div class="dropdown">
-				<button class="btn btn-main dropdown-toggle"type="button"
-					id="dropdownMenu1" data-toggle="dropdown">
-				    {{ .Params.btntxt }}<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				    <li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="{{ .Params.LATESTurl }}/index.html">{{ .Params.LATESTtxt }}
-					</a>
-				    </li>
-				    <li class="divider"></li>
-				    <li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="{{ .Params.DOCSMASTERurl }}/index.html">{{ .Params.DOCSMASTERtxt }}
-					</a>
-				    </li>
-				    <li role="presentation">
-					<a role="menuitem" tabindex="-1"
-					   href="{{ .Params.DOCS1901url }}/index.html">{{ .Params.DOCS1901txt }}
-					</a>
-				    </li>
-				</ul>
-			    </div>
+			    {{ partial "btn-dropdown" . }}
 			</article>
 		    </div>
 		    {{ end }}
