@@ -1,4 +1,4 @@
-# VPP API Language
+# VPP API Language    {#api_lang_doc}
 
 The VPP binary API is a message passing API.
 The VPP API language is used to define a RPC interface between VPP and its
@@ -270,7 +270,7 @@ receive sw_interface_event messages whenever interface states changes.
 ### Scalar Value Types
 
 .api type|size|C type|Python type
----------|----|------------------
+---------|----|------|------------
 i8       |   1|i8    |int
 u8       |   1|u8    |int
 i16      |   2|i16   |int
@@ -296,14 +296,16 @@ vl_api_ip4_prefix_t|5|vl_api_ip4_prefix_t|`<class 'ipaddress.IPv4Network'>`
 vl_api_ip6_prefix_t|17|vl_api_ip6_prefix_t|`<class 'ipaddress.IPv6Network'>`
 
 #### vnet/ethernet/ethernet_types.api
+
 .api type|size|C type|Python type
 ---------|----|------|-----------
-vl_api_mac_address_t|6|vl_api_mac_address_t|`class 'vpp_papi.MACAddress'>`
+vl_api_mac_address_t | 6 | vl_api_mac_address_t |`<class 'vpp_papi.MACAddress'>`
 
 #### vnet/interface_types.api
+
 .api type|size|C type|Python type
 ---------|----|------|-----------
-vl_api_interface_index_t|4|vl_api_interface_index_t|int
+vl_api_interface_index_t | 4 | vl_api_interface_index_t | int
 
 ### New explicit types
 

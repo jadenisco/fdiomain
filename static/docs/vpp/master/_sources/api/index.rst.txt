@@ -8,5 +8,5 @@ definitions, the API itself and some examples of how it can be used.
 
 .. toctree::
 
-  VPPAPI
+  VPPAPI.md
   VPPAPIdefinitions
