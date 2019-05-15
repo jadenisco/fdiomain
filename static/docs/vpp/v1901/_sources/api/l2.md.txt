@@ -1,0 +1,8 @@
+
+# L2
+
+The description of this module may go here. The problem is I looked at the api files
+and very few of them are commented with a general description.
+
+The source for the l2 API can be found at: **src/vnet/l2/l2.api**
+

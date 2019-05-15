@@ -109,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -186,9 +187,6 @@
 </div>
 <div class="section" id="ubuntu-18-04-setup-the-fd-io-repository">
 <h1>Ubuntu 18.04 - Setup the FD.io Repository<a class="headerlink" href="#ubuntu-18-04-setup-the-fd-io-repository" title="Permalink to this headline">¶</a></h1>
-<p>FD.io VPP is installed using Package Cloud. For a complete set of
-instructuctions on how to install VPP with package cloud please refer
-to <a class="reference external" href="https://packagecloud.io/fdio/release">Package Cloud</a></p>
 <p>Choose one of the following releases to install.</p>
 <div class="section" id="update-the-os">
 <h2>Update the OS<a class="headerlink" href="#update-the-os" title="Permalink to this headline">¶</a></h2>
@@ -205,7 +203,7 @@ the version needed. The contents needed are shown below.</p>
 <div class="section" id="vpp-latest-release">
 <span id="install-vpp"></span><h3>VPP latest Release<a class="headerlink" href="#vpp-latest-release" title="Permalink to this headline">¶</a></h3>
 <p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/release/ubuntu xenial main</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/release/ubuntu bionic main</span>
 </pre></div>
 </div>
 <p>Get the key:</p>
@@ -216,7 +214,7 @@ the version needed. The contents needed are shown below.</p>
 <div class="section" id="vpp-master-branch">
 <h3>VPP master Branch<a class="headerlink" href="#vpp-master-branch" title="Permalink to this headline">¶</a></h3>
 <p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/master/ubuntu xenial main</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/master/ubuntu bionic main</span>
 </pre></div>
 </div>
 <p>Get the key:</p>
@@ -230,19 +228,14 @@ the version needed. The contents needed are shown below.</p>
 <h1>Install the Mandatory Packages<a class="headerlink" href="#install-the-mandatory-packages" title="Permalink to this headline">¶</a></h1>
 <p>Install the mandatory packages by running the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get update</span>
-<span class="go">sudo apt-get install vpp</span>
+<span class="go">sudo apt-get install vpp vpp-plugin-core vpp-plugin-dpdk</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-the-optional-packages">
 <h1>Install the Optional Packages<a class="headerlink" href="#install-the-optional-packages" title="Permalink to this headline">¶</a></h1>
 <p>Install the optional packages by running the following command:</p>
-<p>For the release packages:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-plugins vpp-api-java vpp-api-lua vpp-api-python vpp-dbg vpp-dev</span>
-</pre></div>
-</div>
-<p>For the master packages:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-plugin-core vpp-api-python vpp-dbg vpp-dev vpp-plugin-dpdk</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-api-python python3-vpp-api vpp-dbg vpp-dev</span>
 </pre></div>
 </div>
 </div>

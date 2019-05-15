@@ -25,6 +25,7 @@ Finally it is useful both a software development kit or an appliance out of the 
    usecases/index
    featuresbyrelease/index
    troubleshooting/index
+   api/index
    events/index
    reference/index
    relatedprojects/index
