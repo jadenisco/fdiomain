@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 17.01 &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Features for Release VPP 17.01 &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 16.09" href="vpp16.09.html" />
     <link rel="prev" title="Features for Release VPP 17.04" href="vpp17.04.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -186,87 +192,24 @@
 <div class="section" id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Integrated November 2016 DPDK release</li>
-<li>Complete rework of Forwarding Information Base (FIB)</li>
-<li><dl class="first docutils">
-<dt>Performance Improvements</dt>
-<dd><ul class="first last">
-<li>Improvements in DPDK input and output nodes</li>
-<li>Improvements in L2 path</li>
-<li>Improvmeents in IPv4 lookup node</li>
+<li><p>Integrated November 2016 DPDK release</p></li>
+<li><p>Complete rework of Forwarding Information Base (FIB)</p></li>
+<li><dl class="simple">
+<dt>Performance Improvements</dt><dd><ul>
+<li><p>Improvements in DPDK input and output nodes</p></li>
+<li><p>Improvements in L2 path</p></li>
+<li><p>Improvmeents in IPv4 lookup node</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Feature Arcs Improvements</dt>
-<dd><ul class="first last">
-<li>Consolidation of the code</li>
-<li><dl class="first docutils">
-<dt>New feature arcs</dt>
-<dd><ul class="first last">
-<li>device-input</li>
-<li>interface-output</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>DPDK Cryptodev Support</dt>
-<dd><ul class="first last">
-<li>Software and Hardware Crypto Support</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li>DPDK HQoS support</li>
-<li>Simple Port Analyzer (SPAN)</li>
-<li><dl class="first docutils">
-<dt>Bidirectional Forwarding Detection</dt>
-<dd><ul class="first last">
-<li>Basic implementation</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li>IPFIX Improvements</li>
-<li>L2 GRE over IPSec tunnels</li>
-<li>Link Layer Discovery Protocol (LLDP)</li>
-<li><dl class="first docutils">
-<dt>Vhost-user Improvements</dt>
-<dd><ul class="first last">
-<li>Performance Improvements</li>
-<li>Multiqueue</li>
-<li>Reconnect</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>LISP Enhancements</dt>
-<dd><ul class="first last">
-<li>Source/Dest control plane support</li>
-<li>L2 over LISP and GRE</li>
-<li>Map-Register/Map-Notify/RLOC-probing support</li>
-<li>L2 API improvements, overall code hardening</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Plugins:</dt>
-<dd><ul class="first last">
-<li>New: ACL</li>
-<li>New: Flow per Packet</li>
-<li><dl class="first docutils">
-<dt>Improved: SNAT</dt>
-<dd><ul class="first last">
-<li>Mutlithreading</li>
-<li>Flow export</li>
+<li><dl class="simple">
+<dt>Feature Arcs Improvements</dt><dd><ul>
+<li><p>Consolidation of the code</p></li>
+<li><dl class="simple">
+<dt>New feature arcs</dt><dd><ul>
+<li><p>device-input</p></li>
+<li><p>interface-output</p></li>
 </ul>
 </dd>
 </dl>
@@ -275,29 +218,81 @@
 </dd>
 </dl>
 </li>
-<li>Doxygen Enhancements</li>
-<li>Luajit API bindings</li>
-<li><dl class="first docutils">
-<dt>API Refactoring</dt>
-<dd><ul class="first last">
-<li>file split</li>
-<li>message signatures</li>
+<li><dl class="simple">
+<dt>DPDK Cryptodev Support</dt><dd><ul>
+<li><p>Software and Hardware Crypto Support</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Python and Scapy based unit testing infrastructure</dt>
-<dd><ul class="first last">
-<li>Infrastructure</li>
-<li>Various tests</li>
+<li><p>DPDK HQoS support</p></li>
+<li><p>Simple Port Analyzer (SPAN)</p></li>
+<li><dl class="simple">
+<dt>Bidirectional Forwarding Detection</dt><dd><ul>
+<li><p>Basic implementation</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Packet Generator improvements</li>
-<li>TUN/TAP jumbo frames support</li>
-<li>Other various bug fixes and improvements</li>
+<li><p>IPFIX Improvements</p></li>
+<li><p>L2 GRE over IPSec tunnels</p></li>
+<li><p>Link Layer Discovery Protocol (LLDP)</p></li>
+<li><dl class="simple">
+<dt>Vhost-user Improvements</dt><dd><ul>
+<li><p>Performance Improvements</p></li>
+<li><p>Multiqueue</p></li>
+<li><p>Reconnect</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LISP Enhancements</dt><dd><ul>
+<li><p>Source/Dest control plane support</p></li>
+<li><p>L2 over LISP and GRE</p></li>
+<li><p>Map-Register/Map-Notify/RLOC-probing support</p></li>
+<li><p>L2 API improvements, overall code hardening</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Plugins:</dt><dd><ul>
+<li><p>New: ACL</p></li>
+<li><p>New: Flow per Packet</p></li>
+<li><dl class="simple">
+<dt>Improved: SNAT</dt><dd><ul>
+<li><p>Mutlithreading</p></li>
+<li><p>Flow export</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Doxygen Enhancements</p></li>
+<li><p>Luajit API bindings</p></li>
+<li><dl class="simple">
+<dt>API Refactoring</dt><dd><ul>
+<li><p>file split</p></li>
+<li><p>message signatures</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Python and Scapy based unit testing infrastructure</dt><dd><ul>
+<li><p>Infrastructure</p></li>
+<li><p>Various tests</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Packet Generator improvements</p></li>
+<li><p>TUN/TAP jumbo frames support</p></li>
+<li><p>Other various bug fixes and improvements</p></li>
 </ul>
 </div>
 <div class="section" id="known-issues">
@@ -308,8 +303,8 @@
 <h2>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h2>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
-<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1701">commit log</a></li>
+<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
+<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1701">commit log</a></p></li>
 </ul>
 </div>
 </div>
@@ -325,7 +320,7 @@
         <a href="vpp16.09.html" class="btn btn-neutral float-right" title="Features for Release VPP 16.09" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp17.04.html" class="btn btn-neutral" title="Features for Release VPP 17.04" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp17.04.html" class="btn btn-neutral float-left" title="Features for Release VPP 17.04" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -351,25 +346,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

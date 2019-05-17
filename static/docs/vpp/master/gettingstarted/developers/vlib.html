@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VLIB (Vector Processing Library) &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>VLIB (Vector Processing Library) &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Plugins" href="plugins.html" />
     <link rel="prev" title="VPPINFRA (Infrastructure)" href="infrastructure.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -212,7 +218,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="vlib-vector-processing-library">
-<span id="vlib-vector-processing-library"></span><h1>VLIB (Vector Processing Library)<a class="headerlink" href="#vlib-vector-processing-library" title="Permalink to this headline">¶</a></h1>
+<h1>VLIB (Vector Processing Library)<a class="headerlink" href="#vlib-vector-processing-library" title="Permalink to this headline">¶</a></h1>
 <p>The files associated with vlib are located in the ./src/{vlib,
 vlibapi, vlibmemory} folders. These libraries provide vector
 processing support including graph-node scheduling, reliable multicast
@@ -220,7 +226,7 @@ support, ultra-lightweight cooperative multi-tasking threads, a CLI,
 plug in .DLL support, physical memory and Linux epoll support. Parts of
 this library embody US Patent 7,961,636.</p>
 <div class="section" id="init-function-discovery">
-<span id="init-function-discovery"></span><h2>Init function discovery<a class="headerlink" href="#init-function-discovery" title="Permalink to this headline">¶</a></h2>
+<h2>Init function discovery<a class="headerlink" href="#init-function-discovery" title="Permalink to this headline">¶</a></h2>
 <p>vlib applications register for various [initialization] events by
 placing structures and __attribute__((constructor)) functions into
 the image. At appropriate times, the vlib framework walks
@@ -239,7 +245,7 @@ other libraries such as VNET. In the latter case, it may be necessary to
 explicitly reference symbol(s) otherwise large portions of the library
 may be AWOL at runtime.</p>
 <div class="section" id="init-function-construction-and-constraint-specification">
-<span id="init-function-construction-and-constraint-specification"></span><h3>Init function construction and constraint specification<a class="headerlink" href="#init-function-construction-and-constraint-specification" title="Permalink to this headline">¶</a></h3>
+<h3>Init function construction and constraint specification<a class="headerlink" href="#init-function-construction-and-constraint-specification" title="Permalink to this headline">¶</a></h3>
 <p>It’s easy to add an init function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">static</span> <span class="n">clib_error_t</span> <span class="o">*</span><span class="n">my_init_function</span> <span class="p">(</span><span class="n">vlib_main_t</span> <span class="o">*</span><span class="n">vm</span><span class="p">)</span>
    <span class="p">{</span>
@@ -276,7 +282,7 @@ necessary.</p>
 </div>
 </div>
 <div class="section" id="node-graph-initialization">
-<span id="node-graph-initialization"></span><h2>Node Graph Initialization<a class="headerlink" href="#node-graph-initialization" title="Permalink to this headline">¶</a></h2>
+<h2>Node Graph Initialization<a class="headerlink" href="#node-graph-initialization" title="Permalink to this headline">¶</a></h2>
 <p>vlib packet-processing applications invariably define a set of graph
 nodes to process packets.</p>
 <p>One constructs a vlib_node_registration_t, most often via the
@@ -288,20 +294,20 @@ nodes.</p>
 to control framework dispatch behaviors. The type member of the
 vlib_node_registration_t functions as follows:</p>
 <ul class="simple">
-<li>VLIB_NODE_TYPE_PRE_INPUT - run before all other node types</li>
-<li>VLIB_NODE_TYPE_INPUT - run as often as possible, after pre_input
-nodes</li>
-<li>VLIB_NODE_TYPE_INTERNAL - only when explicitly made runnable by
-adding pending frames for processing</li>
-<li>VLIB_NODE_TYPE_PROCESS - only when explicitly made runnable.
+<li><p>VLIB_NODE_TYPE_PRE_INPUT - run before all other node types</p></li>
+<li><p>VLIB_NODE_TYPE_INPUT - run as often as possible, after pre_input
+nodes</p></li>
+<li><p>VLIB_NODE_TYPE_INTERNAL - only when explicitly made runnable by
+adding pending frames for processing</p></li>
+<li><p>VLIB_NODE_TYPE_PROCESS - only when explicitly made runnable.
 “Process” nodes are actually cooperative multi-tasking threads. They
-<strong>must</strong> explicitly suspend after a reasonably short period of time.</li>
+<strong>must</strong> explicitly suspend after a reasonably short period of time.</p></li>
 </ul>
 <p>For a precise understanding of the graph node dispatcher, please read
 ./src/vlib/main.c:vlib_main_loop.</p>
 </div>
 <div class="section" id="graph-node-dispatcher">
-<span id="graph-node-dispatcher"></span><h2>Graph node dispatcher<a class="headerlink" href="#graph-node-dispatcher" title="Permalink to this headline">¶</a></h2>
+<h2>Graph node dispatcher<a class="headerlink" href="#graph-node-dispatcher" title="Permalink to this headline">¶</a></h2>
 <p>Vlib_main_loop() dispatches graph nodes. The basic vector processing
 algorithm is diabolically simple, but may not be obvious from even a
 long stare at the code. Here’s how it works: some input node, or set of
@@ -328,12 +334,12 @@ current default device drivers do not.</p>
 process nodes upon timer expiration.</p>
 </div>
 <div class="section" id="graph-dispatcher-internals">
-<span id="graph-dispatcher-internals"></span><h2>Graph dispatcher internals<a class="headerlink" href="#graph-dispatcher-internals" title="Permalink to this headline">¶</a></h2>
+<h2>Graph dispatcher internals<a class="headerlink" href="#graph-dispatcher-internals" title="Permalink to this headline">¶</a></h2>
 <p>This section may be safely skipped. It’s not necessary to understand
 graph dispatcher internals to create graph nodes.</p>
 </div>
 <div class="section" id="vector-data-structure">
-<span id="vector-data-structure"></span><h2>Vector Data Structure<a class="headerlink" href="#vector-data-structure" title="Permalink to this headline">¶</a></h2>
+<h2>Vector Data Structure<a class="headerlink" href="#vector-data-structure" title="Permalink to this headline">¶</a></h2>
 <p>In vpp / vlib, we represent vectors as instances of the vlib_frame_t type:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">typedef</span> <span class="k">struct</span> <span class="n">vlib_frame_t</span>
     <span class="p">{</span>
@@ -364,7 +370,7 @@ the maximum feasible main heap offset of a frame is
 CLIB_CACHE_LINE_BYTES * 0xFFFFFFFF: 64*4 = 256 Gbytes.</p>
 </div>
 <div class="section" id="scheduling-vectors">
-<span id="scheduling-vectors"></span><h2>Scheduling Vectors<a class="headerlink" href="#scheduling-vectors" title="Permalink to this headline">¶</a></h2>
+<h2>Scheduling Vectors<a class="headerlink" href="#scheduling-vectors" title="Permalink to this headline">¶</a></h2>
 <p>As you can see, vectors are not directly associated with graph
 nodes. We represent that association in a couple of ways.  The
 simplest is the vlib_pending_frame_t:</p>
@@ -393,7 +399,7 @@ which processes frames:</p>
 <span class="cm">       * All pending vectors will be processed from input -&gt; output.</span>
 <span class="cm">       */</span>
       <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_vec_len</span> <span class="p">(</span><span class="n">nm</span><span class="o">-&gt;</span><span class="n">pending_frames</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="n">cpu_time_now</span> <span class="o">=</span> <span class="n">dispatch_pending_node</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cpu_time_now</span><span class="p">);</span>
+	<span class="n">cpu_time_now</span> <span class="o">=</span> <span class="n">dispatch_pending_node</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cpu_time_now</span><span class="p">);</span>
       <span class="cm">/* Reset pending vector for next iteration. */</span>
 </pre></div>
 </div>
@@ -401,7 +407,7 @@ which processes frames:</p>
 node which will process it.</p>
 </div>
 <div class="section" id="complications">
-<span id="complications"></span><h2>Complications<a class="headerlink" href="#complications" title="Permalink to this headline">¶</a></h2>
+<h2>Complications<a class="headerlink" href="#complications" title="Permalink to this headline">¶</a></h2>
 <p>Fasten your seatbelt. Here’s where the story - and the data structures
 - become quite complicated…</p>
 <p>At 100,000 feet: vpp uses a directed graph, not a directed <em>acyclic</em>
@@ -418,7 +424,7 @@ vlib_pending_frame_t. Care must be taken to allocate new
 frames and pending frames if a (pending_frame, frame) pair fills.</p>
 </div>
 <div class="section" id="next-frames-next-frame-ownership">
-<span id="next-frames-next-frame-ownership"></span><h2>Next frames, next frame ownership<a class="headerlink" href="#next-frames-next-frame-ownership" title="Permalink to this headline">¶</a></h2>
+<h2>Next frames, next frame ownership<a class="headerlink" href="#next-frames-next-frame-ownership" title="Permalink to this headline">¶</a></h2>
 <p>The vlib_next_frame_t is the last key graph dispatcher data structure:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">typedef</span> <span class="k">struct</span>
     <span class="p">{</span>
@@ -440,7 +446,7 @@ frames and pending frames if a (pending_frame, frame) pair fills.</p>
     <span class="cp">#define VLIB_FRAME_OWNER (1 &lt;&lt; 15)</span>
 
       <span class="cm">/* Set when frame has been allocated for this next. */</span>
-    <span class="cp">#define VLIB_FRAME_IS_ALLOCATED VLIB_NODE_FLAG_IS_OUTPUT</span>
+    <span class="cp">#define VLIB_FRAME_IS_ALLOCATED	VLIB_NODE_FLAG_IS_OUTPUT</span>
 
       <span class="cm">/* Set when frame has been added to pending vector. */</span>
     <span class="cp">#define VLIB_FRAME_PENDING VLIB_NODE_FLAG_IS_DROP</span>
@@ -484,7 +490,7 @@ dispatcher’s pending frame vector.</p>
 index, and also of the vlib_next_frame_t index.</p>
 </div>
 <div class="section" id="dispatch-pending-node-actions">
-<span id="dispatch-pending-node-actions"></span><h2>dispatch_pending_node actions<a class="headerlink" href="#dispatch-pending-node-actions" title="Permalink to this headline">¶</a></h2>
+<h2>dispatch_pending_node actions<a class="headerlink" href="#dispatch-pending-node-actions" title="Permalink to this headline">¶</a></h2>
 <p>The main graph dispatch loop calls dispatch pending node as shown
 above.</p>
 <p>Dispatch_pending_node recovers the pending frame, and the graph node
@@ -500,7 +506,7 @@ vlib_frame_t from the next_frame.</p>
       <span class="n">nf</span><span class="o">-&gt;</span><span class="n">frame_index</span> <span class="o">=</span> <span class="o">~</span><span class="mi">0</span><span class="p">;</span>
       <span class="n">nf</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">VLIB_FRAME_IS_ALLOCATED</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">VLIB_NODE_FLAG_FRAME_NO_FREE_AFTER_DISPATCH</span><span class="p">))</span>
-    <span class="n">restore_frame_index</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">frame_index</span><span class="p">;</span>
+	<span class="n">restore_frame_index</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">frame_index</span><span class="p">;</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -510,7 +516,7 @@ it calls dispatch_node which actually calls the graph node dispatch
 function.</p>
 </div>
 <div class="section" id="process-thread-model">
-<span id="process-thread-model"></span><h2>Process / thread model<a class="headerlink" href="#process-thread-model" title="Permalink to this headline">¶</a></h2>
+<h2>Process / thread model<a class="headerlink" href="#process-thread-model" title="Permalink to this headline">¶</a></h2>
 <p>vlib provides an ultra-lightweight cooperative multi-tasking thread
 model. The graph node scheduler invokes these processes in much the same
 way as traditional vector-processing run-to-completion graph nodes;
@@ -542,7 +548,7 @@ cannot change. Often, it’s best to simply make a snapshot copy of a data
 structure, walk the copy at leisure, then free the copy.</p>
 </div>
 <div class="section" id="process-events">
-<span id="process-events"></span><h2>Process events<a class="headerlink" href="#process-events" title="Permalink to this headline">¶</a></h2>
+<h2>Process events<a class="headerlink" href="#process-events" title="Permalink to this headline">¶</a></h2>
 <p>The vlib process event mechanism API is extremely lightweight and easy
 to use. Here is a typical example:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">vlib_main_t</span> <span class="o">*</span><span class="n">vm</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">vlib_global_main</span><span class="p">;</span>
@@ -595,7 +601,7 @@ of the appropriate vlib_node_registration_t - or by finding the
 vlib_node_t with vlib_get_node_by_name(…).</p>
 </div>
 <div class="section" id="buffers">
-<span id="buffers"></span><h2>Buffers<a class="headerlink" href="#buffers" title="Permalink to this headline">¶</a></h2>
+<h2>Buffers<a class="headerlink" href="#buffers" title="Permalink to this headline">¶</a></h2>
 <p>vlib buffering solves the usual set of packet-processing problems,
 albeit at high performance. Key in terms of performance: one ordinarily
 allocates / frees N buffers at a time rather than one at a time. Except
@@ -621,7 +627,7 @@ data lifetime analysis, type-checking, etc.</p>
 <p>Buffers have reference-counts in support of e.g. multicast replication.</p>
 </div>
 <div class="section" id="shared-memory-message-api">
-<span id="shared-memory-message-api"></span><h2>Shared-memory message API<a class="headerlink" href="#shared-memory-message-api" title="Permalink to this headline">¶</a></h2>
+<h2>Shared-memory message API<a class="headerlink" href="#shared-memory-message-api" title="Permalink to this headline">¶</a></h2>
 <p>Local control-plane and application processes interact with the vpp
 dataplane via asynchronous message-passing in shared memory over
 unidirectional queues. The same application APIs are available via
@@ -639,7 +645,7 @@ message buffers merely requires the message consumer to clear the busy
 bit. No locking required.</p>
 </div>
 <div class="section" id="debug-cli">
-<span id="debug-cli"></span><h2>Debug CLI<a class="headerlink" href="#debug-cli" title="Permalink to this headline">¶</a></h2>
+<h2>Debug CLI<a class="headerlink" href="#debug-cli" title="Permalink to this headline">¶</a></h2>
 <p>Adding debug CLI commands to VLIB applications is very simple.</p>
 <p>Here is a complete example:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">static</span> <span class="n">clib_error_t</span> <span class="o">*</span>
@@ -675,14 +681,14 @@ performance by running for too long, do the work incrementally in a
 process node. The client can wait.</p>
 </div>
 <div class="section" id="handing-off-buffers-between-threads">
-<span id="handing-off-buffers-between-threads"></span><h2>Handing off buffers between threads<a class="headerlink" href="#handing-off-buffers-between-threads" title="Permalink to this headline">¶</a></h2>
+<h2>Handing off buffers between threads<a class="headerlink" href="#handing-off-buffers-between-threads" title="Permalink to this headline">¶</a></h2>
 <p>Vlib includes an easy-to-use mechanism for handing off buffers between
 worker threads. A typical use-case: software ingress flow hashing. At
 a high level, one creates a per-worker-thread queue which sends packets
 to a specific graph node in the indicated worker thread. With the
 queue in hand, enqueue packets to the worker thread of your choice.</p>
 <div class="section" id="initialize-a-handoff-queue">
-<span id="initialize-a-handoff-queue"></span><h3>Initialize a handoff queue<a class="headerlink" href="#initialize-a-handoff-queue" title="Permalink to this headline">¶</a></h3>
+<h3>Initialize a handoff queue<a class="headerlink" href="#initialize-a-handoff-queue" title="Permalink to this headline">¶</a></h3>
 <p>Simple enough, call vlib_frame_queue_main_init:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>   <span class="n">main_ptr</span><span class="o">-&gt;</span><span class="n">frame_queue_index</span>
        <span class="o">=</span> <span class="n">vlib_frame_queue_main_init</span> <span class="p">(</span><span class="n">dest_node</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">frame_queue_size</span><span class="p">);</span>
@@ -702,13 +708,13 @@ often it polls the (entire set of) frame queues, polling unused frame
 queues is a waste of clock cycles.</p>
 </div>
 <div class="section" id="hand-off-packets">
-<span id="hand-off-packets"></span><h3>Hand off packets<a class="headerlink" href="#hand-off-packets" title="Permalink to this headline">¶</a></h3>
+<h3>Hand off packets<a class="headerlink" href="#hand-off-packets" title="Permalink to this headline">¶</a></h3>
 <p>The actual handoff mechanics are simple, and integrate nicely with
 a typical graph-node dispatch function:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">always_inline</span> <span class="n">uword</span>
     <span class="nf">do_handoff_inline</span> <span class="p">(</span><span class="n">vlib_main_t</span> <span class="o">*</span> <span class="n">vm</span><span class="p">,</span>
-                   <span class="n">vlib_node_runtime_t</span> <span class="o">*</span> <span class="n">node</span><span class="p">,</span> <span class="n">vlib_frame_t</span> <span class="o">*</span> <span class="n">frame</span><span class="p">,</span>
-                   <span class="kt">int</span> <span class="n">is_ip4</span><span class="p">,</span> <span class="kt">int</span> <span class="n">is_trace</span><span class="p">)</span>
+         	       <span class="n">vlib_node_runtime_t</span> <span class="o">*</span> <span class="n">node</span><span class="p">,</span> <span class="n">vlib_frame_t</span> <span class="o">*</span> <span class="n">frame</span><span class="p">,</span>
+    		       <span class="kt">int</span> <span class="n">is_ip4</span><span class="p">,</span> <span class="kt">int</span> <span class="n">is_trace</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">u32</span> <span class="n">n_left_from</span><span class="p">,</span> <span class="o">*</span><span class="n">from</span><span class="p">;</span>
       <span class="n">vlib_buffer_t</span> <span class="o">*</span><span class="n">bufs</span><span class="p">[</span><span class="n">VLIB_FRAME_SIZE</span><span class="p">],</span> <span class="o">**</span><span class="n">b</span><span class="p">;</span>
@@ -752,23 +758,23 @@ a typical graph-node dispatch function:</p>
        <span class="cm">/* Typical counters,</span>
 <span class="cm">      if (n_enq &lt; frame-&gt;n_vectors)</span>
 <span class="cm">        vlib_node_increment_counter (vm, node-&gt;node_index,</span>
-<span class="cm">                     XXX_ERROR_CONGESTION_DROP,</span>
-<span class="cm">                     frame-&gt;n_vectors - n_enq);</span>
+<span class="cm">    				 XXX_ERROR_CONGESTION_DROP,</span>
+<span class="cm">    				 frame-&gt;n_vectors - n_enq);</span>
 <span class="cm">      vlib_node_increment_counter (vm, node-&gt;node_index,</span>
-<span class="cm">                         XXX_ERROR_HANDED_OFF, n_enq);</span>
+<span class="cm">    			         XXX_ERROR_HANDED_OFF, n_enq);</span>
 <span class="cm">      return frame-&gt;n_vectors;</span>
 <span class="cm">}</span>
 </pre></div>
 </div>
 <p>Notes about calling vlib_buffer_enqueue_to_thread(…):</p>
 <ul class="simple">
-<li>If you pass “drop on congestion” non-zero, all packets in the
+<li><p>If you pass “drop on congestion” non-zero, all packets in the
 inbound frame will be consumed one way or the other. This is the
-recommended setting.</li>
-<li>In the drop-on-congestion case, please don’t try to “help” in the
+recommended setting.</p></li>
+<li><p>In the drop-on-congestion case, please don’t try to “help” in the
 enqueue node by freeing dropped packets, or by pushing them to
-“error-drop.” Either of those actions would be a severe error.</li>
-<li>It’s perfectly OK to enqueue packets to the current thread.</li>
+“error-drop.” Either of those actions would be a severe error.</p></li>
+<li><p>It’s perfectly OK to enqueue packets to the current thread.</p></li>
 </ul>
 </div>
 </div>
@@ -785,7 +791,7 @@ enqueue node by freeing dropped packets, or by pushing them to
         <a href="plugins.html" class="btn btn-neutral float-right" title="Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="infrastructure.html" class="btn btn-neutral" title="VPPINFRA (Infrastructure)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="infrastructure.html" class="btn btn-neutral float-left" title="VPPINFRA (Infrastructure)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -811,25 +817,16 @@ enqueue node by freeing dropped packets, or by pushing them to
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

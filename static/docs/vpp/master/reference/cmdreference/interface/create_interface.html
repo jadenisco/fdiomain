@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create Interfaces Commands &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Create Interfaces Commands &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Set Interface Commands" href="setinterface.html" />
     <link rel="prev" title="Hardware-Interfaces Commands" href="hardware.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -190,14 +196,14 @@
 <h1>Create Interfaces Commands<a class="headerlink" href="#create-interfaces-commands" title="Permalink to this headline">¶</a></h1>
 <p>This section contains those interface commands that are associated to creating an interface:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#create-host-interface">Create Host-Interface</a></li>
-<li><a class="reference internal" href="#create-interface-memif">Create Interface Memif</a></li>
-<li><a class="reference internal" href="#create-loopback-interface">Create Loopback Interface</a></li>
-<li><a class="reference internal" href="#create-sub-interfaces">Create Sub-Interfaces</a></li>
+<li><p><a class="reference internal" href="#create-host-interface">Create Host-Interface</a></p></li>
+<li><p><a class="reference internal" href="#create-interface-memif">Create Interface Memif</a></p></li>
+<li><p><a class="reference internal" href="#create-loopback-interface">Create Loopback Interface</a></p></li>
+<li><p><a class="reference internal" href="#create-sub-interfaces">Create Sub-Interfaces</a></p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For a complete list of CLI Debug commands refer to the Debug CLI section of the <a class="reference external" href="https://docs.fd.io/vpp/18.07/clicmd.html">Source Code Documents</a> .</p>
+<p class="admonition-title">Note</p>
+<p>For a complete list of CLI Debug commands refer to the Debug CLI section of the <a class="reference external" href="https://docs.fd.io/vpp/18.07/clicmd.html">Source Code Documents</a> .</p>
 </div>
 <div class="section" id="create-host-interface">
 <h2>Create Host-Interface<a class="headerlink" href="#create-host-interface" title="Permalink to this headline">¶</a></h2>
@@ -213,7 +219,8 @@ The veth pair must already exist. Once created, a new host interface will exist 
 Use the <cite>show interface</cite> command to display host interface details.</p>
 <p>This command has the following optional parameters:</p>
 <blockquote>
-<div>hw-addr &lt;<em>mac-addr</em>&gt; - Optional ethernet address, can be in either X:X:X:X:X:X unix or X.X.X cisco format</div></blockquote>
+<div><p>hw-addr &lt;<em>mac-addr</em>&gt; - Optional ethernet address, can be in either X:X:X:X:X:X unix or X.X.X cisco format</p>
+</div></blockquote>
 </div>
 <div class="section" id="example-usage">
 <h3>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
@@ -292,25 +299,25 @@ provide, the VLAN ID is assumed to be the <em>subId</em>. The VLAN ID and
 <em>subId</em> can be different, but this is not recommended.</p>
 <p>This command has several variations:</p>
 <ul class="simple">
-<li><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; - Create a subinterface
+<li><p><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; - Create a subinterface
 to process packets with a given 802.1q VLAN ID (same value as the
-<em>subId</em>).</li>
-<li><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; default - Adding the
+<em>subId</em>).</p></li>
+<li><p><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; default - Adding the
 <em>default</em> parameter indicates that packets with VLAN IDs that do
 not match any other subinterfaces should be sent to this
-subinterface.</li>
-<li><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; untagged - Adding the
+subinterface.</p></li>
+<li><p><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; untagged - Adding the
 <em>untagged</em> parameter indicates that packets no VLAN IDs should be
-sent to this subinterface.</li>
-<li><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt;-&lt;<em>subId</em>&gt; - Create a
-range of subinterfaces to handle a range of VLAN IDs.</li>
-<li><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; dot1q|dot1ad &lt;<em>vlanId</em>&gt;|any
+sent to this subinterface.</p></li>
+<li><p><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt;-&lt;<em>subId</em>&gt; - Create a
+range of subinterfaces to handle a range of VLAN IDs.</p></li>
+<li><p><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; dot1q|dot1ad &lt;<em>vlanId</em>&gt;|any
 [exact-match] - Use this command to specify the outer VLAN ID, to
 either be explicited or to make the VLAN ID different from the
-<em>subId</em>.</li>
-<li><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; dot1q|dot1ad &lt;<em>vlanId</em>&gt;|any
+<em>subId</em>.</p></li>
+<li><p><strong>create sub-interfaces</strong> &lt;<em>interface</em>&gt; &lt;<em>subId</em>&gt; dot1q|dot1ad &lt;<em>vlanId</em>&gt;|any
 inner-dot1q &lt;<em>vlanId</em>&gt;|any [exact-match] - Use this command to
-specify the outer VLAN ID and the innner VLAN ID.</li>
+specify the outer VLAN ID and the innner VLAN ID.</p></li>
 </ul>
 <p>When <em>dot1q</em> or <em>dot1ad</em> is explictly entered, subinterfaces can be
 configured as either <em>exact-match</em> or <em>non-exact match</em>. <em>Non-exact match</em> is
@@ -386,7 +393,7 @@ default behavior is <em>exact-match</em>.</p>
         <a href="setinterface.html" class="btn btn-neutral float-right" title="Set Interface Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="hardware.html" class="btn btn-neutral" title="Hardware-Interfaces Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hardware.html" class="btn btn-neutral float-left" title="Hardware-Interfaces Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -412,25 +419,16 @@ default behavior is <em>exact-match</em>.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

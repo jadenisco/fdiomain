@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 18.10 &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Features for Release VPP 18.10 &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 18.07" href="vpp18.07.html" />
     <link rel="prev" title="Features for Release VPP 19.01" href="vpp1901.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -190,23 +196,24 @@
 <div class="section" id="infrastructure">
 <h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>DPDK 18.08 Integration</li>
-<li>New Stats infrastructure (interface, error, node performance counters)</li>
-<li>Add configurable “Doug Lea malloc” support</li>
+<li><p>DPDK 18.08 Integration</p></li>
+<li><p>New Stats infrastructure (interface, error, node performance counters)</p></li>
+<li><p>Add configurable “Doug Lea malloc” support</p></li>
 </ul>
 </div>
 <div class="section" id="vnet-plugins">
 <h2>VNET &amp; Plugins<a class="headerlink" href="#vnet-plugins" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Load balancing: support per-port VIP and all-port VIP</li>
-<li>Port NSH plugin to VPP</li>
-<li>NAT<ul>
-<li>Configurable port range</li>
-<li>Virtual Fragmentation Reassembly for endpoint-dependent mode</li>
-<li>Client-IP based session affinity for load-balancing</li>
-<li>TCP MSS clamping</li>
-<li>Session timeout</li>
-<li>Bug-fixing and performance optimizations</li>
+<li><p>Load balancing: support per-port VIP and all-port VIP</p></li>
+<li><p>Port NSH plugin to VPP</p></li>
+<li><p>NAT</p>
+<ul>
+<li><p>Configurable port range</p></li>
+<li><p>Virtual Fragmentation Reassembly for endpoint-dependent mode</p></li>
+<li><p>Client-IP based session affinity for load-balancing</p></li>
+<li><p>TCP MSS clamping</p></li>
+<li><p>Session timeout</p></li>
+<li><p>Bug-fixing and performance optimizations</p></li>
 </ul>
 </li>
 </ul>
@@ -214,14 +221,14 @@
 <div class="section" id="host-stack">
 <h2>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Support for applications with multiple workers</li>
-<li>Support for binds from multiple app workers to same ip:port</li>
-<li>Switched to a message queue for io and control event notifications</li>
-<li>Support for eventfd based notifications as alternative to mutext-condvar pair</li>
-<li>VCL refactor to support async event notifications and multiple workers</li>
-<li>TLS async support in client for HW accleration</li>
-<li>Performance optimizations and bug-fixing</li>
-<li>A number of binary APIs will be deprecated in favor of using the event message queue. Details in the API section.</li>
+<li><p>Support for applications with multiple workers</p></li>
+<li><p>Support for binds from multiple app workers to same ip:port</p></li>
+<li><p>Switched to a message queue for io and control event notifications</p></li>
+<li><p>Support for eventfd based notifications as alternative to mutext-condvar pair</p></li>
+<li><p>VCL refactor to support async event notifications and multiple workers</p></li>
+<li><p>TLS async support in client for HW accleration</p></li>
+<li><p>Performance optimizations and bug-fixing</p></li>
+<li><p>A number of binary APIs will be deprecated in favor of using the event message queue. Details in the API section.</p></li>
 </ul>
 <div class="section" id="known-issues">
 <h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
@@ -231,8 +238,8 @@
 <h3>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h3>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
-<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1810">commit log</a></li>
+<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
+<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1810">commit log</a></p></li>
 </ul>
 </div>
 </div>
@@ -249,7 +256,7 @@
         <a href="vpp18.07.html" class="btn btn-neutral float-right" title="Features for Release VPP 18.07" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp1901.html" class="btn btn-neutral" title="Features for Release VPP 19.01" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp1901.html" class="btn btn-neutral float-left" title="Features for Release VPP 19.01" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -275,25 +282,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

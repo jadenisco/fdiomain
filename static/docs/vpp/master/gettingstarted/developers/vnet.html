@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VNET (VPP Network Stack) &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>VNET (VPP Network Stack) &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Feature Arcs" href="featurearcs.html" />
     <link rel="prev" title="Plugins" href="plugins.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -202,7 +208,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="vnet-vpp-network-stack">
-<span id="vnet-vpp-network-stack"></span><h1>VNET (VPP Network Stack)<a class="headerlink" href="#vnet-vpp-network-stack" title="Permalink to this headline">¶</a></h1>
+<h1>VNET (VPP Network Stack)<a class="headerlink" href="#vnet-vpp-network-stack" title="Permalink to this headline">¶</a></h1>
 <p>The files associated with the VPP network stack layer are located in the
 <em>./src/vnet</em> folder. The Network Stack Layer is basically an
 instantiation of the code in the other layers. This layer has a vnet
@@ -216,13 +222,13 @@ classification, feeds ipv4-input, ipv6-input, arp-input etc.] and
 “ipv4-input-no-checksum” [if hardware can classify, perform ipv4 header
 checksum].</p>
 <div class="section" id="effective-graph-dispatch-function-coding">
-<span id="effective-graph-dispatch-function-coding"></span><h2>Effective graph dispatch function coding<a class="headerlink" href="#effective-graph-dispatch-function-coding" title="Permalink to this headline">¶</a></h2>
+<h2>Effective graph dispatch function coding<a class="headerlink" href="#effective-graph-dispatch-function-coding" title="Permalink to this headline">¶</a></h2>
 <p>Over the 15 years, multiple coding styles have emerged: a
 single/dual/quad loop coding model (with variations) and a
 fully-pipelined coding model.</p>
 </div>
 <div class="section" id="single-dual-loops">
-<span id="single-dual-loops"></span><h2>Single/dual loops<a class="headerlink" href="#single-dual-loops" title="Permalink to this headline">¶</a></h2>
+<h2>Single/dual loops<a class="headerlink" href="#single-dual-loops" title="Permalink to this headline">¶</a></h2>
 <p>The single/dual/quad loop model variations conveniently solve problems
 where the number of items to process is not known in advance: typical
 hardware RX-ring processing. This coding style is also very effective
@@ -232,8 +238,8 @@ reads.</p>
 units to convert buffer indices to buffer pointers:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>   <span class="k">static</span> <span class="n">uword</span>
    <span class="nf">simulated_ethernet_interface_tx</span> <span class="p">(</span><span class="n">vlib_main_t</span> <span class="o">*</span> <span class="n">vm</span><span class="p">,</span>
-                 <span class="n">vlib_node_runtime_t</span> <span class="o">*</span>
-                 <span class="n">node</span><span class="p">,</span> <span class="n">vlib_frame_t</span> <span class="o">*</span> <span class="n">frame</span><span class="p">)</span>
+   				 <span class="n">vlib_node_runtime_t</span> <span class="o">*</span>
+   				 <span class="n">node</span><span class="p">,</span> <span class="n">vlib_frame_t</span> <span class="o">*</span> <span class="n">frame</span><span class="p">)</span>
    <span class="p">{</span>
      <span class="n">u32</span> <span class="n">n_left_from</span><span class="p">,</span> <span class="o">*</span><span class="n">from</span><span class="p">;</span>
      <span class="n">u32</span> <span class="n">next_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -262,11 +268,11 @@ units to convert buffer indices to buffer pointers:</p>
        <span class="p">{</span>
          <span class="cm">/* Prefetch next quad-loop iteration. */</span>
          <span class="k">if</span> <span class="p">(</span><span class="n">PREDICT_TRUE</span> <span class="p">(</span><span class="n">n_left_from</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">))</span>
-       <span class="p">{</span>
-         <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
-         <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
-         <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
-         <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
+   	   <span class="p">{</span>
+   	     <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
+   	     <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
+   	     <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
+   	     <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
            <span class="p">}</span>
 
          <span class="cm">/*</span>
@@ -280,10 +286,10 @@ units to convert buffer indices to buffer pointers:</p>
           <span class="n">do_something_to</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
 
          <span class="cm">/* Process the next 0..4 packets */</span>
-     <span class="n">b</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
-     <span class="n">next</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
-     <span class="n">n_left_from</span> <span class="o">-=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="p">}</span>
+   	 <span class="n">b</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
+   	 <span class="n">next</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
+   	 <span class="n">n_left_from</span> <span class="o">-=</span> <span class="mi">4</span><span class="p">;</span>
+   	<span class="p">}</span>
      <span class="cm">/*</span>
 <span class="cm">      * Clean up 0...3 remaining packets at the end of the incoming frame</span>
 <span class="cm">      */</span>
@@ -319,13 +325,13 @@ pattern. It is not uncommon to recode a given graph node dispatch function
 several times during performance optimization.</p>
 </div>
 <div class="section" id="creating-packets-from-scratch">
-<span id="creating-packets-from-scratch"></span><h2>Creating Packets from Scratch<a class="headerlink" href="#creating-packets-from-scratch" title="Permalink to this headline">¶</a></h2>
+<h2>Creating Packets from Scratch<a class="headerlink" href="#creating-packets-from-scratch" title="Permalink to this headline">¶</a></h2>
 <p>At times, it’s necessary to create packets from scratch and send
 them. Tasks like sending keepalives or actively opening connections
 come to mind. Its not difficult, but accurate buffer metadata setup is
 required.</p>
 <div class="section" id="allocating-buffers">
-<span id="allocating-buffers"></span><h3>Allocating Buffers<a class="headerlink" href="#allocating-buffers" title="Permalink to this headline">¶</a></h3>
+<h3>Allocating Buffers<a class="headerlink" href="#allocating-buffers" title="Permalink to this headline">¶</a></h3>
 <p>Use vlib_buffer_alloc, which allocates a set of buffer indices. For
 low-performance applications, it’s OK to allocate one buffer at a
 time. Note that vlib_buffer_alloc(…) does NOT initialize buffer
@@ -336,7 +342,7 @@ as buffer indices are allocated. See tcp_alloc_tx_buffers(…) and
 tcp_get_free_buffer_index(…) for an example.</p>
 </div>
 <div class="section" id="buffer-initialization-example">
-<span id="buffer-initialization-example"></span><h3>Buffer Initialization Example<a class="headerlink" href="#buffer-initialization-example" title="Permalink to this headline">¶</a></h3>
+<h3>Buffer Initialization Example<a class="headerlink" href="#buffer-initialization-example" title="Permalink to this headline">¶</a></h3>
 <p>The following example shows the <strong>main points</strong>, but is not to be
 blindly cut-‘n-pasted.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>  <span class="n">u32</span> <span class="n">bi0</span><span class="p">;</span>
@@ -401,7 +407,6 @@ blindly cut-‘n-pasted.</p>
 
   <span class="cm">/* Use the default FIB index for tx lookup. Set non-zero to use another fib */</span>
   <span class="n">vnet_buffer</span> <span class="p">(</span><span class="n">b0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sw_if_index</span><span class="p">[</span><span class="n">VLIB_TX</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
 </pre></div>
 </div>
 <p>If your use-case calls for large packet transmission, use
@@ -409,7 +414,7 @@ vlib_buffer_chain_append_data_with_alloc(…) to create the requisite
 buffer chain.</p>
 </div>
 <div class="section" id="enqueueing-packets-for-lookup-and-transmission">
-<span id="enqueueing-packets-for-lookup-and-transmission"></span><h3>Enqueueing packets for lookup and transmission<a class="headerlink" href="#enqueueing-packets-for-lookup-and-transmission" title="Permalink to this headline">¶</a></h3>
+<h3>Enqueueing packets for lookup and transmission<a class="headerlink" href="#enqueueing-packets-for-lookup-and-transmission" title="Permalink to this headline">¶</a></h3>
 <p>The simplest way to send a set of packets is to use
 vlib_get_frame_to_node(…) to allocate fresh frame(s) to
 ip4_lookup_node or ip6_lookup_node, add the constructed buffer
@@ -431,7 +436,7 @@ should <strong>not</strong> occur in a for-loop!</p>
 </div>
 </div>
 <div class="section" id="packet-tracer">
-<span id="packet-tracer"></span><h2>Packet tracer<a class="headerlink" href="#packet-tracer" title="Permalink to this headline">¶</a></h2>
+<h2>Packet tracer<a class="headerlink" href="#packet-tracer" title="Permalink to this headline">¶</a></h2>
 <p>Vlib includes a frame element [packet] trace facility, with a simple
 debug CLI interface. The cli is straightforward: “trace add
 input-node-name count” to start capturing packet traces.</p>
@@ -465,7 +470,7 @@ captured as the packet whizzed by. The format function pretty-prints the
 data as desired.</p>
 </div>
 <div class="section" id="graph-dispatcher-pcap-tracing">
-<span id="graph-dispatcher-pcap-tracing"></span><h2>Graph Dispatcher Pcap Tracing<a class="headerlink" href="#graph-dispatcher-pcap-tracing" title="Permalink to this headline">¶</a></h2>
+<h2>Graph Dispatcher Pcap Tracing<a class="headerlink" href="#graph-dispatcher-pcap-tracing" title="Permalink to this headline">¶</a></h2>
 <p>The vpp graph dispatcher knows how to capture vectors of packets in pcap
 format as they’re dispatched. The pcap captures are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">VPP</span> <span class="n">graph</span> <span class="n">dispatch</span> <span class="n">trace</span> <span class="n">record</span> <span class="n">description</span><span class="p">:</span>
@@ -527,7 +532,7 @@ data SHOULD be 0x60, and should begin an ipv6 packet header.</p>
 protocol hint. They MUST tolerate inaccurate hints, which MAY occur
 from time to time.</p>
 <div class="section" id="dispatch-pcap-trace-debug-cli">
-<span id="dispatch-pcap-trace-debug-cli"></span><h3>Dispatch Pcap Trace Debug CLI<a class="headerlink" href="#dispatch-pcap-trace-debug-cli" title="Permalink to this headline">¶</a></h3>
+<h3>Dispatch Pcap Trace Debug CLI<a class="headerlink" href="#dispatch-pcap-trace-debug-cli" title="Permalink to this headline">¶</a></h3>
 <p>To start a dispatch trace capture of up to 10,000 trace records:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">pcap</span> <span class="n">dispatch</span> <span class="n">trace</span> <span class="n">on</span> <span class="nb">max</span> <span class="mi">10000</span> <span class="n">file</span> <span class="n">dispatch</span><span class="o">.</span><span class="n">pcap</span>
 </pre></div>
@@ -543,7 +548,7 @@ tracing for packets which originate in dpdk-input:</p>
 </div>
 </div>
 <div class="section" id="wireshark-dissection-of-dispatch-pcap-traces">
-<span id="wireshark-dissection-of-dispatch-pcap-traces"></span><h3>Wireshark dissection of dispatch pcap traces<a class="headerlink" href="#wireshark-dissection-of-dispatch-pcap-traces" title="Permalink to this headline">¶</a></h3>
+<h3>Wireshark dissection of dispatch pcap traces<a class="headerlink" href="#wireshark-dissection-of-dispatch-pcap-traces" title="Permalink to this headline">¶</a></h3>
 <p>It almost goes without saying that we built a companion wireshark
 dissector to display these traces. As of this writing, we have
 upstreamed the wireshark dissector.</p>
@@ -641,7 +646,7 @@ obvious from looking at the dispatch trace in wireshark.</p>
         <a href="featurearcs.html" class="btn btn-neutral float-right" title="Feature Arcs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plugins.html" class="btn btn-neutral" title="Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plugins.html" class="btn btn-neutral float-left" title="Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -667,25 +672,16 @@ obvious from looking at the dispatch trace in wireshark.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 17.04 &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Features for Release VPP 17.04 &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 17.01" href="vpp17.01.html" />
     <link rel="prev" title="Features for Release VPP 17.07" href="vpp17.07.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -195,159 +201,147 @@
 <div class="section" id="infrastructure">
 <h3>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>make test improvements</li>
-<li>vnet: add device-input threadplacement infra</li>
-<li>64 bit per-thread counters</li>
-<li>process restart cli</li>
-<li>High performance timer wheels</li>
-<li><dl class="first docutils">
-<dt>Plugin infrastructure improvements</dt>
-<dd><ul class="first last">
-<li>Support for .default_disabled, .version_required</li>
+<li><p>make test improvements</p></li>
+<li><p>vnet: add device-input threadplacement infra</p></li>
+<li><p>64 bit per-thread counters</p></li>
+<li><p>process restart cli</p></li>
+<li><p>High performance timer wheels</p></li>
+<li><dl class="simple">
+<dt>Plugin infrastructure improvements</dt><dd><ul>
+<li><p>Support for .default_disabled, .version_required</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Added MAINTAINERS file</li>
+<li><p>Added MAINTAINERS file</p></li>
 </ul>
 </div>
 <div class="section" id="host-stack">
 <h3>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>TCP stack (experimental)</li>
-<li>DHCPv4 / DHCPv6 relay multi-destination</li>
-<li>DHCPv4 option 82</li>
-<li>ND proxy</li>
-<li>Attached hosts</li>
-<li>Consolidated DHCPv4 and DHCPv6 implementation</li>
+<li><p>TCP stack (experimental)</p></li>
+<li><p>DHCPv4 / DHCPv6 relay multi-destination</p></li>
+<li><p>DHCPv4 option 82</p></li>
+<li><p>ND proxy</p></li>
+<li><p>Attached hosts</p></li>
+<li><p>Consolidated DHCPv4 and DHCPv6 implementation</p></li>
 </ul>
 </div>
 <div class="section" id="interfaces">
 <h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>DPDK 17.02 (retire support for DPDK 16.07)</li>
-<li>Add memif - packet memory interface for intra-host communication</li>
-<li>vhost: support interrupt mode</li>
-<li>DPDK as plugin (retired vpp_lite)</li>
-<li>DPDPK input optimizations</li>
-<li>Loopback interface allocation scheme</li>
+<li><p>DPDK 17.02 (retire support for DPDK 16.07)</p></li>
+<li><p>Add memif - packet memory interface for intra-host communication</p></li>
+<li><p>vhost: support interrupt mode</p></li>
+<li><p>DPDK as plugin (retired vpp_lite)</p></li>
+<li><p>DPDPK input optimizations</p></li>
+<li><p>Loopback interface allocation scheme</p></li>
 </ul>
 </div>
 <div class="section" id="network-features">
 <h3>Network features<a class="headerlink" href="#network-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>IP Multicast FIB</li>
-<li><dl class="first docutils">
-<dt>Bridging</dt>
-<dd><ul class="first last">
-<li>Learning on local interfaces</li>
-<li>Flushing of MACs from the L2 FIB</li>
+<li><p>IP Multicast FIB</p></li>
+<li><dl class="simple">
+<dt>Bridging</dt><dd><ul>
+<li><p>Learning on local interfaces</p></li>
+<li><p>Flushing of MACs from the L2 FIB</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>SNAT</dt>
-<dd><ul class="first last">
-<li>CGN (Deterministic and dynamic)</li>
-<li>CGN configurable port allocation algorithm</li>
-<li>ICMP support</li>
-<li>Tentant VRF id for SNAT outside addresses</li>
-<li>Session dump / User dump</li>
-<li>Port allocation per protocol</li>
+<li><dl class="simple">
+<dt>SNAT</dt><dd><ul>
+<li><p>CGN (Deterministic and dynamic)</p></li>
+<li><p>CGN configurable port allocation algorithm</p></li>
+<li><p>ICMP support</p></li>
+<li><p>Tentant VRF id for SNAT outside addresses</p></li>
+<li><p>Session dump / User dump</p></li>
+<li><p>Port allocation per protocol</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Security groups</dt>
-<dd><ul class="first last">
-<li>Routed interface support</li>
-<li>L2+L3 unified processing node</li>
-<li>Improve fragment handling</li>
+<li><dl class="simple">
+<dt>Security groups</dt><dd><ul>
+<li><p>Routed interface support</p></li>
+<li><p>L2+L3 unified processing node</p></li>
+<li><p>Improve fragment handling</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Segement routing v6</dt>
-<dd><ul class="first last">
-<li>SR policies with weighted SID lists</li>
-<li>Binding SID</li>
-<li>SR steering policies</li>
-<li>SR Local SIDs</li>
-<li>Framework to expand local SIDs w/plugins</li>
-<li>Documentation</li>
+<li><dl class="simple">
+<dt>Segement routing v6</dt><dd><ul>
+<li><p>SR policies with weighted SID lists</p></li>
+<li><p>Binding SID</p></li>
+<li><p>SR steering policies</p></li>
+<li><p>SR Local SIDs</p></li>
+<li><p>Framework to expand local SIDs w/plugins</p></li>
+<li><p>Documentation</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>IOAM</dt>
-<dd><ul class="first last">
-<li>UDP Pinger w/path fault isolation</li>
-<li>IOAM as type 2 metadata in NSH</li>
-<li>IAOM raw IPFIX collector and analyzer</li>
-<li>Anycast active server selection</li>
-<li>Documentation</li>
-<li>SRv6 Local SID</li>
-<li>IP6 HBH header and SR header co-existence</li>
-<li>Active probe</li>
+<li><dl class="simple">
+<dt>IOAM</dt><dd><ul>
+<li><p>UDP Pinger w/path fault isolation</p></li>
+<li><p>IOAM as type 2 metadata in NSH</p></li>
+<li><p>IAOM raw IPFIX collector and analyzer</p></li>
+<li><p>Anycast active server selection</p></li>
+<li><p>Documentation</p></li>
+<li><p>SRv6 Local SID</p></li>
+<li><p>IP6 HBH header and SR header co-existence</p></li>
+<li><p>Active probe</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>LISP</dt>
-<dd><ul class="first last">
-<li>Statistics collection</li>
-<li>Generalize encap for overlay transport (vxlan-gpe support)</li>
-<li>Improve data plane speed</li>
+<li><dl class="simple">
+<dt>LISP</dt><dd><ul>
+<li><p>Statistics collection</p></li>
+<li><p>Generalize encap for overlay transport (vxlan-gpe support)</p></li>
+<li><p>Improve data plane speed</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>GPE</dt>
-<dd><ul class="first last">
-<li>CLI</li>
-<li>NSH added to encap/decap path</li>
-<li>Renamed LISP GPE API to GPE</li>
+<li><dl class="simple">
+<dt>GPE</dt><dd><ul>
+<li><p>CLI</p></li>
+<li><p>NSH added to encap/decap path</p></li>
+<li><p>Renamed LISP GPE API to GPE</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>MPLS</dt>
-<dd><ul class="first last">
-<li>Performance improvements (quad loop)</li>
+<li><dl class="simple">
+<dt>MPLS</dt><dd><ul>
+<li><p>Performance improvements (quad loop)</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>BFD</dt>
-<dd><ul class="first last">
-<li>Command line interface</li>
-<li>Echo function</li>
-<li>Remote demand mode</li>
-<li>SHA1 authentication</li>
+<li><dl class="simple">
+<dt>BFD</dt><dd><ul>
+<li><p>Command line interface</p></li>
+<li><p>Echo function</p></li>
+<li><p>Remote demand mode</p></li>
+<li><p>SHA1 authentication</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>IPsec</dt>
-<dd><ul class="first last">
-<li>IKEv2 initiator features</li>
+<li><dl class="simple">
+<dt>IPsec</dt><dd><ul>
+<li><p>IKEv2 initiator features</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>VXLAN</dt>
-<dd><ul class="first last">
-<li>unify IP4/IP6 control plane handling</li>
+<li><dl class="simple">
+<dt>VXLAN</dt><dd><ul>
+<li><p>unify IP4/IP6 control plane handling</p></li>
 </ul>
 </dd>
 </dl>
@@ -357,17 +351,16 @@
 <div class="section" id="api-changes">
 <h3>API changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Python API: To avoid conflicts between VPP API messages names and the Python API binding function names, the VPP API methods are put into a separate proxy object <a class="reference external" href="https://gerrit.fd.io/r/#/c/5570/">https://gerrit.fd.io/r/#/c/5570/</a></p>
+<li><p>Python API: To avoid conflicts between VPP API messages names and the Python API binding function names, the VPP API methods are put into a separate proxy object <a class="reference external" href="https://gerrit.fd.io/r/#/c/5570/">https://gerrit.fd.io/r/#/c/5570/</a></p>
 <p>The api methods are now referenced as: vpp_handle = VPP(jsonfiles) vpp_handle.connect(…) vpp = vpp_handle.api vpp.show_version() vpp_handle.disconnect()</p>
 <p>For backwards compatibility VPP API methods are left in the main name space (VPP), but will be removed from 17.07.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Python API: Change from cPython to CFFI.</li>
+<li><p>Python API: Change from cPython to CFFI.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">create_loopback message to be replaced with create_loopback_instance create_loopback will be removed from 17.07. <a class="reference external" href="https://gerrit.fd.io/r/#/c/5572/">https://gerrit.fd.io/r/#/c/5572/</a></p>
-</li>
+<li><p>create_loopback message to be replaced with create_loopback_instance create_loopback will be removed from 17.07. <a class="reference external" href="https://gerrit.fd.io/r/#/c/5572/">https://gerrit.fd.io/r/#/c/5572/</a></p></li>
 </ul>
 </div>
 </div>
@@ -379,8 +372,8 @@
 <h2>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h2>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
-<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1704">commit log</a></li>
+<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
+<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1704">commit log</a></p></li>
 </ul>
 </div>
 </div>
@@ -396,7 +389,7 @@
         <a href="vpp17.01.html" class="btn btn-neutral float-right" title="Features for Release VPP 17.01" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp17.07.html" class="btn btn-neutral" title="Features for Release VPP 17.07" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp17.07.html" class="btn btn-neutral float-left" title="Features for Release VPP 17.07" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -422,25 +415,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

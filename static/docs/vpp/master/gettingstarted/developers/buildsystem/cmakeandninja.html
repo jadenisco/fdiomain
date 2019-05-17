@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction to cmake and ninja &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Introduction to cmake and ninja &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Introduction to build-root/Makefile" href="buildrootmakefile.html" />
     <link rel="prev" title="Introduction to the top-level Makefile" href="mainmakefile.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -207,9 +213,9 @@
 make, respectively. Both cmake and GNU autotools support self and
 cross-compilation, checking for required components and versions.</p>
 <ul class="simple">
-<li>For a decent-sized project - such as vpp - build performance is drastically better with (cmake, ninja).</li>
-<li>The cmake input language looks like an actual language, rather than a shell scripting scheme on steroids.</li>
-<li>Ninja doesn’t pretend to support manually-generated input files. Think of it as a fast, dumb robot which eats mildly legible byte-code.</li>
+<li><p>For a decent-sized project - such as vpp - build performance is drastically better with (cmake, ninja).</p></li>
+<li><p>The cmake input language looks like an actual language, rather than a shell scripting scheme on steroids.</p></li>
+<li><p>Ninja doesn’t pretend to support manually-generated input files. Think of it as a fast, dumb robot which eats mildly legible byte-code.</p></li>
 </ul>
 <p>See the <a class="reference external" href="http://cmake.org">cmake website</a>, and the <a class="reference external" href="https://ninja-build.org">ninja website</a> for additional information.</p>
 <div class="section" id="vpp-cmake-configuration-files">
@@ -218,8 +224,8 @@ cross-compilation, checking for required components and versions.</p>
 This file defines the vpp project, and (recursively) includes two kinds
 of files: rule/function definitions, and target lists.</p>
 <ul class="simple">
-<li>Rule/function definitions live in …/src/cmake/{*.cmake}. Although the contents of these files is simple enough to read, it shouldn’t be necessary to modify them very often</li>
-<li>Build target lists come from CMakeLists.txt files found in subdirectories, which are named in the SUBDIRS list in …/src/CMakeLists.txt</li>
+<li><p>Rule/function definitions live in …/src/cmake/{*.cmake}. Although the contents of these files is simple enough to read, it shouldn’t be necessary to modify them very often</p></li>
+<li><p>Build target lists come from CMakeLists.txt files found in subdirectories, which are named in the SUBDIRS list in …/src/CMakeLists.txt</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>##############################################################################
 # subdirs - order matters
@@ -241,7 +247,7 @@ endforeach()
 </pre></div>
 </div>
 <ul class="simple">
-<li>The vpp cmake configuration hierarchy discovers the list of plugins to be built by searching for subdirectories in …/src/plugins which contain CMakeLists.txt files</li>
+<li><p>The vpp cmake configuration hierarchy discovers the list of plugins to be built by searching for subdirectories in …/src/plugins which contain CMakeLists.txt files</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>##############################################################################
 # find and add all plugin subdirs
@@ -327,9 +333,9 @@ obvious. Add -DVPP_BUILD_G2=ON to vpp_cmake_args.</p>
 parameter - is to install the “cmake-curses-gui” package and use
 it.</p>
 <ul class="simple">
-<li>Do a straightforward vpp build using the top level Makefile, “make build” or “make build-release”</li>
-<li>Ajourn to …/build-root/build-vpp-native/vpp or …/build-root/build-vpp_debug-native/vpp</li>
-<li>Invoke “ccmake .” to reconfigure the project as desired</li>
+<li><p>Do a straightforward vpp build using the top level Makefile, “make build” or “make build-release”</p></li>
+<li><p>Ajourn to …/build-root/build-vpp-native/vpp or …/build-root/build-vpp_debug-native/vpp</p></li>
+<li><p>Invoke “ccmake .” to reconfigure the project as desired</p></li>
 </ul>
 <p>Here’s approximately what you’ll see:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">CCACHE_FOUND</span>                     <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ccache</span>
@@ -376,7 +382,7 @@ all of the cmake option, discovered directories and paths.</p>
         <a href="buildrootmakefile.html" class="btn btn-neutral float-right" title="Introduction to build-root/Makefile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mainmakefile.html" class="btn btn-neutral" title="Introduction to the top-level Makefile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mainmakefile.html" class="btn btn-neutral float-left" title="Introduction to the top-level Makefile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -402,25 +408,16 @@ all of the cmake option, discovered directories and paths.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

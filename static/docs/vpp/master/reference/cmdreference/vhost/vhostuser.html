@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create Vhost-User &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Create Vhost-User &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="VM’s with Vagrant" href="../../vppvagrant/index.html" />
     <link rel="prev" title="Vhost User Commands" href="index.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -187,8 +193,8 @@
   <div class="toctree-wrapper compound">
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For a complete list of CLI Debug commands refer to the Debug CLI section of the <a class="reference external" href="https://docs.fd.io/vpp/18.07/clicmd.html">Source Code Documents</a> .</p>
+<p class="admonition-title">Note</p>
+<p>For a complete list of CLI Debug commands refer to the Debug CLI section of the <a class="reference external" href="https://docs.fd.io/vpp/18.07/clicmd.html">Source Code Documents</a> .</p>
 </div>
 <div class="section" id="create-vhost-user">
 <span id="createvhostuser"></span><h1>Create Vhost-User<a class="headerlink" href="#create-vhost-user" title="Permalink to this headline">¶</a></h1>
@@ -197,40 +203,41 @@ will exist with the name ‘<em>VirtualEthernet0/0/x</em>’, where ‘<em>x</em
 next free index.</p>
 <p>There are several parameters associated with a vHost interface:</p>
 <ul class="simple">
-<li><strong>socket &lt;*socket-filename*&gt;</strong> - Name of the linux socket used by
+<li><p><strong>socket &lt;*socket-filename*&gt;</strong> - Name of the linux socket used by
 hypervisor and VPP to manage the vHost interface. If in ‘<em>server</em>’
 mode, VPP will create the socket if it does not already exist. If in
 ‘<em>client</em>’ mode, hypervisor will create the socket if it does not
 already exist. The VPP code is indifferent to the file location.
 However, if SELinux is enabled, then the socket needs to be created
-in ‘<em>/var/run/vpp/</em>’.</li>
-<li><strong>server</strong> - Optional flag to indicate that VPP should be the server
+in ‘<em>/var/run/vpp/</em>’.</p></li>
+<li><p><strong>server</strong> - Optional flag to indicate that VPP should be the server
 for the linux socket. If not provided, VPP will be the client. In
 ‘<em>server</em>’ mode, the VM can be reset without tearing down the vHost
 Interface. In ‘<em>client</em>’ mode, VPP can be reset without bringing down
-the VM and tearing down the vHost Interface.</li>
-<li><strong>feature-mask &lt;hex&gt;</strong> - Optional virtio/vhost feature set negotiated
+the VM and tearing down the vHost Interface.</p></li>
+<li><p><strong>feature-mask &lt;hex&gt;</strong> - Optional virtio/vhost feature set negotiated
 at startup. <strong>This is intended for degugging only.</strong> It is
 recommended that this parameter not be used except by experienced
 users. By default, all supported features will be advertised.
-Otherwise, provide the set of features desired.<ul>
-<li>0x000008000 (15) - VIRTIO_NET_F_MRG_RXBUF</li>
-<li>0x000020000 (17) - VIRTIO_NET_F_CTRL_VQ</li>
-<li>0x000200000 (21) - VIRTIO_NET_F_GUEST_ANNOUNCE</li>
-<li>0x000400000 (22) - VIRTIO_NET_F_MQ</li>
-<li>0x004000000 (26) - VHOST_F_LOG_ALL</li>
-<li>0x008000000 (27) - VIRTIO_F_ANY_LAYOUT</li>
-<li>0x010000000 (28) - VIRTIO_F_INDIRECT_DESC</li>
-<li>0x040000000 (30) - VHOST_USER_F_PROTOCOL_FEATURES</li>
-<li>0x100000000 (32) - VIRTIO_F_VERSION_1</li>
+Otherwise, provide the set of features desired.</p>
+<ul>
+<li><p>0x000008000 (15) - VIRTIO_NET_F_MRG_RXBUF</p></li>
+<li><p>0x000020000 (17) - VIRTIO_NET_F_CTRL_VQ</p></li>
+<li><p>0x000200000 (21) - VIRTIO_NET_F_GUEST_ANNOUNCE</p></li>
+<li><p>0x000400000 (22) - VIRTIO_NET_F_MQ</p></li>
+<li><p>0x004000000 (26) - VHOST_F_LOG_ALL</p></li>
+<li><p>0x008000000 (27) - VIRTIO_F_ANY_LAYOUT</p></li>
+<li><p>0x010000000 (28) - VIRTIO_F_INDIRECT_DESC</p></li>
+<li><p>0x040000000 (30) - VHOST_USER_F_PROTOCOL_FEATURES</p></li>
+<li><p>0x100000000 (32) - VIRTIO_F_VERSION_1</p></li>
 </ul>
 </li>
-<li><strong>hwaddr &lt;mac-addr&gt;</strong> - Optional ethernet address, can be in either
-X:X:X:X:X:X unix or X.X.X cisco format.</li>
-<li><strong>renumber &lt;dev_instance&gt;</strong> - Optional parameter which allows the
+<li><p><strong>hwaddr &lt;mac-addr&gt;</strong> - Optional ethernet address, can be in either
+X:X:X:X:X:X unix or X.X.X cisco format.</p></li>
+<li><p><strong>renumber &lt;dev_instance&gt;</strong> - Optional parameter which allows the
 instance in the name to be specified. If instance already exists,
 name will be used anyway and multiple instances will have the same
-name. Use with caution.</li>
+name. Use with caution.</p></li>
 </ul>
 <div class="section" id="summary-usage">
 <h2>Summary/Usage<a class="headerlink" href="#summary-usage" title="Permalink to this headline">¶</a></h2>
@@ -442,7 +449,7 @@ deleted.</p>
         <a href="../../vppvagrant/index.html" class="btn btn-neutral float-right" title="VM’s with Vagrant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Vhost User Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Vhost User Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -468,25 +475,16 @@ deleted.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

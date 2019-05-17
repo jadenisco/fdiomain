@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Performance &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Performance &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="L2 Ethernet Switching Throughput Tests" href="current_l2_throughput.html" />
     <link rel="prev" title="Plugins" href="../features/plugins.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -190,26 +196,28 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>One of the benefits of FD.io VPP is high performance on relatively low-power computing, this performance is based on the following features:</p>
 <ul class="simple">
-<li>A high-performance user-space network stack designed for commodity hardware:<ul>
-<li>L2, L3 and L4 features and encapsulations.</li>
+<li><p>A high-performance user-space network stack designed for commodity hardware:</p>
+<ul>
+<li><p>L2, L3 and L4 features and encapsulations.</p></li>
 </ul>
 </li>
-<li>Optimized packet interfaces supporting a multitude of use cases:<ul>
-<li>An integrated vhost-user backend for high speed VM-to-VM connectivity</li>
-<li>An integrated memif container backend for high speed Container-to-Container connectivity</li>
-<li>An integrated vhost based interface to punt packets to the Linux Kernel</li>
+<li><p>Optimized packet interfaces supporting a multitude of use cases:</p>
+<ul>
+<li><p>An integrated vhost-user backend for high speed VM-to-VM connectivity</p></li>
+<li><p>An integrated memif container backend for high speed Container-to-Container connectivity</p></li>
+<li><p>An integrated vhost based interface to punt packets to the Linux Kernel</p></li>
 </ul>
 </li>
-<li>The same optimized code-paths run execute on the host, and inside VMs and Linux containers</li>
-<li>Leverages best-of-breed open source driver technology: <a class="reference external" href="https://www.dpdk.org/">DPDK</a></li>
-<li>Tested at scale; linear core scaling, tested with millions of flows and mac addresses</li>
+<li><p>The same optimized code-paths run execute on the host, and inside VMs and Linux containers</p></li>
+<li><p>Leverages best-of-breed open source driver technology: <a class="reference external" href="https://www.dpdk.org/">DPDK</a></p></li>
+<li><p>Tested at scale; linear core scaling, tested with millions of flows and mac addresses</p></li>
 </ul>
 <p>These features have been designed to take full advantage of common micro-processor optimization techniques, such as:</p>
 <ul class="simple">
-<li>Reducing cache and TLS misses by processing packets in vectors</li>
-<li>Realizing <a class="reference external" href="https://en.wikipedia.org/wiki/Instructions_per_cycle">IPC</a> gains with vector instructions such as: SSE, AVX and NEON</li>
-<li>Eliminating mode switching, context switches and blocking, to always be doing useful work</li>
-<li>Cache-lined aliged buffers for cache and memory efficiency</li>
+<li><p>Reducing cache and TLS misses by processing packets in vectors</p></li>
+<li><p>Realizing <a class="reference external" href="https://en.wikipedia.org/wiki/Instructions_per_cycle">IPC</a> gains with vector instructions such as: SSE, AVX and NEON</p></li>
+<li><p>Eliminating mode switching, context switches and blocking, to always be doing useful work</p></li>
+<li><p>Cache-lined aliged buffers for cache and memory efficiency</p></li>
 </ul>
 </div>
 <div class="section" id="packet-throughput-graphs">
@@ -239,22 +247,21 @@
 <h2>For More information on CSIT<a class="headerlink" href="#for-more-information-on-csit" title="Permalink to this headline">¶</a></h2>
 <p>The FD.io CSIT is implemented with below platforms:</p>
 <ul>
-<li><p class="first">x86/64</p>
-</li>
-<li><p class="first">ARM-AArch64</p>
+<li><p>x86/64</p></li>
+<li><p>ARM-AArch64</p>
 <blockquote>
 <div><ul class="simple">
-<li>Huawei TaiShan 2280</li>
-<li>Marvell MACCHIATObin</li>
+<li><p>Huawei TaiShan 2280</p></li>
+<li><p>Marvell MACCHIATObin</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <p>These are FD.io Continuous System Integration and Testing (CSIT)’s documentation links:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://docs.fd.io/csit/master/doc/overview.html">CSIT Code Documentation</a></li>
-<li><a class="reference external" href="https://docs.fd.io/csit/rls1804/report/introduction/overview.html">CSIT Test Overview</a></li>
-<li><a class="reference external" href="https://docs.fd.io/csit/master/trending/introduction/index.html">VPP Performance Dashboard</a></li>
+<li><p><a class="reference external" href="https://docs.fd.io/csit/master/doc/overview.html">CSIT Code Documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.fd.io/csit/rls1804/report/introduction/overview.html">CSIT Test Overview</a></p></li>
+<li><p><a class="reference external" href="https://docs.fd.io/csit/master/trending/introduction/index.html">VPP Performance Dashboard</a></p></li>
 </ul>
 </div>
 </div>
@@ -270,7 +277,7 @@
         <a href="current_l2_throughput.html" class="btn btn-neutral float-right" title="L2 Ethernet Switching Throughput Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../features/plugins.html" class="btn btn-neutral" title="Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../features/plugins.html" class="btn btn-neutral float-left" title="Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -296,25 +303,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

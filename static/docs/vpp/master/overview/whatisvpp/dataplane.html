@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Packet Processing &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Packet Processing &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Fast, Scalable and Deterministic" href="fast.html" />
     <link rel="prev" title="What is VPP?" href="index.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -179,31 +185,35 @@
 <span id="id1"></span><h1>Packet Processing<a class="headerlink" href="#packet-processing" title="Permalink to this headline">¶</a></h1>
 <p>This section identifies different components of packet processing and describes their benefits:</p>
 <ul class="simple">
-<li>Layer 2 - 4 Network Stack<ul>
-<li>Fast lookup tables for routes, bridge entries</li>
-<li>Arbitrary n-tuple classifiers</li>
-<li>Control Plane, Traffic Management and Overlays</li>
+<li><p>Layer 2 - 4 Network Stack</p>
+<ul>
+<li><p>Fast lookup tables for routes, bridge entries</p></li>
+<li><p>Arbitrary n-tuple classifiers</p></li>
+<li><p>Control Plane, Traffic Management and Overlays</p></li>
 </ul>
 </li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Linux">Linux</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/FreeBSD">FreeBSD</a> support<ul>
-<li>Wide support for standard Operating System Interfaces such as AF_Packet, Tun/Tap &amp; Netmap.</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Linux">Linux</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/FreeBSD">FreeBSD</a> support</p>
+<ul>
+<li><p>Wide support for standard Operating System Interfaces such as AF_Packet, Tun/Tap &amp; Netmap.</p></li>
 </ul>
 </li>
-<li>Wide network and cryptograhic hardware support with <a class="reference external" href="https://www.dpdk.org/">DPDK</a>.</li>
-<li>Container and Virtualization support<ul>
-<li>Para-virtualized intefaces; Vhost and Virtio</li>
-<li>Network Adapters over PCI passthrough</li>
-<li>Native container interfaces; MemIF</li>
+<li><p>Wide network and cryptograhic hardware support with <a class="reference external" href="https://www.dpdk.org/">DPDK</a>.</p></li>
+<li><p>Container and Virtualization support</p>
+<ul>
+<li><p>Para-virtualized intefaces; Vhost and Virtio</p></li>
+<li><p>Network Adapters over PCI passthrough</p></li>
+<li><p>Native container interfaces; MemIF</p></li>
 </ul>
 </li>
-<li>Universal Data Plane: one code base, for many use cases<ul>
-<li>Discrete appliances; such as <a class="reference external" href="https://en.wikipedia.org/wiki/Router_(computing)">Routers</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Network_switch">Switches</a>.</li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Network_function_virtualization">Cloud Infrastructure and Virtual Network Functions</a></li>
-<li><a class="reference external" href="https://www.cncf.io/">Cloud Native Infrastructure</a></li>
-<li>The same binary package for all use cases.</li>
+<li><p>Universal Data Plane: one code base, for many use cases</p>
+<ul>
+<li><p>Discrete appliances; such as <a class="reference external" href="https://en.wikipedia.org/wiki/Router_(computing)">Routers</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Network_switch">Switches</a>.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Network_function_virtualization">Cloud Infrastructure and Virtual Network Functions</a></p></li>
+<li><p><a class="reference external" href="https://www.cncf.io/">Cloud Native Infrastructure</a></p></li>
+<li><p>The same binary package for all use cases.</p></li>
 </ul>
 </li>
-<li>Out of the box production quality, with thanks to <a class="reference external" href="https://wiki.fd.io/view/CSIT#Start_Here">CSIT</a>.</li>
+<li><p>Out of the box production quality, with thanks to <a class="reference external" href="https://wiki.fd.io/view/CSIT#Start_Here">CSIT</a>.</p></li>
 </ul>
 <p>For more information, please see <a class="reference internal" href="../features/index.html#features"><span class="std std-ref">Features</span></a> for the complete list.</p>
 </div>
@@ -219,7 +229,7 @@
         <a href="fast.html" class="btn btn-neutral float-right" title="Fast, Scalable and Deterministic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="What is VPP?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="What is VPP?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -245,25 +255,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

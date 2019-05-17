@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VPP in Azure &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>VPP in Azure &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Automating VPP deployment" href="automatingthedeployment.html" />
     <link rel="prev" title="Interconnecting VPCs with Segment Routing &amp; Performance Evaluation" href="ConnectingVPC.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -185,8 +191,8 @@
 <h1>VPP in Azure<a class="headerlink" href="#vpp-in-azure" title="Permalink to this headline">¶</a></h1>
 <p>Before starting, a few notes:</p>
 <ul class="simple">
-<li>in our configuration we use only DPDK 18.02, since with the newer versions, such as DPDK 18.05, we obtained several problems during VPP installation (mostly related with MLX4 PMD Drivers).</li>
-<li>Some of the commands are taken from <a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-network/setup-dpdk">Azure’s DPDK page</a>.</li>
+<li><p>in our configuration we use only DPDK 18.02, since with the newer versions, such as DPDK 18.05, we obtained several problems during VPP installation (mostly related with MLX4 PMD Drivers).</p></li>
+<li><p>Some of the commands are taken from <a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-network/setup-dpdk">Azure’s DPDK page</a>.</p></li>
 </ul>
 <p>To bring DPDK inside Azure, we perform the following procedure:</p>
 <p>Firstly, we install the DPDK dependencies:</p>
@@ -300,7 +306,7 @@
         <a href="automatingthedeployment.html" class="btn btn-neutral float-right" title="Automating VPP deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ConnectingVPC.html" class="btn btn-neutral" title="Interconnecting VPCs with Segment Routing &amp; Performance Evaluation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ConnectingVPC.html" class="btn btn-neutral float-left" title="Interconnecting VPCs with Segment Routing &amp; Performance Evaluation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -326,25 +332,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

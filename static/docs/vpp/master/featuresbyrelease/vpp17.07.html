@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 17.07 &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Features for Release VPP 17.07 &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 17.04" href="vpp17.04.html" />
     <link rel="prev" title="Features for Release VPP 17.10" href="vpp17.10.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -194,62 +200,60 @@
 <div class="section" id="infrastructure">
 <h3>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>make test; improved debuggability.</li>
-<li>TAB auto-completion on the CLI</li>
-<li>DPDK 17.05</li>
-<li>python 3 support in test infra</li>
+<li><p>make test; improved debuggability.</p></li>
+<li><p>TAB auto-completion on the CLI</p></li>
+<li><p>DPDK 17.05</p></li>
+<li><p>python 3 support in test infra</p></li>
 </ul>
 </div>
 <div class="section" id="host-stack">
 <h3>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Improved Linux TCP stack compatibility using IWL test suite (<a class="reference external" href="https://jira.fd.io/browse/VPP-720">https://jira.fd.io/browse/VPP-720</a>)</li>
-<li>Improved loss recovery (RFC5681, RFC6582, RF6675)</li>
-<li>Basic implementation of Eifel detection algorithm (RFC3522)</li>
-<li>Basic support for buffer chains</li>
-<li>Refactored session layer API</li>
-<li>Overall performance, scale and hardening</li>
+<li><p>Improved Linux TCP stack compatibility using IWL test suite (<a class="reference external" href="https://jira.fd.io/browse/VPP-720">https://jira.fd.io/browse/VPP-720</a>)</p></li>
+<li><p>Improved loss recovery (RFC5681, RFC6582, RF6675)</p></li>
+<li><p>Basic implementation of Eifel detection algorithm (RFC3522)</p></li>
+<li><p>Basic support for buffer chains</p></li>
+<li><p>Refactored session layer API</p></li>
+<li><p>Overall performance, scale and hardening</p></li>
 </ul>
 </div>
 <div class="section" id="interfaces">
 <h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>memif: IP mode, jumbo frames, multi queue</li>
-<li>virtio-user support</li>
-<li>vhost-usr; adaptive (poll/interupt) support.</li>
+<li><p>memif: IP mode, jumbo frames, multi queue</p></li>
+<li><p>virtio-user support</p></li>
+<li><p>vhost-usr; adaptive (poll/interupt) support.</p></li>
 </ul>
 </div>
 <div class="section" id="network-features">
 <h3>Network features<a class="headerlink" href="#network-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>MPLS Multicast FIB</li>
-<li>BFD FIB integration</li>
-<li>NAT64 support</li>
-<li>GRE over IPv6</li>
-<li>Segement routing MPLS</li>
-<li>IOAM configuration for SRv6 localsid</li>
-<li><dl class="first docutils">
-<dt>LISP</dt>
-<dd><ul class="first last">
-<li>NSH support</li>
-<li>native forward static routes</li>
-<li>L2 ARP</li>
+<li><p>MPLS Multicast FIB</p></li>
+<li><p>BFD FIB integration</p></li>
+<li><p>NAT64 support</p></li>
+<li><p>GRE over IPv6</p></li>
+<li><p>Segement routing MPLS</p></li>
+<li><p>IOAM configuration for SRv6 localsid</p></li>
+<li><dl class="simple">
+<dt>LISP</dt><dd><ul>
+<li><p>NSH support</p></li>
+<li><p>native forward static routes</p></li>
+<li><p>L2 ARP</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>ACL multi-core suuport</li>
-<li><dl class="first docutils">
-<dt>Flowprobe:</dt>
-<dd><ul class="first last">
-<li>Add flowstartns, flowendns and tcpcontrolbits</li>
-<li>Stateful flows and IPv6, L4 recording</li>
+<li><p>ACL multi-core suuport</p></li>
+<li><dl class="simple">
+<dt>Flowprobe:</dt><dd><ul>
+<li><p>Add flowstartns, flowendns and tcpcontrolbits</p></li>
+<li><p>Stateful flows and IPv6, L4 recording</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>GTP-U support</li>
-<li>VXLAN GPE support for FIB2.0 and bypass.</li>
+<li><p>GTP-U support</p></li>
+<li><p>VXLAN GPE support for FIB2.0 and bypass.</p></li>
 </ul>
 </div>
 </div>
@@ -261,8 +265,8 @@
 <h2>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h2>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
-<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1707">commit log</a></li>
+<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
+<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1707">commit log</a></p></li>
 </ul>
 </div>
 </div>
@@ -278,7 +282,7 @@
         <a href="vpp17.04.html" class="btn btn-neutral float-right" title="Features for Release VPP 17.04" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp17.10.html" class="btn btn-neutral" title="Features for Release VPP 17.10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp17.10.html" class="btn btn-neutral float-left" title="Features for Release VPP 17.10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -304,25 +308,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

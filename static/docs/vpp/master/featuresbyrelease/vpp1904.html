@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 19.04 &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Features for Release VPP 19.04 &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 19.01" href="vpp1901.html" />
     <link rel="prev" title="Features by Release" href="index.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -181,73 +187,77 @@
            <div itemprop="articleBody">
             
   <div class="section" id="features-for-release-vpp-19-04">
-<span id="features-for-release-vpp-19-04"></span><h1>Features for Release VPP 19.04<a class="headerlink" href="#features-for-release-vpp-19-04" title="Permalink to this headline">¶</a></h1>
+<h1>Features for Release VPP 19.04<a class="headerlink" href="#features-for-release-vpp-19-04" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="infrastructure">
-<span id="infrastructure"></span><h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h2>
+<h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>DPDK 19.02 integration</li>
-<li>Buffer manager rework and improvements</li>
-<li>Python3 migration (work in progress)<ul>
-<li>vppapigen</li>
-<li>Python API wrappers</li>
-<li>Docs generation</li>
-<li>vpp_config</li>
-<li>“make test” python3 readiness and refactoring</li>
+<li><p>DPDK 19.02 integration</p></li>
+<li><p>Buffer manager rework and improvements</p></li>
+<li><p>Python3 migration (work in progress)</p>
+<ul>
+<li><p>vppapigen</p></li>
+<li><p>Python API wrappers</p></li>
+<li><p>Docs generation</p></li>
+<li><p>vpp_config</p></li>
+<li><p>“make test” python3 readiness and refactoring</p></li>
 </ul>
 </li>
-<li>Add “make test-gcov” target to main Makefile</li>
-<li>Refactor multiarch code</li>
-<li>vfctl script: bind VF to vfio-pci after VF is created</li>
-<li>cmake cross-compilation support</li>
-<li>CLI control of graph dispatch elogs</li>
-<li>AppImage packaging (disabled by default)</li>
-<li>Complete upstreaming of wireshark dissector</li>
-<li>Remove JVPP which is now an FD.io project</li>
-<li>Punt infra: manage dispatch of exception packets</li>
+<li><p>Add “make test-gcov” target to main Makefile</p></li>
+<li><p>Refactor multiarch code</p></li>
+<li><p>vfctl script: bind VF to vfio-pci after VF is created</p></li>
+<li><p>cmake cross-compilation support</p></li>
+<li><p>CLI control of graph dispatch elogs</p></li>
+<li><p>AppImage packaging (disabled by default)</p></li>
+<li><p>Complete upstreaming of wireshark dissector</p></li>
+<li><p>Remove JVPP which is now an FD.io project</p></li>
+<li><p>Punt infra: manage dispatch of exception packets</p></li>
 </ul>
 </div>
 <div class="section" id="vnet-plugins">
-<span id="vnet-plugins"></span><h2>VNET &amp; Plugins<a class="headerlink" href="#vnet-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>VNET &amp; Plugins<a class="headerlink" href="#vnet-plugins" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>BVI Interface</li>
-<li>Deprecate TAP cli</li>
-<li>Experimental TAP interface TCP segmentation offload</li>
-<li>Vmxnet3 driver plugin</li>
-<li>LACP passive mode</li>
-<li>ACL plugin refactoring</li>
-<li>RDMA (ibverb) driver plugin - MLX5 with multiqueue</li>
-<li>IPSEC<ul>
-<li>Intel IPSEC-MB engine plugin</li>
-<li>Tunnel fragmentation</li>
-<li>CLI improvements</li>
-<li>Performance improvements</li>
-<li>API modernisation and improvements</li>
-<li>New Tests and test refactoring</li>
+<li><p>BVI Interface</p></li>
+<li><p>Deprecate TAP cli</p></li>
+<li><p>Experimental TAP interface TCP segmentation offload</p></li>
+<li><p>Vmxnet3 driver plugin</p></li>
+<li><p>LACP passive mode</p></li>
+<li><p>ACL plugin refactoring</p></li>
+<li><p>RDMA (ibverb) driver plugin - MLX5 with multiqueue</p></li>
+<li><p>IPSEC</p>
+<ul>
+<li><p>Intel IPSEC-MB engine plugin</p></li>
+<li><p>Tunnel fragmentation</p></li>
+<li><p>CLI improvements</p></li>
+<li><p>Performance improvements</p></li>
+<li><p>API modernisation and improvements</p></li>
+<li><p>New Tests and test refactoring</p></li>
 </ul>
 </li>
-<li>Crypto<ul>
-<li>Introduce crypto infra</li>
-<li>crypto_ia32 plugin</li>
-<li>Add support for AEAD and AES-GCM</li>
-<li>Implement rfc4231 test cases</li>
-<li>Implement crypto tests per RFC2202</li>
+<li><p>Crypto</p>
+<ul>
+<li><p>Introduce crypto infra</p></li>
+<li><p>crypto_ia32 plugin</p></li>
+<li><p>Add support for AEAD and AES-GCM</p></li>
+<li><p>Implement rfc4231 test cases</p></li>
+<li><p>Implement crypto tests per RFC2202</p></li>
 </ul>
 </li>
-<li>Perfmon improvements<ul>
-<li>Python to C parser for intel CPUs</li>
-<li>2-way parallel stat collection</li>
-<li>Collect data on selected thread(s)</li>
+<li><p>Perfmon improvements</p>
+<ul>
+<li><p>Python to C parser for intel CPUs</p></li>
+<li><p>2-way parallel stat collection</p></li>
+<li><p>Collect data on selected thread(s)</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="host-stack">
-<span id="host-stack"></span><h2>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h2>
+<h2>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Improve ldp/vls/vcl support for multi-process and multi-threaded applications</li>
-<li>Major refactor/cleanup of session layer</li>
-<li>Refactor cut-through sessions to use a custom transport</li>
-<li>Baseline QUIC transport support</li>
+<li><p>Improve ldp/vls/vcl support for multi-process and multi-threaded applications</p></li>
+<li><p>Major refactor/cleanup of session layer</p></li>
+<li><p>Refactor cut-through sessions to use a custom transport</p></li>
+<li><p>Baseline QUIC transport support</p></li>
 </ul>
 </div>
 </div>
@@ -263,7 +273,7 @@
         <a href="vpp1901.html" class="btn btn-neutral float-right" title="Features for Release VPP 19.01" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Features by Release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Features by Release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -289,25 +299,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

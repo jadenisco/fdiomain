@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Prometheus Statistics &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Prometheus Statistics &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="How to do VPP Packet Tracing in Kubernetes" href="VPP_PACKET_TRACING_K8S.html" />
     <link rel="prev" title="Setting Up a Custom Management Network on Multi-Homed Nodes" href="CUSTOM_MGMT_NETWORK.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -191,25 +197,25 @@
            <div itemprop="articleBody">
             
   <div class="section" id="prometheus-statistics">
-<span id="prometheus-statistics"></span><h1>Prometheus Statistics<a class="headerlink" href="#prometheus-statistics" title="Permalink to this headline">¶</a></h1>
+<h1>Prometheus Statistics<a class="headerlink" href="#prometheus-statistics" title="Permalink to this headline">¶</a></h1>
 <p>Each contiv-agent exposes statistics in Prometheus format at port <code class="docutils literal notranslate"><span class="pre">9999</span></code> by default.
 Exposed data is split into two groups:</p>
 <ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">/stats</span></code>  provides statistics for VPP interfaces managed by contiv-agent
+<li><p><code class="docutils literal notranslate"><span class="pre">/stats</span></code>  provides statistics for VPP interfaces managed by contiv-agent
 Prometheus data is a set of counters with labels. For each interface,
 the following counters are exposed:</p>
 <ul class="simple">
-<li><em>inPackets</em></li>
-<li><em>outPackets</em></li>
-<li><em>inBytes</em></li>
-<li><em>outBytes</em></li>
-<li><em>ipv4Packets</em></li>
-<li><em>ipv6Packets</em></li>
-<li><em>outErrorPackets</em></li>
-<li><em>dropPackets</em></li>
-<li><em>inMissPackets</em></li>
-<li><em>inNobufPackets</em></li>
-<li><em>puntPackets</em></li>
+<li><p><em>inPackets</em></p></li>
+<li><p><em>outPackets</em></p></li>
+<li><p><em>inBytes</em></p></li>
+<li><p><em>outBytes</em></p></li>
+<li><p><em>ipv4Packets</em></p></li>
+<li><p><em>ipv6Packets</em></p></li>
+<li><p><em>outErrorPackets</em></p></li>
+<li><p><em>dropPackets</em></p></li>
+<li><p><em>inMissPackets</em></p></li>
+<li><p><em>inNobufPackets</em></p></li>
+<li><p><em>puntPackets</em></p></li>
 </ul>
 <p>Labels let you add additional information to a counter. The <em>interfaceName</em> and <em>node</em>
 labels are specified for all counters. If an interface is associated with a particular
@@ -217,8 +223,7 @@ pod, then the <em>podName</em> and <em>podNamespace</em> labels are also specifi
 otherwise, a placeholder value (<code class="docutils literal notranslate"><span class="pre">--</span></code>) is used (for example, for node interconnect
 interfaces).</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">/metrics</span></code> provides general go runtime statistics</p>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/metrics</span></code> provides general go runtime statistics</p></li>
 </ul>
 <p>To access Prometheus stats of a node you can use <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">localhost:9999/stats</span></code> from the node. The output of contiv-agent running at k8s master node looks similar to the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl localhost:9999/stats
@@ -311,18 +316,18 @@ puntPackets{interfaceName=&quot;vxlanBVI&quot;,node=&quot;dev&quot;,podName=&quo
 <p>In order to browse stats in web UI Prometheus, it must be started locally by following the information in
 the <a class="reference external" href="https://prometheus.io/docs/prometheus/latest/getting_started/">Prometheus Getting Started Guide</a>.</p>
 <p>If you start Prometheus on a node, the following sample config can be used:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">global</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">scrape_interval</span><span class="p p-Indicator">:</span>     <span class="l l-Scalar l-Scalar-Plain">15s</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global</span><span class="p">:</span>
+  <span class="nt">scrape_interval</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">15s</span>
 
-<span class="l l-Scalar l-Scalar-Plain">scrape_configs</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job_name</span><span class="p p-Indicator">:</span> <span class="s">&#39;contiv_stats&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">metrics_path</span><span class="p p-Indicator">:</span> <span class="s">&#39;/stats&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">static_configs</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">targets</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9999&#39;</span><span class="p p-Indicator">]</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job_name</span><span class="p p-Indicator">:</span> <span class="s">&#39;contiv_agent&#39;</span>
+<span class="nt">scrape_configs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">job_name</span><span class="p">:</span> <span class="s">&#39;contiv_stats&#39;</span>
+    <span class="nt">metrics_path</span><span class="p">:</span> <span class="s">&#39;/stats&#39;</span>
+    <span class="nt">static_configs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">targets</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9999&#39;</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">job_name</span><span class="p">:</span> <span class="s">&#39;contiv_agent&#39;</span>
     <span class="c1"># metrics_path defaults to &#39;/metrics&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">static_configs</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">targets</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9999&#39;</span><span class="p p-Indicator">]</span>
+    <span class="nt">static_configs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">targets</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9999&#39;</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 <p>Once Prometheus is started with the specified config, you should be able access its web UI at
@@ -331,19 +336,19 @@ the <a class="reference external" href="https://prometheus.io/docs/prometheus/la
 </pre></div>
 </div>
 <p>If security features are enabled for the HTTP endpoint, then the config must be adjusted:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span> <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">job_name</span><span class="p p-Indicator">:</span> <span class="s">&#39;contiv_secured&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span> <span class="p p-Indicator">-</span> <span class="nt">job_name</span><span class="p">:</span> <span class="s">&#39;contiv_secured&#39;</span>
 
-     <span class="l l-Scalar l-Scalar-Plain">scheme</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
-     <span class="l l-Scalar l-Scalar-Plain">basic_auth</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">user</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">pass</span>
-     <span class="l l-Scalar l-Scalar-Plain">metrics_path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/stats</span>
-     <span class="l l-Scalar l-Scalar-Plain">tls_config</span><span class="p p-Indicator">:</span>
-       <span class="l l-Scalar l-Scalar-Plain">insecure_skip_verify</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+     <span class="nt">scheme</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
+     <span class="nt">basic_auth</span><span class="p">:</span>
+        <span class="nt">username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">user</span>
+        <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pass</span>
+     <span class="nt">metrics_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/stats</span>
+     <span class="nt">tls_config</span><span class="p">:</span>
+       <span class="nt">insecure_skip_verify</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
        <span class="c1"># CA certificate to validate API server certificate with.</span>
        <span class="c1">#[ ca_file: &lt;filename&gt; ]</span>
-     <span class="l l-Scalar l-Scalar-Plain">static_configs</span><span class="p p-Indicator">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">targets</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9191&#39;</span><span class="p p-Indicator">]</span>
+     <span class="nt">static_configs</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="nt">targets</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;localhost:9191&#39;</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 </div>
@@ -359,7 +364,7 @@ the <a class="reference external" href="https://prometheus.io/docs/prometheus/la
         <a href="VPP_PACKET_TRACING_K8S.html" class="btn btn-neutral float-right" title="How to do VPP Packet Tracing in Kubernetes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="CUSTOM_MGMT_NETWORK.html" class="btn btn-neutral" title="Setting Up a Custom Management Network on Multi-Homed Nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="CUSTOM_MGMT_NETWORK.html" class="btn btn-neutral float-left" title="Setting Up a Custom Management Network on Multi-Homed Nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -385,25 +390,16 @@ the <a class="reference external" href="https://prometheus.io/docs/prometheus/la
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

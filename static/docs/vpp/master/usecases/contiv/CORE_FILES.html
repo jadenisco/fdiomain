@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Capturing VPP core dumps &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Capturing VPP core dumps &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Debugging and Reporting Bugs in Contiv-VPP" href="BUG_REPORTS.html" />
     <link rel="prev" title="Using vpptrace.sh for VPP Packet Tracing" href="VPPTRACE.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -199,14 +205,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="capturing-vpp-core-dumps">
-<span id="capturing-vpp-core-dumps"></span><h1>Capturing VPP core dumps<a class="headerlink" href="#capturing-vpp-core-dumps" title="Permalink to this headline">¶</a></h1>
+<h1>Capturing VPP core dumps<a class="headerlink" href="#capturing-vpp-core-dumps" title="Permalink to this headline">¶</a></h1>
 <p>In order to debug a crash of VPP, it is required to provide a coredump file, which allows backtracing of the VPP issue. The following items are the requirements for capturing a coredump:</p>
 <div class="section" id="disable-k8s-probes-to-prevent-k8s-from-restarting-the-pod-with-a-crashed-vpp">
-<span id="disable-k8s-probes-to-prevent-k8s-from-restarting-the-pod-with-a-crashed-vpp"></span><h2>1. Disable k8s Probes to Prevent k8s from Restarting the POD with a Crashed VPP<a class="headerlink" href="#disable-k8s-probes-to-prevent-k8s-from-restarting-the-pod-with-a-crashed-vpp" title="Permalink to this headline">¶</a></h2>
+<h2>1. Disable k8s Probes to Prevent k8s from Restarting the POD with a Crashed VPP<a class="headerlink" href="#disable-k8s-probes-to-prevent-k8s-from-restarting-the-pod-with-a-crashed-vpp" title="Permalink to this headline">¶</a></h2>
 <p>As described in <a class="reference external" href="BUG_REPORTS.html#collecting-the-logs-in-case-of-crash-loop">BUG_REPORTS.md</a>.</p>
 </div>
 <div class="section" id="modify-vpp-startup-config-file">
-<span id="modify-vpp-startup-config-file"></span><h2>2. Modify VPP Startup config file<a class="headerlink" href="#modify-vpp-startup-config-file" title="Permalink to this headline">¶</a></h2>
+<h2>2. Modify VPP Startup config file<a class="headerlink" href="#modify-vpp-startup-config-file" title="Permalink to this headline">¶</a></h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">/etc/vpp/contiv-vswitch.conf</span></code>, add the following lines into the <code class="docutils literal notranslate"><span class="pre">unix</span></code> section:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unix</span> <span class="p">{</span>
     <span class="o">...</span>
@@ -217,7 +223,7 @@
 </div>
 </div>
 <div class="section" id="turn-on-coredumps-in-the-vswitch-container">
-<span id="turn-on-coredumps-in-the-vswitch-container"></span><h2>3. Turn on Coredumps in the Vswitch Container<a class="headerlink" href="#turn-on-coredumps-in-the-vswitch-container" title="Permalink to this headline">¶</a></h2>
+<h2>3. Turn on Coredumps in the Vswitch Container<a class="headerlink" href="#turn-on-coredumps-in-the-vswitch-container" title="Permalink to this headline">¶</a></h2>
 <p>After re-deploying Contiv-VPP networking, enter bash shell in the vswitch
 container (use actual name of the vswitch POD - <code class="docutils literal notranslate"><span class="pre">contiv-vswitch-7whk7</span></code> in this case):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">contiv</span><span class="o">-</span><span class="n">vswitch</span><span class="o">-</span><span class="mi">7</span><span class="n">whk7</span> <span class="o">-</span><span class="n">n</span> <span class="n">kube</span><span class="o">-</span><span class="n">system</span> <span class="o">-</span><span class="n">c</span> <span class="n">contiv</span><span class="o">-</span><span class="n">vswitch</span> <span class="n">bash</span>
@@ -233,7 +239,7 @@ container (use actual name of the vswitch POD - <code class="docutils literal no
 </div>
 </div>
 <div class="section" id="let-vpp-crash">
-<span id="let-vpp-crash"></span><h2>4. Let VPP Crash<a class="headerlink" href="#let-vpp-crash" title="Permalink to this headline">¶</a></h2>
+<h2>4. Let VPP Crash<a class="headerlink" href="#let-vpp-crash" title="Permalink to this headline">¶</a></h2>
 <p>Now repeat the steps that lead to the VPP crash. You can also force VPP to crash at the point where it is
 running (e.g., if it is stuck) by using the SIGQUIT signal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>kill -3 `pidof vpp`
@@ -241,7 +247,7 @@ running (e.g., if it is stuck) by using the SIGQUIT signal:</p>
 </div>
 </div>
 <div class="section" id="locate-and-inspect-the-core-file">
-<span id="locate-and-inspect-the-core-file"></span><h2>5. Locate and Inspect the Core File<a class="headerlink" href="#locate-and-inspect-the-core-file" title="Permalink to this headline">¶</a></h2>
+<h2>5. Locate and Inspect the Core File<a class="headerlink" href="#locate-and-inspect-the-core-file" title="Permalink to this headline">¶</a></h2>
 <p>The core file should appear in <code class="docutils literal notranslate"><span class="pre">/tmp/dumps</span></code> in the container:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">dumps</span>
 <span class="n">ls</span>
@@ -256,7 +262,7 @@ running (e.g., if it is stuck) by using the SIGQUIT signal:</p>
 </div>
 </div>
 <div class="section" id="copy-the-core-file-out-of-the-container">
-<span id="copy-the-core-file-out-of-the-container"></span><h2>6. Copy the Core File Out of the Container<a class="headerlink" href="#copy-the-core-file-out-of-the-container" title="Permalink to this headline">¶</a></h2>
+<h2>6. Copy the Core File Out of the Container<a class="headerlink" href="#copy-the-core-file-out-of-the-container" title="Permalink to this headline">¶</a></h2>
 <p>Finally, copy the core file out of the container. First, while still inside the container,
 pack the core file into an archive:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">dumps</span>
@@ -285,7 +291,7 @@ pack the core file into an archive:</p>
         <a href="BUG_REPORTS.html" class="btn btn-neutral float-right" title="Debugging and Reporting Bugs in Contiv-VPP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="VPPTRACE.html" class="btn btn-neutral" title="Using vpptrace.sh for VPP Packet Tracing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="VPPTRACE.html" class="btn btn-neutral float-left" title="Using vpptrace.sh for VPP Packet Tracing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -311,25 +317,16 @@ pack the core file into an archive:</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Contiv/VPP Kubernetes Network Plugin &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Contiv/VPP Kubernetes Network Plugin &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Security" href="SECURITY.html" />
     <link rel="prev" title="Contiv/VPP" href="index.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -195,9 +201,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="contiv-vpp-kubernetes-network-plugin">
-<span id="contiv-vpp-kubernetes-network-plugin"></span><h1>Contiv/VPP Kubernetes Network Plugin<a class="headerlink" href="#contiv-vpp-kubernetes-network-plugin" title="Permalink to this headline">¶</a></h1>
+<h1>Contiv/VPP Kubernetes Network Plugin<a class="headerlink" href="#contiv-vpp-kubernetes-network-plugin" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<span id="overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Kubernates is a container orchestration system that efficiently manages Docker containers. The Docker containers and container platforms provide many advantages over traditional virtualization. Container isolation is done on the kernel level, which eliminates the need for a guest virtual operating system, and therefore makes containers much more efficient, faster, and lightweight. The containers in Contiv/VPP are referred to as PODs.</p>
 <p>Contiv/VPP is a Kubernetes network plugin that uses <a class="reference external" href="https://fd.io/">FD.io VPP</a>
 to provide network connectivity between PODs in a k8s cluster (k8s is an abbreviated reference for kubernates).
@@ -219,32 +225,32 @@ packets into the Linux network stack (Kube Proxy), which makes them very
 effective and scalable.</p>
 </div>
 <div class="section" id="architecture">
-<span id="architecture"></span><h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 <p>Contiv/VPP consists of several components, each of them packed and shipped as
 a Docker container. Two of them deploy on Kubernetes master node only:</p>
 <ul class="simple">
-<li><a class="reference external" href="#contiv-ksr">Contiv KSR</a></li>
-<li><a class="reference external" href="#contiv-etcd">Contiv ETCD</a></li>
+<li><p><a class="reference external" href="#contiv-ksr">Contiv KSR</a></p></li>
+<li><p><a class="reference external" href="#contiv-etcd">Contiv ETCD</a></p></li>
 </ul>
 <p>The rest of them deploy on all nodes within the k8s cluster (including the master node):</p>
 <ul class="simple">
-<li><a class="reference external" href="#contiv-vswitch">Contiv vSwitch</a></li>
-<li><a class="reference external" href="#contiv-cni">Contiv CNI</a></li>
-<li><a class="reference external" href="#contiv-stn-daemon">Contiv STN</a></li>
+<li><p><a class="reference external" href="#contiv-vswitch">Contiv vSwitch</a></p></li>
+<li><p><a class="reference external" href="#contiv-cni">Contiv CNI</a></p></li>
+<li><p><a class="reference external" href="#contiv-stn-daemon">Contiv STN</a></p></li>
 </ul>
 <p>The following section briefly describes the individual Contiv components, which are displayed
 as orange boxes on the picture below:</p>
-<p><img alt="Contiv/VPP Architecture" src="../../_images/contiv-arch.png" /></p>
+<p><img alt="../../_images/contiv-arch.png" src="../../_images/contiv-arch.png" />Contiv/VPP Architecture</p>
 <div class="section" id="contiv-ksr">
-<span id="contiv-ksr"></span><h3>Contiv KSR<a class="headerlink" href="#contiv-ksr" title="Permalink to this headline">¶</a></h3>
+<h3>Contiv KSR<a class="headerlink" href="#contiv-ksr" title="Permalink to this headline">¶</a></h3>
 <p>Contiv KSR (Kubernetes State Reflector) is an agent that subscribes to k8s control plane, watches k8s resources and
 propagates all relevant cluster-related information into the Contiv ETCD data store.
 Other Contiv components do not access the k8s API directly, they subscribe to
 Contiv ETCD instead. For more information on KSR, read the
-<a class="reference external" href="https://github.com/contiv/vpp/blob/master/cmd/contiv-ksr/README.md">KSR Readme</a>.</p>
+<a class="reference external" href="https://github.com/contiv/vpp/blob/master/cmd/contiv-ksr/README">KSR Readme</a>.</p>
 </div>
 <div class="section" id="contiv-etcd">
-<span id="contiv-etcd"></span><h3>Contiv ETCD<a class="headerlink" href="#contiv-etcd" title="Permalink to this headline">¶</a></h3>
+<h3>Contiv ETCD<a class="headerlink" href="#contiv-etcd" title="Permalink to this headline">¶</a></h3>
 <p>Contiv/VPP uses its own instance of the ETCD database for storage of k8s cluster-related data
 reflected by KSR, which are then accessed by Contiv vSwitch Agents running on
 individual nodes. Apart from the data reflected by KSR, ETCD also stores persisted VPP
@@ -252,20 +258,20 @@ configuration of individual vswitches (mainly used to restore the operation afte
 as well as some more internal metadata.</p>
 </div>
 <div class="section" id="contiv-vswitch">
-<span id="contiv-vswitch"></span><h3>Contiv vSwitch<a class="headerlink" href="#contiv-vswitch" title="Permalink to this headline">¶</a></h3>
+<h3>Contiv vSwitch<a class="headerlink" href="#contiv-vswitch" title="Permalink to this headline">¶</a></h3>
 <p>vSwitch is the main networking component that provides the connectivity to PODs.
 It deploys on each node in the cluster, and consists of two main components packed
 into a single Docker container: VPP and Contiv VPP Agent.</p>
 <p><strong>VPP</strong> is the data plane software that provides the connectivity between PODs, host Linux
 network stack, and data-plane NIC interface controlled by VPP:</p>
 <ul class="simple">
-<li>PODs are connected to VPP using TAP interfaces wired between VPP, and each POD network namespace.</li>
-<li>host network stack is connected to VPP using another TAP interface connected
-to the main (default) network namespace.</li>
-<li>data-plane NIC is controlled directly by VPP using DPDK. Note, this means that
+<li><p>PODs are connected to VPP using TAP interfaces wired between VPP, and each POD network namespace.</p></li>
+<li><p>host network stack is connected to VPP using another TAP interface connected
+to the main (default) network namespace.</p></li>
+<li><p>data-plane NIC is controlled directly by VPP using DPDK. Note, this means that
 this interface is not visible to the host Linux network stack, and the node either needs another
 management interface for k8s control plane communication, or
-<a class="reference external" href="SINGLE_NIC_SETUP.html">STN (Steal The NIC)</a> deployment must be applied.</li>
+[STN (Steal The NIC)](SINGLE_NIC_SETUP.html) deployment must be applied.</p></li>
 </ul>
 <p><strong>Contiv VPP Agent</strong> is the control plane part of the vSwitch container. It is responsible
 for configuring the VPP according to the information gained from ETCD, and requests
@@ -276,7 +282,7 @@ For connection with Contiv STN, the agent acts as a GRPC server serving CNI requ
 forwarded from the Contiv CNI.</p>
 </div>
 <div class="section" id="contiv-cni">
-<span id="contiv-cni"></span><h3>Contiv CNI<a class="headerlink" href="#contiv-cni" title="Permalink to this headline">¶</a></h3>
+<h3>Contiv CNI<a class="headerlink" href="#contiv-cni" title="Permalink to this headline">¶</a></h3>
 <p>Contiv CNI  (Container Network Interface) is a simple binary that implements the
 <a class="reference external" href="https://github.com/containernetworking/cni">Container Network Interface</a>
 API and is being executed by Kubelet upon POD creation and deletion. The CNI binary
@@ -285,15 +291,15 @@ running on the same node, which then processes it (wires/unwires the container)
 and replies with a response, which is then forwarded back to Kubelet.</p>
 </div>
 <div class="section" id="contiv-stn-daemon">
-<span id="contiv-stn-daemon"></span><h3>Contiv STN Daemon<a class="headerlink" href="#contiv-stn-daemon" title="Permalink to this headline">¶</a></h3>
-<p>This section discusses how the Contiv <a class="reference external" href="SINGLE_NIC_SETUP.html">STN (Steal The NIC)</a> daemon operation works. As already mentioned, the default setup of Contiv/VPP requires two network interfaces
+<h3>Contiv STN Daemon<a class="headerlink" href="#contiv-stn-daemon" title="Permalink to this headline">¶</a></h3>
+<p>This section discusses how the Contiv [STN (Steal The NIC)](SINGLE_NIC_SETUP.html) daemon operation works. As already mentioned, the default setup of Contiv/VPP requires two network interfaces
 per node: one controlled by VPP for data facing PODs, and one controlled by the host
 network stack for k8s control plane communication. In case that your k8s nodes
 do not provide two network interfaces, Contiv/VPP can work in the single NIC setup,
 when the interface will be “stolen” from the host network stack just before starting
 the VPP and configured with the same IP address on VPP, as well as
 on the host-VPP interconnect TAP interface, as it had in the host before it.
-For more information on STN setup, read the <a class="reference external" href="./SINGLE_NIC_SETUP.html">Single NIC Setup README</a></p>
+For more information on STN setup, read the [Single NIC Setup README](./SINGLE_NIC_SETUP.html)</p>
 </div>
 </div>
 </div>
@@ -309,7 +315,7 @@ For more information on STN setup, read the <a class="reference external" href="
         <a href="SECURITY.html" class="btn btn-neutral float-right" title="Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Contiv/VPP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Contiv/VPP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -335,25 +341,16 @@ For more information on STN setup, read the <a class="reference external" href="
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

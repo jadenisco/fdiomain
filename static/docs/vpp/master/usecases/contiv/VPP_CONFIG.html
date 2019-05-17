@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating VPP Startup Configuration &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Creating VPP Startup Configuration &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Preparing a VmWare Fusion Host" href="VMWARE_FUSION_HOST.html" />
     <link rel="prev" title="Manual Installation" href="MANUAL_INSTALL.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -196,13 +202,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="creating-vpp-startup-configuration">
-<span id="creating-vpp-startup-configuration"></span><h1>Creating VPP Startup Configuration<a class="headerlink" href="#creating-vpp-startup-configuration" title="Permalink to this headline">¶</a></h1>
+<h1>Creating VPP Startup Configuration<a class="headerlink" href="#creating-vpp-startup-configuration" title="Permalink to this headline">¶</a></h1>
 <p>This document describes how to create the VPP startup configuration
 file located at <code class="docutils literal notranslate"><span class="pre">/etc/vpp/contiv-vswitch.conf</span></code>.</p>
 <div class="section" id="hardware-interface-configuration">
-<span id="hardware-interface-configuration"></span><h2>Hardware Interface Configuration<a class="headerlink" href="#hardware-interface-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Hardware Interface Configuration<a class="headerlink" href="#hardware-interface-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="single-nic-configuration">
-<span id="single-nic-configuration"></span><h3>Single-NIC Configuration<a class="headerlink" href="#single-nic-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>Single-NIC Configuration<a class="headerlink" href="#single-nic-configuration" title="Permalink to this headline">¶</a></h3>
 <p>You need to configure hardware interfaces for use by VPP. First, find out the PCI address of the host’s network interface. On
 Debian-based distributions, you can use <code class="docutils literal notranslate"><span class="pre">lshw</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">lshw</span> <span class="o">-</span><span class="k">class</span> <span class="nc">network</span> <span class="o">-</span><span class="n">businfo</span>
@@ -237,7 +243,7 @@ to contain the proper PCI address:</p>
 </div>
 </div>
 <div class="section" id="multi-nic-configuration">
-<span id="multi-nic-configuration"></span><h3>Multi-NIC Configuration<a class="headerlink" href="#multi-nic-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>Multi-NIC Configuration<a class="headerlink" href="#multi-nic-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Similar to the single-NIC configuration, use command <em>lshw</em> to find the PCI
 addresses of all the NICs in the system, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo lshw -class network -businfo
@@ -280,7 +286,7 @@ to contain the proper PCI address:</p>
 <p>If assigning multiple NICs to VPP you will need to include each NIC’s PCI address
 in the dpdk stanza in <code class="docutils literal notranslate"><span class="pre">/etc/vpp/contiv-vswitch.conf</span></code>.</p>
 <div class="section" id="assigning-all-nics-to-vpp">
-<span id="assigning-all-nics-to-vpp"></span><h4>Assigning all NICs to VPP<a class="headerlink" href="#assigning-all-nics-to-vpp" title="Permalink to this headline">¶</a></h4>
+<h4>Assigning all NICs to VPP<a class="headerlink" href="#assigning-all-nics-to-vpp" title="Permalink to this headline">¶</a></h4>
 <p>On a multi-NIC node, it is also possible to assign all NICs from the kernel for
 use by VPP. First, you need to install the STN daemon, as described [here][1],
 since you will want the NICs to revert to the kernel if VPP crashes.</p>
@@ -312,7 +318,7 @@ something like this:</p>
 </div>
 </div>
 <div class="section" id="installing-lshw-on-centos-redhat-fedora">
-<span id="installing-lshw-on-centos-redhat-fedora"></span><h3>Installing <code class="docutils literal notranslate"><span class="pre">lshw</span></code> on CentOS/RedHat/Fedora<a class="headerlink" href="#installing-lshw-on-centos-redhat-fedora" title="Permalink to this headline">¶</a></h3>
+<h3>Installing <code class="docutils literal notranslate"><span class="pre">lshw</span></code> on CentOS/RedHat/Fedora<a class="headerlink" href="#installing-lshw-on-centos-redhat-fedora" title="Permalink to this headline">¶</a></h3>
 <p>Note: On CentOS/RedHat/Fedora distributions, <code class="docutils literal notranslate"><span class="pre">lshw</span></code> may not be available
 by default, install it by</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">lshw</span>
@@ -321,7 +327,7 @@ by default, install it by</p>
 </div>
 </div>
 <div class="section" id="power-saving-mode">
-<span id="power-saving-mode"></span><h2>Power-saving Mode<a class="headerlink" href="#power-saving-mode" title="Permalink to this headline">¶</a></h2>
+<h2>Power-saving Mode<a class="headerlink" href="#power-saving-mode" title="Permalink to this headline">¶</a></h2>
 <p>In regular operation, VPP takes 100% of one CPU core at all times (poll loop).
 If high performance and low latency is not required you can “slow-down”
 the poll-loop and drastically reduce CPU utilization by adding the following
@@ -337,7 +343,7 @@ stanza to the <code class="docutils literal notranslate"><span class="pre">unix<
 running on laptops or less powerful servers.</p>
 </div>
 <div class="section" id="vpp-api-trace">
-<span id="vpp-api-trace"></span><h2>VPP API Trace<a class="headerlink" href="#vpp-api-trace" title="Permalink to this headline">¶</a></h2>
+<h2>VPP API Trace<a class="headerlink" href="#vpp-api-trace" title="Permalink to this headline">¶</a></h2>
 <p>To troubleshoot VPP configuration issues in production environments, it is
 strongly recommended to configure VPP API trace. This is done by adding the
 following stanza to the VPP startup config file:</p>
@@ -362,7 +368,7 @@ following stanza to the VPP startup config file:</p>
         <a href="VMWARE_FUSION_HOST.html" class="btn btn-neutral float-right" title="Preparing a VmWare Fusion Host" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="MANUAL_INSTALL.html" class="btn btn-neutral" title="Manual Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="MANUAL_INSTALL.html" class="btn btn-neutral float-left" title="Manual Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -388,25 +394,16 @@ following stanza to the VPP startup config file:</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bounded-index Extensible Hashing (bihash) &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Bounded-index Extensible Hashing (bihash) &mdash; Vector Packet Processor 01 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -32,21 +39,16 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="VPP API module" href="vpp_api_module.html" />
     <link rel="prev" title="Multi-Architecture Arbitrary Function Cookbook" href="multiarch/arbfns.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,6 +63,10 @@
 
           
             
+            
+              <div class="version">
+                19.08
+              </div>
             
           
 
@@ -199,15 +205,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="bounded-index-extensible-hashing-bihash">
-<span id="bounded-index-extensible-hashing-bihash"></span><h1>Bounded-index Extensible Hashing (bihash)<a class="headerlink" href="#bounded-index-extensible-hashing-bihash" title="Permalink to this headline">¶</a></h1>
+<h1>Bounded-index Extensible Hashing (bihash)<a class="headerlink" href="#bounded-index-extensible-hashing-bihash" title="Permalink to this headline">¶</a></h1>
 <p>Vpp uses bounded-index extensible hashing to solve a variety of
 exact-match (key, value) lookup problems. Benefits of the current
 implementation:</p>
 <ul class="simple">
-<li>Very high record count scaling, tested to 100,000,000 records.</li>
-<li>Lookup performance degrades gracefully as the number of records increases</li>
-<li>No reader locking required</li>
-<li>Template implementation, it’s easy to support arbitrary (key,value) types</li>
+<li><p>Very high record count scaling, tested to 100,000,000 records.</p></li>
+<li><p>Lookup performance degrades gracefully as the number of records increases</p></li>
+<li><p>No reader locking required</p></li>
+<li><p>Template implementation, it’s easy to support arbitrary (key,value) types</p></li>
 </ul>
 <p>Bounded-index extensible hashing has been widely used in databases for
 decades.</p>
@@ -233,16 +239,16 @@ decades.</p>
 </pre></div>
 </div>
 <div class="section" id="discussion-of-the-algorithm">
-<span id="discussion-of-the-algorithm"></span><h2>Discussion of the algorithm<a class="headerlink" href="#discussion-of-the-algorithm" title="Permalink to this headline">¶</a></h2>
+<h2>Discussion of the algorithm<a class="headerlink" href="#discussion-of-the-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>This structure has a couple of major advantages. In practice, each
 bucket entry fits into a 64-bit integer. Coincidentally, vpp’s target
 CPU architectures support 64-bit atomic operations. When modifying the
 contents of a specific bucket, we do the following:</p>
 <ul class="simple">
-<li>Make a working copy of the bucket’s backing storage</li>
-<li>Atomically swap a pointer to the working copy into the bucket array</li>
-<li>Change the original backing store data</li>
-<li>Atomically swap back to the original</li>
+<li><p>Make a working copy of the bucket’s backing storage</p></li>
+<li><p>Atomically swap a pointer to the working copy into the bucket array</p></li>
+<li><p>Change the original backing store data</p></li>
+<li><p>Atomically swap back to the original</p></li>
 </ul>
 <p>So, no reader locking is required to search a bihash table.</p>
 <p>At lookup time, the implementation computes a key hash code. We use
@@ -273,13 +279,13 @@ search.</p>
 compute a hash code which has decent statistics.</p>
 </div>
 <div class="section" id="bihash-cookbook">
-<span id="bihash-cookbook"></span><h2>Bihash Cookbook<a class="headerlink" href="#bihash-cookbook" title="Permalink to this headline">¶</a></h2>
+<h2>Bihash Cookbook<a class="headerlink" href="#bihash-cookbook" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="using-current-key-value-template-instance-types">
-<span id="using-current-key-value-template-instance-types"></span><h3>Using current (key,value) template instance types<a class="headerlink" href="#using-current-key-value-template-instance-types" title="Permalink to this headline">¶</a></h3>
+<h3>Using current (key,value) template instance types<a class="headerlink" href="#using-current-key-value-template-instance-types" title="Permalink to this headline">¶</a></h3>
 <p>It’s quite easy to use one of the template instance types. As of this
 writing, …/src/vppinfra provides pre-built templates for 8, 16, 20,
 24, 40, and 48 byte keys, u8 * vector keys, and 8 byte values.</p>
-<p>See …/src/vppinfra/{bihash_&lt;key-size&gt;_8}.h</p>
+<p>See …/src/vppinfra/{bihash_<key-size>_8}.h</p>
 <p>To define the data types, #include a specific template instance, most
 often in a subsystem header file:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>     <span class="cp">#include</span> <span class="cpf">&lt;vppinfra/bihash_8_8.h&gt;</span><span class="cp"></span>
@@ -317,7 +323,7 @@ source file, you <strong>must</strong> use fully-enumerated type names. The macr
 stand no chance of working.</p>
 </div>
 <div class="section" id="initializing-a-bihash-table">
-<span id="initializing-a-bihash-table"></span><h3>Initializing a bihash table<a class="headerlink" href="#initializing-a-bihash-table" title="Permalink to this headline">¶</a></h3>
+<h3>Initializing a bihash table<a class="headerlink" href="#initializing-a-bihash-table" title="Permalink to this headline">¶</a></h3>
 <p>Call the init function as shown. As a rough guide, pick a number of
 buckets which is approximately
 number_of_expected_records/BIHASH_KVP_PER_PAGE from the relevant
@@ -339,7 +345,7 @@ generous.</p>
 </div>
 </div>
 <div class="section" id="add-or-delete-a-key-value-pair">
-<span id="add-or-delete-a-key-value-pair"></span><h3>Add or delete a key/value pair<a class="headerlink" href="#add-or-delete-a-key-value-pair" title="Permalink to this headline">¶</a></h3>
+<h3>Add or delete a key/value pair<a class="headerlink" href="#add-or-delete-a-key-value-pair" title="Permalink to this headline">¶</a></h3>
 <p>Use BV(clib_bihash_add_del), or the explicit type variant:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>   <span class="n">clib_bihash_kv_8_8_t</span> <span class="n">kv</span><span class="p">;</span>
    <span class="n">clib_bihash_8_8_t</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
@@ -357,7 +363,7 @@ generous.</p>
 with an existing (key,value) pair, simply re-add the [new] pair.</p>
 </div>
 <div class="section" id="simple-search">
-<span id="simple-search"></span><h3>Simple search<a class="headerlink" href="#simple-search" title="Permalink to this headline">¶</a></h3>
+<h3>Simple search<a class="headerlink" href="#simple-search" title="Permalink to this headline">¶</a></h3>
 <p>The simplest possible (key, value) search goes like so:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>   <span class="n">clib_bihash_kv_8_8_t</span> <span class="n">search_kv</span><span class="p">,</span> <span class="n">return_kv</span><span class="p">;</span>
    <span class="n">clib_bihash_8_8_t</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
@@ -381,32 +387,32 @@ with an existing (key,value) pair, simply re-add the [new] pair.</p>
 </div>
 </div>
 <div class="section" id="bihash-vector-processing">
-<span id="bihash-vector-processing"></span><h3>Bihash vector processing<a class="headerlink" href="#bihash-vector-processing" title="Permalink to this headline">¶</a></h3>
+<h3>Bihash vector processing<a class="headerlink" href="#bihash-vector-processing" title="Permalink to this headline">¶</a></h3>
 <p>When processing a vector of packets which need a certain lookup
 performed, it’s worth the trouble to compute the key hash, and
 prefetch the correct bucket ahead of time.</p>
 <p>Here’s a sketch of one way to write the required code:</p>
 <p>Dual-loop:</p>
 <ul class="simple">
-<li>6 packets ahead, prefetch 2x vlib_buffer_t’s and 2x packet data
-required to form the record keys</li>
-<li>4 packets ahead, form 2x record keys and call BV(clib_bihash_hash)
+<li><p>6 packets ahead, prefetch 2x vlib_buffer_t’s and 2x packet data
+required to form the record keys</p></li>
+<li><p>4 packets ahead, form 2x record keys and call BV(clib_bihash_hash)
 or the explicit hash function to calculate the record hashes.
-Call 2x BV(clib_bihash_prefetch_bucket) to prefetch the buckets</li>
-<li>2 packets ahead, call 2x BV(clib_bihash_prefetch_data) to prefetch
-2x (key,value) data pages.</li>
-<li>In the processing section, call 2x BV(clib_bihash_search_inline_with_hash)
-to perform the search</li>
+Call 2x BV(clib_bihash_prefetch_bucket) to prefetch the buckets</p></li>
+<li><p>2 packets ahead, call 2x BV(clib_bihash_prefetch_data) to prefetch
+2x (key,value) data pages.</p></li>
+<li><p>In the processing section, call 2x BV(clib_bihash_search_inline_with_hash)
+to perform the search</p></li>
 </ul>
 <p>Programmer’s choice whether to stash the hash code somewhere in
 vnet_buffer(b) metadata, or to use local variables.</p>
 <p>Single-loop:</p>
 <ul class="simple">
-<li>Use simple search as shown above.</li>
+<li><p>Use simple search as shown above.</p></li>
 </ul>
 </div>
 <div class="section" id="walking-a-bihash-table">
-<span id="walking-a-bihash-table"></span><h3>Walking a bihash table<a class="headerlink" href="#walking-a-bihash-table" title="Permalink to this headline">¶</a></h3>
+<h3>Walking a bihash table<a class="headerlink" href="#walking-a-bihash-table" title="Permalink to this headline">¶</a></h3>
 <p>A fairly common scenario to build “show” commands involves walking a
 bihash table. It’s simple enough:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>   <span class="n">my_main_t</span> <span class="o">*</span><span class="n">mm</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_main</span><span class="p">;</span>
@@ -422,17 +428,17 @@ bihash table. It’s simple enough:</p>
 iterates across the entire table, calling callback_fn with active
 entries.</p>
 <div class="section" id="bihash-table-iteration-safety">
-<span id="bihash-table-iteration-safety"></span><h4>Bihash table iteration safety<a class="headerlink" href="#bihash-table-iteration-safety" title="Permalink to this headline">¶</a></h4>
+<h4>Bihash table iteration safety<a class="headerlink" href="#bihash-table-iteration-safety" title="Permalink to this headline">¶</a></h4>
 <p>The iterator template “clib_bihash_foreach_key_value_pair” must be
 used with a certain amount of care. For one thing, the iterator
 template does <em>not</em> take the bihash hash table writer lock. If your
 use-case requires it, lock the table.</p>
 <p>For another, the iterator template is not safe under all conditions:</p>
 <ul class="simple">
-<li>It’s <strong>OK to delete</strong> bihash table entries during a table-walk. The
+<li><p>It’s <strong>OK to delete</strong> bihash table entries during a table-walk. The
 iterator checks whether the current bucket has been freed after each
-<em>callback_fn(…)</em> invocation.</li>
-<li>It is <strong>not OK to add</strong> entries during a table-walk.</li>
+<em>callback_fn(…)</em> invocation.</p></li>
+<li><p>It is <strong>not OK to add</strong> entries during a table-walk.</p></li>
 </ul>
 <p>The add-during-walk case involves a jackpot: while processing a
 key-value-pair in a particular bucket, add a certain number of
@@ -441,9 +447,9 @@ the <strong>current bucket</strong> to split-and-rehash.</p>
 <p>Since we rehash KVP’s to different pages based on what amounts to a
 different hash function, either of these things can go wrong:</p>
 <ul class="simple">
-<li>We may revisit previously-visited entries. Depending on how one
-coded the use-case, we could end up in a recursive-add situation.</li>
-<li>We may skip entries that have not been visited</li>
+<li><p>We may revisit previously-visited entries. Depending on how one
+coded the use-case, we could end up in a recursive-add situation.</p></li>
+<li><p>We may skip entries that have not been visited</p></li>
 </ul>
 <p>One could build an add-safe iterator, at a significant cost in
 performance: copy the entire bucket, and walk the copy.</p>
@@ -453,7 +459,7 @@ the table without modifying it, then adding a set of records.</p>
 </div>
 </div>
 <div class="section" id="creating-a-new-template-instance">
-<span id="creating-a-new-template-instance"></span><h3>Creating a new template instance<a class="headerlink" href="#creating-a-new-template-instance" title="Permalink to this headline">¶</a></h3>
+<h3>Creating a new template instance<a class="headerlink" href="#creating-a-new-template-instance" title="Permalink to this headline">¶</a></h3>
 <p>Creating a new template is easy. Use one of the existing templates as
 a model, and make the obvious changes. The hash and key_compare
 methods are performance-critical in multiple senses.</p>
@@ -479,7 +485,7 @@ hash and key_compare functions.</p>
         <a href="vpp_api_module.html" class="btn btn-neutral float-right" title="VPP API module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="multiarch/arbfns.html" class="btn btn-neutral" title="Multi-Architecture Arbitrary Function Cookbook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="multiarch/arbfns.html" class="btn btn-neutral float-left" title="Multi-Architecture Arbitrary Function Cookbook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -505,25 +511,16 @@ hash and key_compare functions.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
