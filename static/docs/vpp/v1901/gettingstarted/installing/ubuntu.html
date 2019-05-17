@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ubuntu 18.04 - Setup the FD.io Repository &mdash; Vector Packet Processor 1.0 documentation</title>
+  <title>Ubuntu 16.04 - Setup the FD.io Repository &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -88,7 +88,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Downloading and Installing VPP</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#installing-on-ubuntu">Installing on Ubuntu</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Ubuntu 18.04 - Setup the FD.io Repository</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Ubuntu 16.04 - Setup the FD.io Repository</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-the-mandatory-packages">Install the Mandatory Packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-the-optional-packages">Install the Optional Packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uninstall-the-packages">Uninstall the Packages</a></li>
@@ -163,7 +163,7 @@
         
           <li><a href="index.html">Downloading and Installing VPP</a> &raquo;</li>
         
-      <li>Ubuntu 18.04 - Setup the FD.io Repository</li>
+      <li>Ubuntu 16.04 - Setup the FD.io Repository</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,8 +184,8 @@
             
   <div class="toctree-wrapper compound" id="ubuntu">
 </div>
-<div class="section" id="ubuntu-18-04-setup-the-fd-io-repository">
-<h1>Ubuntu 18.04 - Setup the FD.io Repository<a class="headerlink" href="#ubuntu-18-04-setup-the-fd-io-repository" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ubuntu-16-04-setup-the-fd-io-repository">
+<h1>Ubuntu 16.04 - Setup the FD.io Repository<a class="headerlink" href="#ubuntu-16-04-setup-the-fd-io-repository" title="Permalink to this headline">¶</a></h1>
 <p>FD.io VPP is installed using Package Cloud. For a complete set of
 instructuctions on how to install VPP with package cloud please refer
 to <a class="reference external" href="https://packagecloud.io/fdio/release">Package Cloud</a></p>
@@ -205,7 +205,7 @@ the version needed. The contents needed are shown below.</p>
 <div class="section" id="vpp-latest-release">
 <span id="install-vpp"></span><h3>VPP latest Release<a class="headerlink" href="#vpp-latest-release" title="Permalink to this headline">¶</a></h3>
 <p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/release/ubuntu xenial main</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/release/ubuntu xenial main ./</span>
 </pre></div>
 </div>
 <p>Get the key:</p>
@@ -213,10 +213,21 @@ the version needed. The contents needed are shown below.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="vpp-1810-branch">
+<h3>VPP 1810 Branch<a class="headerlink" href="#vpp-1810-branch" title="Permalink to this headline">¶</a></h3>
+<p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/1810/ubuntu xenial main ./</span>
+</pre></div>
+</div>
+<p>Get the key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -L https://packagecloud.io/fdio/1810/gpgkey | sudo apt-key add -</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="vpp-master-branch">
 <h3>VPP master Branch<a class="headerlink" href="#vpp-master-branch" title="Permalink to this headline">¶</a></h3>
 <p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/master/ubuntu xenial main</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/master/ubuntu xenial main ./</span>
 </pre></div>
 </div>
 <p>Get the key:</p>
@@ -230,19 +241,14 @@ the version needed. The contents needed are shown below.</p>
 <h1>Install the Mandatory Packages<a class="headerlink" href="#install-the-mandatory-packages" title="Permalink to this headline">¶</a></h1>
 <p>Install the mandatory packages by running the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get update</span>
-<span class="go">sudo apt-get install vpp</span>
+<span class="go">sudo apt-get install vpp-lib vpp vpp-plugins</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-the-optional-packages">
 <h1>Install the Optional Packages<a class="headerlink" href="#install-the-optional-packages" title="Permalink to this headline">¶</a></h1>
 <p>Install the optional packages by running the following command:</p>
-<p>For the release packages:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-plugins vpp-api-java vpp-api-lua vpp-api-python vpp-dbg vpp-dev</span>
-</pre></div>
-</div>
-<p>For the master packages:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-plugin-core vpp-api-python vpp-dbg vpp-dev vpp-plugin-dpdk</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-dbg vpp-dev vpp-api-java vpp-api-python vpp-api-lua</span>
 </pre></div>
 </div>
 </div>

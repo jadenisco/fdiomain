@@ -245,16 +245,16 @@ units to convert buffer indices to buffer pointers:</p>
      <span class="n">n_left_from</span> <span class="o">=</span> <span class="n">frame</span><span class="o">-&gt;</span><span class="n">n_vectors</span><span class="p">;</span>
      <span class="n">from</span> <span class="o">=</span> <span class="n">vlib_frame_vector_args</span> <span class="p">(</span><span class="n">frame</span><span class="p">);</span>
 
-     <span class="cm">/*</span>
-<span class="cm">      * Convert up to VLIB_FRAME_SIZE indices in &quot;from&quot; to</span>
+     <span class="cm">/* </span>
+<span class="cm">      * Convert up to VLIB_FRAME_SIZE indices in &quot;from&quot; to </span>
 <span class="cm">      * buffer pointers in bufs[]</span>
 <span class="cm">      */</span>
      <span class="n">vlib_get_buffers</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">bufs</span><span class="p">,</span> <span class="n">n_left_from</span><span class="p">);</span>
      <span class="n">b</span> <span class="o">=</span> <span class="n">bufs</span><span class="p">;</span>
      <span class="n">next</span> <span class="o">=</span> <span class="n">nexts</span><span class="p">;</span>
 
-     <span class="cm">/*</span>
-<span class="cm">      * While we have at least 4 vector elements (pkts) to process..</span>
+     <span class="cm">/* </span>
+<span class="cm">      * While we have at least 4 vector elements (pkts) to process.. </span>
 <span class="cm">      */</span>
      <span class="k">while</span> <span class="p">(</span><span class="n">n_left_from</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span>
        <span class="p">{</span>
@@ -267,7 +267,7 @@ units to convert buffer indices to buffer pointers:</p>
          <span class="n">vlib_prefetch_buffer_header</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">STORE</span><span class="p">);</span>
            <span class="p">}</span>
 
-         <span class="cm">/*</span>
+         <span class="cm">/* </span>
 <span class="cm">          * $$$ Process 4x packets right here...</span>
 <span class="cm">          * set next[0..3] to send the packets where they need to go</span>
 <span class="cm">          */</span>
@@ -282,12 +282,12 @@ units to convert buffer indices to buffer pointers:</p>
      <span class="n">next</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
      <span class="n">n_left_from</span> <span class="o">-=</span> <span class="mi">4</span><span class="p">;</span>
     <span class="p">}</span>
-     <span class="cm">/*</span>
+     <span class="cm">/* </span>
 <span class="cm">      * Clean up 0...3 remaining packets at the end of the incoming frame</span>
 <span class="cm">      */</span>
      <span class="k">while</span> <span class="p">(</span><span class="n">n_left_from</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
        <span class="p">{</span>
-         <span class="cm">/*</span>
+         <span class="cm">/* </span>
 <span class="cm">          * $$$ Process one packet right here...</span>
 <span class="cm">          * set next[0..3] to send the packets where they need to go</span>
 <span class="cm">          */</span>
@@ -308,7 +308,7 @@ units to convert buffer indices to buffer pointers:</p>
      <span class="n">vlib_buffer_enqueue_to_next</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">nexts</span><span class="p">,</span> <span class="n">frame</span><span class="o">-&gt;</span><span class="n">n_vectors</span><span class="p">);</span>
 
      <span class="k">return</span> <span class="n">frame</span><span class="o">-&gt;</span><span class="n">n_vectors</span><span class="p">;</span>
-   <span class="p">}</span>
+   <span class="p">}</span>  
 </pre></div>
 </div>
 <p>Given a packet processing task to implement, it pays to scout around
@@ -341,6 +341,7 @@ blindly cut-‘n-pasted.</p>
   <span class="n">vlib_buffer_t</span> <span class="o">*</span><span class="n">b0</span><span class="p">;</span>
   <span class="n">ip4_header_t</span> <span class="o">*</span><span class="n">ip</span><span class="p">;</span>
   <span class="n">udp_header_t</span> <span class="o">*</span><span class="n">udp</span><span class="p">;</span>
+  <span class="n">vlib_buffer_free_list_t</span> <span class="o">*</span><span class="n">fl</span><span class="p">;</span>
 
   <span class="cm">/* Allocate a buffer */</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">vlib_buffer_alloc</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">bi0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
@@ -349,11 +350,13 @@ blindly cut-‘n-pasted.</p>
   <span class="n">b0</span> <span class="o">=</span> <span class="n">vlib_get_buffer</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">bi0</span><span class="p">);</span>
 
   <span class="cm">/* Initialize the buffer */</span>
+  <span class="n">fl</span> <span class="o">=</span> <span class="n">vlib_buffer_get_free_list</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">VLIB_BUFFER_DEFAULT_FREE_LIST_INDEX</span><span class="p">);</span>
+  <span class="n">vlib_buffer_init_for_free_list</span> <span class="p">(</span><span class="n">b0</span><span class="p">,</span> <span class="n">fl</span><span class="p">);</span>
   <span class="n">VLIB_BUFFER_TRACE_TRAJECTORY_INIT</span> <span class="p">(</span><span class="n">b0</span><span class="p">);</span>
 
   <span class="cm">/* At this point b0-&gt;current_data = 0, b0-&gt;current_length = 0 */</span>
 
-  <span class="cm">/*</span>
+  <span class="cm">/* </span>
 <span class="cm">   * Copy data into the buffer. This example ASSUMES that data will fit</span>
 <span class="cm">   * in a single buffer, and is e.g. an ip4 packet.</span>
 <span class="cm">   */</span>
@@ -362,7 +365,7 @@ blindly cut-‘n-pasted.</p>
        <span class="n">clib_memcpy</span> <span class="p">(</span><span class="n">b0</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">vec_len</span> <span class="p">(</span><span class="n">data</span><span class="p">));</span>
        <span class="n">b0</span><span class="o">-&gt;</span><span class="n">current_length</span> <span class="o">=</span> <span class="n">vec_len</span> <span class="p">(</span><span class="n">data</span><span class="p">);</span>
      <span class="p">}</span>
-  <span class="k">else</span>
+  <span class="k">else</span> 
      <span class="p">{</span>
        <span class="cm">/* OR, build a udp-ip packet (for example) */</span>
        <span class="n">ip</span> <span class="o">=</span> <span class="n">vlib_buffer_get_current</span> <span class="p">(</span><span class="n">b0</span><span class="p">);</span>
@@ -387,7 +390,7 @@ blindly cut-‘n-pasted.</p>
            <span class="n">udp</span><span class="o">-&gt;</span><span class="n">checksum</span> <span class="o">=</span> <span class="n">ip4_tcp_udp_compute_checksum</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">b0</span><span class="p">,</span> <span class="n">ip</span><span class="p">);</span>
            <span class="k">if</span> <span class="p">(</span><span class="n">udp</span><span class="o">-&gt;</span><span class="n">checksum</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
              <span class="n">udp</span><span class="o">-&gt;</span><span class="n">checksum</span> <span class="o">=</span> <span class="mh">0xffff</span><span class="p">;</span>
-      <span class="p">}</span>
+      <span class="p">}</span>  
       <span class="n">b0</span><span class="o">-&gt;</span><span class="n">current_length</span> <span class="o">=</span> <span class="n">vec_len</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="o">*</span><span class="n">ip</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span> <span class="p">(</span><span class="o">*</span><span class="n">udp</span><span class="p">)</span> <span class="o">+</span>
                                    <span class="n">vec_len</span> <span class="p">(</span><span class="n">udp_data</span><span class="p">));</span>
 
@@ -420,7 +423,7 @@ indices, and dispatch the frame using vlib_put_frame_to_node(…).</p>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vec_len</span> <span class="p">(</span><span class="n">buffer_indices_to_send</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
       <span class="n">to_next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">buffer_indices_to_send</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 
-    <span class="n">vlib_put_frame_to_node</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">ip4_lookup_node_index</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+    <span class="n">vlib_put_frame_to_node</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">ip4_lookup_node_index</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span> 
 </pre></div>
 </div>
 <p>It is inefficient to allocate and schedule single packet frames.
@@ -455,7 +458,7 @@ the per-graph node format function.</p>
         <span class="n">s</span> <span class="o">=</span> <span class="n">format</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&quot;My trace data was: %d&quot;</span><span class="p">,</span> <span class="n">t</span><span class="o">-&gt;&lt;</span><span class="n">whatever</span><span class="o">&gt;</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="p">}</span> 
 </pre></div>
 </div>
 <p>The trace framework hands the per-node format function the data it
@@ -543,11 +546,11 @@ tracing for packets which originate in dpdk-input:</p>
 <div class="section" id="wireshark-dissection-of-dispatch-pcap-traces">
 <span id="wireshark-dissection-of-dispatch-pcap-traces"></span><h3>Wireshark dissection of dispatch pcap traces<a class="headerlink" href="#wireshark-dissection-of-dispatch-pcap-traces" title="Permalink to this headline">¶</a></h3>
 <p>It almost goes without saying that we built a companion wireshark
-dissector to display these traces. As of this writing, we have
-upstreamed the wireshark dissector.</p>
-<p>Since it will be a while before wireshark/master/latest makes it into
-all of the popular Linux distros, please see the “How to build a vpp
-dispatch trace aware Wireshark” page for build info.</p>
+dissector to display these traces. As of this writing, we’re in the
+process of trying to upstream the wireshark dissector.</p>
+<p>Until we manage to upstream the wireshark dissector, please see the
+“How to build a vpp dispatch trace aware Wireshark” page for build
+info, and/or take a look at …/extras/wireshark.</p>
 <p>Here is a sample packet dissection, with some fields omitted for
 clarity.  The point is that the wireshark dissector accurately
 displays <strong>all</strong> of the vpp buffer metadata, and the name of the graph
@@ -559,15 +562,15 @@ node in question.</p>
         BufferIndex: 0x00036663
     NodeName: ethernet-input
     VPP Buffer Metadata
-        Metadata: flags:
+        Metadata: flags: 
         Metadata: current_data: 0, current_length: 102
         Metadata: current_config_index: 0, flow_id: 0, next_buffer: 0
         Metadata: error: 0, n_add_refs: 0, buffer_pool_index: 0
         Metadata: trace_index: 0, recycle_count: 0, len_not_first_buf: 0
         Metadata: free_list_index: 0
-        Metadata:
+        Metadata: 
     VPP Buffer Opaque
-        Opaque: raw: 00000007 ffffffff 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+        Opaque: raw: 00000007 ffffffff 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
         Opaque: sw_if_index[VLIB_RX]: 7, sw_if_index[VLIB_TX]: -1
         Opaque: L2 offset 0, L3 offset 0, L4 offset 0, feature arc index 0
         Opaque: ip.adj_index[VLIB_RX]: 0, ip.adj_index[VLIB_TX]: 0
@@ -596,14 +599,14 @@ node in question.</p>
         Opaque: sctp.connection_index: 0, sctp.sid: 0, sctp.ssn: 0, sctp.tsn: 0, sctp.hdr_offset: 0
         Opaque: sctp.data_offset: 0, sctp.data_len: 0, sctp.subconn_idx: 0, sctp.flags: 0x0
         Opaque: snat.flags: 0x0
-        Opaque:
+        Opaque: 
     VPP Buffer Opaque2
-        Opaque2: raw: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+        Opaque2: raw: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
         Opaque2: qos.bits: 0, qos.source: 0
         Opaque2: loop_counter: 0
         Opaque2: gbp.flags: 0, gbp.src_epg: 0
         Opaque2: pg_replay_timestamp: 0
-        Opaque2:
+        Opaque2: 
     Ethernet II, Src: 06:d6:01:41:3b:92 (06:d6:01:41:3b:92), Dst: IntelCor_3d:f6    Transmission Control Protocol, Src Port: 22432, Dst Port: 54084, Seq: 1, Ack: 1, Len: 36
         Source Port: 22432
         Destination Port: 54084

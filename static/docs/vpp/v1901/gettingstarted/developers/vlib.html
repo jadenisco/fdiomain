@@ -112,7 +112,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#buffers">Buffers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#shared-memory-message-api">Shared-memory message API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#debug-cli">Debug CLI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#handing-off-buffers-between-threads">Handing off buffers between threads</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="plugins.html">Plugins</a></li>
@@ -348,10 +347,10 @@ simplest is the vlib_pending_frame_t:</p>
 </div>
 <p>Here is the code in …/src/vlib/main.c:vlib_main_or_worker_loop()
 which processes frames:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>      <span class="cm">/*</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>      <span class="cm">/* </span>
 <span class="cm">       * Input nodes may have added work to the pending vector.</span>
 <span class="cm">       * Process pending vector until there is nothing left.</span>
-<span class="cm">       * All pending vectors will be processed from input -&gt; output.</span>
+<span class="cm">       * All pending vectors will be processed from input -&gt; output. </span>
 <span class="cm">       */</span>
       <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_vec_len</span> <span class="p">(</span><span class="n">nm</span><span class="o">-&gt;</span><span class="n">pending_frames</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="n">cpu_time_now</span> <span class="o">=</span> <span class="n">dispatch_pending_node</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cpu_time_now</span><span class="p">);</span>
@@ -509,7 +508,7 @@ to use. Here is a typical example:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">vlib_main_t</span> <span class="o">*</span><span class="n">vm</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">vlib_global_main</span><span class="p">;</span>
     <span class="n">uword</span> <span class="n">event_type</span><span class="p">,</span> <span class="o">*</span> <span class="n">event_data</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
     <span class="p">{</span>
        <span class="n">vlib_process_wait_for_event_or_clock</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="mf">5.0</span> <span class="cm">/* seconds */</span><span class="p">);</span>
 
@@ -522,7 +521,7 @@ to use. Here is a typical example:</p>
 
        <span class="k">case</span> <span class="nl">EVENT2</span><span class="p">:</span>
            <span class="n">handle_event2s</span> <span class="p">(</span><span class="n">event_data</span><span class="p">);</span>
-           <span class="k">break</span><span class="p">;</span>
+           <span class="k">break</span><span class="p">;</span> 
 
        <span class="k">case</span> <span class="o">~</span><span class="mi">0</span><span class="o">:</span> <span class="cm">/* 5-second idle/periodic */</span>
            <span class="n">handle_idle</span> <span class="p">();</span>
@@ -613,7 +612,7 @@ bit. No locking required.</p>
     <span class="p">}</span>
 
     <span class="cm">/* *INDENT-OFF* */</span>
-    <span class="k">static</span> <span class="nf">VLIB_CLI_COMMAND</span> <span class="p">(</span><span class="n">show_ip_tuple_command</span><span class="p">)</span> <span class="o">=</span>
+    <span class="k">static</span> <span class="nf">VLIB_CLI_COMMAND</span> <span class="p">(</span><span class="n">show_ip_tuple_command</span><span class="p">)</span> <span class="o">=</span> 
     <span class="p">{</span>
         <span class="p">.</span><span class="n">path</span> <span class="o">=</span> <span class="s">&quot;show ip tuple match&quot;</span><span class="p">,</span>
         <span class="p">.</span><span class="n">short_help</span> <span class="o">=</span> <span class="s">&quot;Show ip 5-tuple match-and-broadcast tables&quot;</span><span class="p">,</span>
@@ -634,104 +633,6 @@ code elsewhere to unpack the data and finally print the answer. If a
 certain cli command has the potential to hurt packet processing
 performance by running for too long, do the work incrementally in a
 process node. The client can wait.</p>
-</div>
-<div class="section" id="handing-off-buffers-between-threads">
-<span id="handing-off-buffers-between-threads"></span><h2>Handing off buffers between threads<a class="headerlink" href="#handing-off-buffers-between-threads" title="Permalink to this headline">¶</a></h2>
-<p>Vlib includes an easy-to-use mechanism for handing off buffers between
-worker threads. A typical use-case: software ingress flow hashing. At
-a high level, one creates a per-worker-thread queue which sends packets
-to a specific graph node in the indicated worker thread. With the
-queue in hand, enqueue packets to the worker thread of your choice.</p>
-<div class="section" id="initialize-a-handoff-queue">
-<span id="initialize-a-handoff-queue"></span><h3>Initialize a handoff queue<a class="headerlink" href="#initialize-a-handoff-queue" title="Permalink to this headline">¶</a></h3>
-<p>Simple enough, call vlib_frame_queue_main_init:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>   <span class="n">main_ptr</span><span class="o">-&gt;</span><span class="n">frame_queue_index</span>
-       <span class="o">=</span> <span class="n">vlib_frame_queue_main_init</span> <span class="p">(</span><span class="n">dest_node</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">frame_queue_size</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Frame_queue_size means what it says: the number of frames which may be
-queued. Since frames contain 1…256 packets, frame_queue_size should
-be a reasonably small number (32…64). If the frame queue producer(s)
-are faster than the frame queue consumer(s), congestion will
-occur. Suggest letting the enqueue operator deal with queue
-congestion, as shown in the enqueue example below.</p>
-<p>Under the floorboards, vlib_frame_queue_main_init creates an input queue
-for each worker thread.</p>
-<p>Please do NOT create frame queues until it’s clear that they will be
-used. Although the main dispatch loop is reasonably smart about how
-often it polls the (entire set of) frame queues, polling unused frame
-queues is a waste of clock cycles.</p>
-</div>
-<div class="section" id="hand-off-packets">
-<span id="hand-off-packets"></span><h3>Hand off packets<a class="headerlink" href="#hand-off-packets" title="Permalink to this headline">¶</a></h3>
-<p>The actual handoff mechanics are simple, and integrate nicely with
-a typical graph-node dispatch function:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">always_inline</span> <span class="n">uword</span>
-    <span class="nf">do_handoff_inline</span> <span class="p">(</span><span class="n">vlib_main_t</span> <span class="o">*</span> <span class="n">vm</span><span class="p">,</span>
-                   <span class="n">vlib_node_runtime_t</span> <span class="o">*</span> <span class="n">node</span><span class="p">,</span> <span class="n">vlib_frame_t</span> <span class="o">*</span> <span class="n">frame</span><span class="p">,</span>
-                   <span class="kt">int</span> <span class="n">is_ip4</span><span class="p">,</span> <span class="kt">int</span> <span class="n">is_trace</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">u32</span> <span class="n">n_left_from</span><span class="p">,</span> <span class="o">*</span><span class="n">from</span><span class="p">;</span>
-      <span class="n">vlib_buffer_t</span> <span class="o">*</span><span class="n">bufs</span><span class="p">[</span><span class="n">VLIB_FRAME_SIZE</span><span class="p">],</span> <span class="o">**</span><span class="n">b</span><span class="p">;</span>
-      <span class="n">u16</span> <span class="n">thread_indices</span> <span class="p">[</span><span class="n">VLIB_FRAME_SIZE</span><span class="p">];</span>
-      <span class="n">u16</span> <span class="n">nexts</span><span class="p">[</span><span class="n">VLIB_FRAME_SIZE</span><span class="p">],</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-      <span class="n">u32</span> <span class="n">n_enq</span><span class="p">;</span>
-      <span class="n">htest_main_t</span> <span class="o">*</span><span class="n">hmp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">htest_main</span><span class="p">;</span>
-      <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-
-      <span class="n">from</span> <span class="o">=</span> <span class="n">vlib_frame_vector_args</span> <span class="p">(</span><span class="n">frame</span><span class="p">);</span>
-      <span class="n">n_left_from</span> <span class="o">=</span> <span class="n">frame</span><span class="o">-&gt;</span><span class="n">n_vectors</span><span class="p">;</span>
-
-      <span class="n">vlib_get_buffers</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">bufs</span><span class="p">,</span> <span class="n">n_left_from</span><span class="p">);</span>
-      <span class="n">next</span> <span class="o">=</span> <span class="n">nexts</span><span class="p">;</span>
-      <span class="n">b</span> <span class="o">=</span> <span class="n">bufs</span><span class="p">;</span>
-
-      <span class="cm">/*</span>
-<span class="cm">       * Typical frame traversal loop, details vary with</span>
-<span class="cm">       * use case. Make sure to set thread_indices[i] with</span>
-<span class="cm">       * the desired destination thread index. You may</span>
-<span class="cm">       * or may not bother to set next[i].</span>
-<span class="cm">       */</span>
-
-      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">frame</span><span class="o">-&gt;</span><span class="n">n_vectors</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
-          <span class="o">&lt;</span><span class="n">snip</span><span class="o">&gt;</span>
-          <span class="cm">/* Pick a thread to handle this packet */</span>
-          <span class="n">thread_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span> <span class="p">(</span><span class="n">packet_data_or_whatever</span><span class="p">);</span>
-          <span class="o">&lt;</span><span class="n">snip</span><span class="o">&gt;</span>
-
-          <span class="n">b</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-          <span class="n">next</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-          <span class="n">n_left_from</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-
-       <span class="cm">/* Enqueue buffers to threads */</span>
-       <span class="n">n_enq</span> <span class="o">=</span>
-        <span class="n">vlib_buffer_enqueue_to_thread</span> <span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">hmp</span><span class="o">-&gt;</span><span class="n">frame_queue_index</span><span class="p">,</span>
-                                       <span class="n">from</span><span class="p">,</span> <span class="n">thread_indices</span><span class="p">,</span> <span class="n">frame</span><span class="o">-&gt;</span><span class="n">n_vectors</span><span class="p">,</span>
-                                       <span class="mi">1</span> <span class="cm">/* drop on congestion */</span><span class="p">);</span>
-       <span class="cm">/* Typical counters,</span>
-<span class="cm">      if (n_enq &lt; frame-&gt;n_vectors)</span>
-<span class="cm">        vlib_node_increment_counter (vm, node-&gt;node_index,</span>
-<span class="cm">                     XXX_ERROR_CONGESTION_DROP,</span>
-<span class="cm">                     frame-&gt;n_vectors - n_enq);</span>
-<span class="cm">      vlib_node_increment_counter (vm, node-&gt;node_index,</span>
-<span class="cm">                         XXX_ERROR_HANDED_OFF, n_enq);</span>
-<span class="cm">      return frame-&gt;n_vectors;</span>
-<span class="cm">}</span>
-</pre></div>
-</div>
-<p>Notes about calling vlib_buffer_enqueue_to_thread(…):</p>
-<ul class="simple">
-<li>If you pass “drop on congestion” non-zero, all packets in the
-inbound frame will be consumed one way or the other. This is the
-recommended setting.</li>
-<li>In the drop-on-congestion case, please don’t try to “help” in the
-enqueue node by freeing dropped packets, or by pushing them to
-“error-drop.” Either of those actions would be a severe error.</li>
-<li>It’s perfectly OK to enqueue packets to the current thread.</li>
-</ul>
-</div>
 </div>
 </div>
 

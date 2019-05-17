@@ -187,14 +187,14 @@
 </div>
 <div class="section" id="reporting-bugs">
 <h1>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Permalink to this headline">¶</a></h1>
-<p>Although every situation is different, this section describes how to
+<p>Although every situation is different, this page describes how to
 collect data which will help make efficient use of everyone’s time
 when dealing with vpp bugs.</p>
 <p>Before you press the Jira button to create a bug report - or email
 <a class="reference external" href="mailto:vpp-dev&#37;&#52;&#48;lists&#46;fd&#46;io">vpp-dev<span>&#64;</span>lists<span>&#46;</span>fd<span>&#46;</span>io</a> - please ask yourself whether there’s enough
-information for someone else to understand and to reproduce the issue
-given a reasonable amount of effort. <strong>Unicast emails to maintainers,
-committers, and the project PTL are strongly discouraged.</strong></p>
+information for someone else to understand and possibly to reproduce
+the issue given a reasonable amount of effort. <strong>Unicast emails to
+maintainers, committers, and the project PTL are strongly discouraged.</strong></p>
 <p>A good strategy for clear-cut bugs: file a detailed Jira ticket, and
 then send a short description of the issue to <a class="reference external" href="mailto:vpp-dev&#37;&#52;&#48;lists&#46;fd&#46;io">vpp-dev<span>&#64;</span>lists<span>&#46;</span>fd<span>&#46;</span>io</a>,
 perhaps from the Jira ticket description. It’s fine to send email to
@@ -224,7 +224,7 @@ perhaps from the Jira ticket description. It’s fine to send email to
 specific VM / container / bare-metal environment is involved, please
 describe the environment in detail:</p>
 <ul class="simple">
-<li>Linux Distro (e.g. Ubuntu 18.04.2 LTS, CentOS-7, etc.)</li>
+<li>Linux Distro (e.g. Ubuntu 14.04.3 LTS, CentOS-7, etc.)</li>
 <li>NIC type(s) (ixgbe, i40e, enic, etc. etc.), vhost-user, tuntap</li>
 <li>NUMA configuration if applicable</li>
 </ul>
@@ -234,20 +234,11 @@ unmodified master/latest software.</p>
 </div>
 <div class="section" id="show-command-output">
 <h2>“Show” command output<a class="headerlink" href="#show-command-output" title="Permalink to this headline">¶</a></h2>
-<p>Every situation is different. If the issue involves a sequence of
-debug CLI command, please enable CLI command logging, and send the
-sequence involved. Note that the debug CLI is a developer’s tool -
-<strong>no warranty express or implied</strong> - and that we may choose not to fix
-debug CLI bugs.</p>
-<p>Please include “show error” [error counter] output. It’s often helpful
-to “clear error”, send a bit of traffic, then “show error”
-particularly when running vpp on noisy networks.</p>
-<p>Please include ip4 / ip6 / mpls FIB contents (“show ip fib”, “show ip6
-fib”, “show mpls fib”, “show mpls tunnel”).</p>
-<p>Please include “show hardware”, “show interface”, and “show interface
-address” output</p>
-<p>Here is a consolidated set of commands that are generally useful
-before/after sending traffic.  Before sending traffic:</p>
+<p>Every situation is different. If the issue involves a sequence of debug CLI command, please enable CLI command logging, and send the sequence involved. Note that the debug CLI is a developer’s tool - <strong>no warranty express or implied</strong> - and that we may choose not to fix debug CLI bugs.</p>
+<p>Please include “show error” [error counter] output. It’s often helpful to “clear error”, send a bit of traffic, then “show error” particularly when running vpp on a noisy networks.</p>
+<p>Please include ip4 / ip6 / mpls FIB contents (“show ip fib”, “show ip6 fib”, “show mpls fib”, “show mpls tunnel”).</p>
+<p>Please include “show hardware”, “show interface”, and “show interface address” output</p>
+<p>Here is a consolidated set of commands that are generally useful before/after sending traffic.  Before sending traffic.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vppctl clear hardware</span>
 <span class="go">vppctl clear interface</span>
 <span class="go">vppctl clear error</span>
@@ -351,35 +342,23 @@ Mbytes.</p>
 … } … ” in the vpp startup configuration file
 /etc/vpp/startup.conf, or to include it in the command line arguments
 passed by orchestration software.</p>
-<p>Core files from private images require special handling. If it’s
-necessary to go that route, copy the <strong>exact</strong> Debian packages (or
-RPMs) which correspond to the core file to the same public place as
-the core file. A no-excuses-allowed, hard-and-fast requirement.</p>
-<p>In particular:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">libvppinfra_&lt;version&gt;_&lt;arch&gt;.deb # vppinfra library</span>
-<span class="go">libvppinfra-dev_&lt;version&gt;_&lt;arch&gt;.deb # vppinfra library development pkg</span>
-<span class="go">vpp_&lt;version&gt;_&lt;arch&gt;.deb         # the vpp executable</span>
-<span class="go">vpp-dbg_&lt;version&gt;_&lt;arch&gt;.deb     # debug symbols</span>
-<span class="go">vpp-dev_&lt;version&gt;_&lt;arch&gt;.deb     # vpp development pkg</span>
-<span class="go">vpp-lib_&lt;version&gt;_&lt;arch&gt;.deb     # shared libraries</span>
-<span class="go">vpp-plugin-core_&lt;version&gt;_&lt;arch&gt;.deb # core plugins</span>
-<span class="go">vpp-plugin-dpdk_&lt;version&gt;_&lt;arch&gt;.deb # dpdk plugin</span>
-</pre></div>
-</div>
-<p>For reference, please include git commit-ID, branch, and git repo
-information [for repos other than gerrit.fd.io] in the Jira ticket.</p>
-<p>Note that git commit-ids are crypto sums of the head [latest]
-<strong>merged</strong> patch. They say <strong>nothing whatsoever</strong> about local
-workspace modifications, branching, or the git repo in question.</p>
-<p>Even given a byte-for-byte identical source tree, it’s easy to build
-dramatically different binary artifacts. All it takes is a different
-toolchain version.</p>
-<p>Bottom line: please follow core file handling instructions to the
-letter. It’s not complicated. Simply copy the exact Debian packages or
-RPMs which correspond to core files to accessible locations.</p>
+<p>Core files from private, modified images are discouraged. If it’s
+necessary to go that route, please copy the <strong>exact</strong> Debian
+packages (or RPMs) corresponding to the core file to the same public
+place as the core file. In particular.</p>
+<ul class="simple">
+<li>vpp_&lt;version&gt;_&lt;arch&gt;.deb         # the vpp executable</li>
+<li>vpp-dbg_&lt;version&gt;_&lt;arch&gt;.deb     # debug symbols</li>
+<li>vpp-dev_&lt;version&gt;_&lt;arch&gt;.deb     # development package</li>
+<li>vpp-lib_&lt;version&gt;_&lt;arch&gt;.deb     # shared libraries</li>
+<li>vpp-plugins_&lt;version&gt;_&lt;arch&gt;.deb # plugins</li>
+</ul>
+<p>Please include the full commit-ID the Jira ticket.</p>
 <p>If we go through the setup process only to discover that the image and
-core files don’t match, it will simply delay resolution of the issue;
-to say nothing of irritating the person who just wasted their time.</p>
+core files don’t match, it will simply delay resolution of the
+issue. And it will annoy the heck out of the engineer who just wasted
+their time. Exact means <strong>exact</strong>, not “oh, gee, I added a few lines
+of debug scaffolding since then…”</p>
 </div>
 </div>
 

@@ -110,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="eventviewer.html#g2-graphical-event-viewer">G2 graphical event viewer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fib20/index.html">FIB 2.0 Hierarchical, Protocol, Independent</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">How to build a vpp dispatch trace aware Wireshark</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#download-wireshark-source-code">Download wireshark source code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-prerequisite-packages">Install prerequisite packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-and-patch-wireshark-source-code">Download and patch wireshark source code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-prerequisite-debian-packages">Install prerequisite Debian packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#compile-wireshark">Compile Wireshark</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#make-a-pcap-dispatch-trace">Make a pcap dispatch trace</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#display-in-wireshark">Display in Wireshark</a></li>
@@ -201,23 +201,28 @@
             
   <div class="section" id="how-to-build-a-vpp-dispatch-trace-aware-wireshark">
 <span id="how-to-build-a-vpp-dispatch-trace-aware-wireshark"></span><h1>How to build a vpp dispatch trace aware Wireshark<a class="headerlink" href="#how-to-build-a-vpp-dispatch-trace-aware-wireshark" title="Permalink to this headline">¶</a></h1>
-<p>The vpp pcap dispatch trace dissector has been merged into the wireshark
-main branch, so the process is simple. Download wireshark, compile it,
-and install it.</p>
-<div class="section" id="download-wireshark-source-code">
-<span id="download-wireshark-source-code"></span><h2>Download wireshark source code<a class="headerlink" href="#download-wireshark-source-code" title="Permalink to this headline">¶</a></h2>
+<p>At some point, we will upstream our vpp pcap dispatch trace dissector.
+It’s not finished - contributions welcome - and we have to work through
+whatever issues will be discovered during the upstreaming process.</p>
+<p>On the other hand, it’s ready for some tire-kicking. Here’s how to build
+wireshark.</p>
+<div class="section" id="download-and-patch-wireshark-source-code">
+<span id="download-and-patch-wireshark-source-code"></span><h2>Download and patch wireshark source code<a class="headerlink" href="#download-and-patch-wireshark-source-code" title="Permalink to this headline">¶</a></h2>
 <p>The wireshark git repo is large, so it takes a while to clone.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">code</span><span class="o">.</span><span class="n">wireshark</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">review</span><span class="o">/</span><span class="n">wireshark</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">code</span><span class="o">.</span><span class="n">wireshark</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">review</span><span class="o">/</span><span class="n">wireshark</span>
+     <span class="n">cp</span> <span class="o">.../</span><span class="n">extras</span><span class="o">/</span><span class="n">wireshark</span><span class="o">/</span><span class="n">packet</span><span class="o">-</span><span class="n">vpp</span><span class="o">.</span><span class="n">c</span> <span class="n">wireshark</span><span class="o">/</span><span class="n">epan</span><span class="o">/</span><span class="n">dissectors</span>
+     <span class="n">patch</span> <span class="o">-</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="o">.../</span><span class="n">extras</span><span class="o">/</span><span class="n">wireshark</span><span class="o">/</span><span class="n">diffs</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
+<p>The small patch adds packet-vpp.c to the dissector list.</p>
 </div>
-<div class="section" id="install-prerequisite-packages">
-<span id="install-prerequisite-packages"></span><h2>Install prerequisite packages<a class="headerlink" href="#install-prerequisite-packages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-prerequisite-debian-packages">
+<span id="install-prerequisite-debian-packages"></span><h2>Install prerequisite Debian packages<a class="headerlink" href="#install-prerequisite-debian-packages" title="Permalink to this headline">¶</a></h2>
 <p>Here is a list of prerequisite packages which must be present in order
 to compile wireshark, beyond what’s typically installed on an Ubuntu
 18.04 system:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">libgcrypt11</span><span class="o">-</span><span class="n">dev</span> <span class="n">flex</span> <span class="n">bison</span> <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span>
-    <span class="n">qtmultimedia5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5svg5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpcap</span><span class="o">-</span><span class="n">dev</span> <span class="n">qt5</span><span class="o">-</span><span class="n">default</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">libgcrypt11</span><span class="o">-</span><span class="n">dev</span> <span class="n">flex</span> <span class="n">bison</span> <span class="n">qtbase5</span><span class="o">-</span><span class="n">dev</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span>
+        <span class="n">qtmultimedia5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libqt5svg5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpcap</span><span class="o">-</span><span class="n">dev</span> <span class="n">qt5</span><span class="o">-</span><span class="n">default</span>
 </pre></div>
 </div>
 </div>
@@ -225,12 +230,10 @@ to compile wireshark, beyond what’s typically installed on an Ubuntu
 <span id="compile-wireshark"></span><h2>Compile Wireshark<a class="headerlink" href="#compile-wireshark" title="Permalink to this headline">¶</a></h2>
 <p>Mercifully, Wireshark uses cmake, so it’s relatively easy to build, at
 least on Ubuntu 18.04.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    $ cd wireshark
-    $ mkdir build
-    $ cd build
-    $ cmake -G Ninja ../
-    $ ninja -j 8
-    $ sudo ninja install
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     $ cd wireshark
+     $ cmake -G Ninja
+     $ ninja -j 8
+     $ sudo ninja install
 </pre></div>
 </div>
 </div>

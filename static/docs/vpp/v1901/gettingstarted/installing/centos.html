@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Installing" href="opensuse.html" />
-    <link rel="prev" title="Ubuntu 18.04 - Setup the FD.io Repository" href="ubuntu.html" /> 
+    <link rel="prev" title="Ubuntu 16.04 - Setup the FD.io Repository" href="ubuntu.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -240,6 +240,48 @@ provided.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="vpp-stable-branch">
+<h4>VPP Stable Branch<a class="headerlink" href="#vpp-stable-branch" title="Permalink to this headline">¶</a></h4>
+<p>To allow <em>yum</em> access to the build artifacts for a VPP stable branch, create
+the file <em>‘/etc/yum.repos.d/fdio-release.repo’</em> with the following content.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cat /etc/yum.repos.d/fdio-release.repo
+<span class="go">[fdio_1810]</span>
+<span class="go">name=fdio_1810</span>
+<span class="gp">baseurl=https://packagecloud.io/fdio/1810/el/7/$</span>basearch
+<span class="go">repo_gpgcheck=1</span>
+<span class="go">gpgcheck=0</span>
+<span class="go">enabled=1</span>
+<span class="go">gpgkey=https://packagecloud.io/fdio/1810/gpgkey</span>
+<span class="go">sslverify=1</span>
+<span class="go">sslcacert=/etc/pki/tls/certs/ca-bundle.crt</span>
+<span class="go">metadata_expire=300</span>
+
+<span class="go">[fdio_1810-source]</span>
+<span class="go">name=fdio_1810-source</span>
+<span class="go">baseurl=https://packagecloud.io/fdio/1810/el/7/SRPMS</span>
+<span class="go">repo_gpgcheck=1</span>
+<span class="go">gpgcheck=0</span>
+<span class="go">enabled=1</span>
+<span class="go">gpgkey=https://packagecloud.io/fdio/1810/gpgkey</span>
+<span class="go">sslverify=1</span>
+<span class="go">sslcacert=/etc/pki/tls/certs/ca-bundle.crt</span>
+<span class="go">metadata_expire=300</span>
+</pre></div>
+</div>
+<p>For other stable branches, replace the <em>‘1810’</em> from the above content with the
+desired release. Examples: 1606, 1609, 1701, 1704, 1707, 1710, 1804, 1807</p>
+<p>Update your local yum cache.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum clean all
+<span class="gp">$</span> sudo yum -q makecache -y --disablerepo<span class="o">=</span><span class="s1">&#39;*&#39;</span> --enablerepo<span class="o">=</span><span class="s1">&#39;fdio_1810&#39;</span>
+</pre></div>
+</div>
+<p>The <em>‘yum install vpp’</em> command will install the most recent build on the
+branch, not the latest offical release. Run the following command to get the
+list of images produce by the branch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum --showduplicates list vpp* <span class="p">|</span> expand
+</pre></div>
+</div>
+</div>
 <div class="section" id="vpp-master-branch">
 <h4>VPP Master Branch<a class="headerlink" href="#vpp-master-branch" title="Permalink to this headline">¶</a></h4>
 <p>To allow <em>yum</em> access to the nightly builds from the VPP master branch, create
@@ -301,7 +343,7 @@ enabled at any time.</p>
 <p>There are additional packages that are optional. These packages can be
 combined with the command above and installed all at once, or installed as
 needed:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum install vpp-plugins vpp-devel vpp-api-python vpp-api-lua vpp-api-java vpp-debuginfo vpp-devel libvpp0
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum install vpp-plugins vpp-devel vpp-api-python vpp-api-lua vpp-api-java
 </pre></div>
 </div>
 </div>
@@ -339,7 +381,7 @@ ways to tailor VPP to a specific system.</p>
         <a href="opensuse.html" class="btn btn-neutral float-right" title="Installing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ubuntu.html" class="btn btn-neutral" title="Ubuntu 18.04 - Setup the FD.io Repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ubuntu.html" class="btn btn-neutral" title="Ubuntu 16.04 - Setup the FD.io Repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
