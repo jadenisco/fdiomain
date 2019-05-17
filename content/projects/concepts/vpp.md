@@ -9,7 +9,7 @@ btntxt="What is VPP "
 
 # The first part of these strings are displayed in the dropdown.
 # The second is the url
-latest = "Latest Release (1904), /docs/vpp/v1901/index.html"
-versions = ["Master, /docs/vpp/v1901/index.html",
-	 "1901, /docs/vpp/v1901/index.html"]
+latest = "Latest Release (1901), /docs/vpp/v1901/index.html"
+versions = ["Master, /docs/vpp/v1901/index.html"]
+
 +++
