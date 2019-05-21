@@ -16,21 +16,22 @@
 		    <div class="col-md-6">
 			<article class="blog-post">
 			    {{ if isset .Params "image" }}
-			    <a class="post-title" href="{{ .Params.eventlink }}"><img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb"></a> 
-			    {{ end }}
+			    <a class="post-title" href="{{ .Params.eventlink }}">
+				<img src="{{ .Params.image | absURL }}"
+				     class="img-responsive" alt="post-thumb">
+			    </a> {{ end }}
 			    <a class="post-title" href="{{ .Params.eventlink }}">{{ .Title }}</a>
-			    <p>
-				{{ partial "summary" .}}
-			    </p>
+			    <p> {{ partial "summary" .}} </p>
+			    <a href="{{ .Params.eventreglink }}" class="btn btn-main">{{ .Params.eventregtxt }}</a>
+			    <a href="{{ .Params.eventschedlink }}" class="btn btn-main">{{ .Params.eventschedtxt }}</a>
 			</article>
-		    </div>
-		    {{ end }}
-		    {{ end }}
+		    </div> {{ end }} {{ end }}
 		</div>
 		<div class="col-12 text-center">
 		    {{ template "_internal/pagination.html" . }}
 		</div>
 	    </div>
+
 	</section>
 	<section class="blog section eventsection">
 	    <div class="container">
@@ -42,15 +43,14 @@
 		    <div class="col-md-6">
 			<article class="blog-post">
 			    {{ if isset .Params "image" }}
-			    <a class="post-title" href="{{ .Params.eventlink }}"><img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb"></a> {{ end }}
+			    <a class="post-title" href="{{ .Params.eventlink }}">
+				<img src="{{ .Params.image | absURL }}"
+				     class="img-responsive" alt="post-thumb">
+			    </a> {{ end }}
 			    <a class="post-title" href="{{ .Params.eventlink }}">{{ .Title }}</a>
-			    <p>
-				{{ partial "summary" .}}
-			    </p>
+			    <p> {{ partial "summary" .}} </p>
 			</article>
-		    </div>
-		    {{ end }}
-		    {{ end }}
+		    </div> {{ end }} {{ end }}
 		</div>
 		<div class="col-12 text-center">
 		    {{ template "_internal/pagination.html" . }}
