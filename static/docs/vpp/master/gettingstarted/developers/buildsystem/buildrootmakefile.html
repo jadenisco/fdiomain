@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction to build-root/Makefile &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Introduction to build-root/Makefile &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Event-logger" href="../eventviewer.html" />
     <link rel="prev" title="Introduction to cmake and ninja" href="cmakeandninja.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -132,6 +126,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../relatedprojects/index.html">Related Projects</a></li>
@@ -295,8 +290,8 @@ x86_64, to run on PowerPC, to debug the Xtensa instruction set.</p>
 <p>The PLATFORM make/environment variable controls a number of important
 characteristics, primarily:</p>
 <ul class="simple">
-<li><p>CPU architecture</p></li>
-<li><p>The list of images to build.</p></li>
+<li>CPU architecture</li>
+<li>The list of images to build.</li>
 </ul>
 <p>With respect to …/build-root/Makefile, the list of images to build is
 specified by the target. For example:</p>
@@ -380,15 +375,15 @@ vpp_coverity_TAG_LDFLAGS = -g -O2 -fPIC -Werror -D__COVERITY__
 </div>
 <p>Note the following variable settings:</p>
 <ul class="simple">
-<li><p>The variable _arch sets the CPU architecture used to build the
+<li>The variable _arch sets the CPU architecture used to build the
 per-platform cross-compilation toolchain. With the exception of the
 “native” architecture - used in our example - the vpp build system
-produces cross-compiled binaries.</p></li>
-<li><p>The variable _native_tools lists the required set of self-compiled
-build tools.</p></li>
-<li><p>The variable _root_packages lists the set of images to build when
+produces cross-compiled binaries.</li>
+<li>The variable _native_tools lists the required set of self-compiled
+build tools.</li>
+<li>The variable _root_packages lists the set of images to build when
 specifying the target: make PLATFORM= TAG= [install-deb |
-install-rpm].</p></li>
+install-rpm].</li>
 </ul>
 </div>
 <div class="section" id="the-tag-variable">
@@ -401,46 +396,46 @@ See definitions above.</p>
 <h2>Important targets build-root/Makefile<a class="headerlink" href="#important-targets-build-root-makefile" title="Permalink to this headline">¶</a></h2>
 <p>The main Makefile and the various makefile fragments implement the
 following user-visible targets:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 17%" />
-<col style="width: 68%" />
+<col width="14%" />
+<col width="17%" />
+<col width="68%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Target</p></th>
-<th class="head"><p>ENV Variable Settings</p></th>
-<th class="head"><p>Notes</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Target</th>
+<th class="head">ENV Variable Settings</th>
+<th class="head">Notes</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>foo</p></td>
-<td><p>bar</p></td>
-<td><p>mumble</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>foo</td>
+<td>bar</td>
+<td>mumble</td>
 </tr>
-<tr class="row-odd"><td><p>bootstrap-tools</p></td>
-<td><p>none</p></td>
-<td><p>Builds the set of native tools needed by the vpp build system to
+<tr class="row-odd"><td>bootstrap-tools</td>
+<td>none</td>
+<td>Builds the set of native tools needed by the vpp build system to
 build images. Example: vppapigen. In a full cross compilation case might include
-include “make”, “git”, “find”, and “tar</p></td>
+include “make”, “git”, “find”, and “tar</td>
 </tr>
-<tr class="row-even"><td><p>install-tools</p></td>
-<td><p>PLATFORM</p></td>
-<td><p>Builds the tool chain for the indicated &lt;platform&gt;. Not used in vpp builds</p></td>
+<tr class="row-even"><td>install-tools</td>
+<td>PLATFORM</td>
+<td>Builds the tool chain for the indicated &lt;platform&gt;. Not used in vpp builds</td>
 </tr>
-<tr class="row-odd"><td><p>distclean</p></td>
-<td><p>none</p></td>
-<td><p>Roto-rooters everything in sight: toolchains, images, and so forth.</p></td>
+<tr class="row-odd"><td>distclean</td>
+<td>none</td>
+<td>Roto-rooters everything in sight: toolchains, images, and so forth.</td>
 </tr>
-<tr class="row-even"><td><p>install-deb</p></td>
-<td><p>PLATFORM and TAG</p></td>
-<td><p>Build Debian packages comprising components listed in &lt;platform&gt;_root_packages,
-using compile / link options defined by TAG.</p></td>
+<tr class="row-even"><td>install-deb</td>
+<td>PLATFORM and TAG</td>
+<td>Build Debian packages comprising components listed in &lt;platform&gt;_root_packages,
+using compile / link options defined by TAG.</td>
 </tr>
-<tr class="row-odd"><td><p>install-rpm</p></td>
-<td><p>PLATFORM and TAG</p></td>
-<td><p>Build RPMs comprising components listed in &lt;platform&gt;_root_packages,
-using compile / link options defined by TAG.</p></td>
+<tr class="row-odd"><td>install-rpm</td>
+<td>PLATFORM and TAG</td>
+<td>Build RPMs comprising components listed in &lt;platform&gt;_root_packages,
+using compile / link options defined by TAG.</td>
 </tr>
 </tbody>
 </table>
@@ -448,27 +443,27 @@ using compile / link options defined by TAG.</p></td>
 <div class="section" id="additional-build-root-makefile-environment-variable-settings">
 <h2>Additional build-root/Makefile environment variable settings<a class="headerlink" href="#additional-build-root-makefile-environment-variable-settings" title="Permalink to this headline">¶</a></h2>
 <p>These variable settings may be of use:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 66%" />
+<col width="17%" />
+<col width="17%" />
+<col width="66%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>ENV Variable</p></th>
-<th class="head" colspan="2"><p>Notes</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ENV Variable</th>
+<th class="head" colspan="2">Notes</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>BUILD_DEBUG=vx</p></td>
-<td colspan="2"><p>Directs Makefile et al. to make a good-faith effort to show what’s going on in excruciating detail.
-Use it as follows: “make … BUILD_DEBUG=vx”. Fairly effective in Makefile debug situations.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>BUILD_DEBUG=vx</td>
+<td colspan="2">Directs Makefile et al. to make a good-faith effort to show what’s going on in excruciating detail.
+Use it as follows: “make … BUILD_DEBUG=vx”. Fairly effective in Makefile debug situations.</td>
 </tr>
-<tr class="row-odd"><td><p>V=1</p></td>
-<td colspan="2"><p>print detailed cc / ld command lines. Useful for discovering if -DFOO=11 is in the command line or not</p></td>
+<tr class="row-odd"><td>V=1</td>
+<td colspan="2">print detailed cc / ld command lines. Useful for discovering if -DFOO=11 is in the command line or not</td>
 </tr>
-<tr class="row-even"><td><p>CC=mygcc</p></td>
-<td colspan="2"><p>Override the configured C-compiler</p></td>
+<tr class="row-even"><td>CC=mygcc</td>
+<td colspan="2">Override the configured C-compiler</td>
 </tr>
 </tbody>
 </table>
@@ -512,40 +507,40 @@ automake which does not depend on other components, the make fragment
 can be empty. See …/build-data/packages/vpp.mk for an uncomplicated
 but fully realistic example.</p>
 <p>Here are some of the important variable settings in per-component makefile fragments:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 66%" />
+<col width="17%" />
+<col width="17%" />
+<col width="66%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Variable</p></th>
-<th class="head" colspan="2"><p>Notes</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head" colspan="2">Notes</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>xxx_configure_depend</p></td>
-<td colspan="2"><p>Lists the set of component build dependencies for the xxx component. In plain English: don’t try to
+<tbody valign="top">
+<tr class="row-even"><td>xxx_configure_depend</td>
+<td colspan="2">Lists the set of component build dependencies for the xxx component. In plain English: don’t try to
 configure this component until you’ve successfully built the indicated targets. Almost always,
 xxx_configure_depend will list a set of “yyy-install” targets. Note the pattern:
-“variable names contain underscores, make target names contain hyphens”</p></td>
+“variable names contain underscores, make target names contain hyphens”</td>
 </tr>
-<tr class="row-odd"><td><p>xxx_configure_args</p></td>
-<td colspan="2"><p>(optional) Lists any additional arguments to pass to the xxx component “configure” script.
+<tr class="row-odd"><td>xxx_configure_args</td>
+<td colspan="2">(optional) Lists any additional arguments to pass to the xxx component “configure” script.
 The main Makefile %-configure rule adds the required settings for –libdir, –prefix, and
-–host (when cross-compiling)</p></td>
+–host (when cross-compiling)</td>
 </tr>
-<tr class="row-even"><td><p>xxx_CPPFLAGS</p></td>
-<td colspan="2"><p>Adds -I stanzas to CPPFLAGS for components upon which xxx depends.
+<tr class="row-even"><td>xxx_CPPFLAGS</td>
+<td colspan="2">Adds -I stanzas to CPPFLAGS for components upon which xxx depends.
 Almost invariably “xxx_CPPFLAGS = $(call installed_includes_fn, dep1 dep2 dep3)”, where dep1, dep2, and
 dep3 are listed in xxx_configure_depend. It is bad practice to set “-g -O3” here. Those settings
-belong in a TAG.</p></td>
+belong in a TAG.</td>
 </tr>
-<tr class="row-odd"><td><p>xxx_LDFLAGS</p></td>
-<td colspan="2"><p>Adds -Wl,-rpath -Wl,depN stanzas to LDFLAGS for components upon which xxx depends.
+<tr class="row-odd"><td>xxx_LDFLAGS</td>
+<td colspan="2">Adds -Wl,-rpath -Wl,depN stanzas to LDFLAGS for components upon which xxx depends.
 Almost invariably “xxx_LDFLAGS = $(call installed_lib_fn, dep1 dep2 dep3)”, where dep1, dep2, and
 dep3 are listed in xxx_configure_depend. It is bad manners to set “-liberty-or-death” here.
-Those settings belong in Makefile.am.</p></td>
+Those settings belong in Makefile.am.</td>
 </tr>
 </tbody>
 </table>
@@ -576,7 +571,7 @@ citizen even though it is not.</p>
         <a href="../eventviewer.html" class="btn btn-neutral float-right" title="Event-logger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cmakeandninja.html" class="btn btn-neutral float-left" title="Introduction to cmake and ninja" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cmakeandninja.html" class="btn btn-neutral" title="Introduction to cmake and ninja" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -602,16 +597,25 @@ citizen even though it is not.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

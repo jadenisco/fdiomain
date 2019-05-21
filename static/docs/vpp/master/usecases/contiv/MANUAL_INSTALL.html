@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Manual Installation &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Manual Installation &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Creating VPP Startup Configuration" href="VPP_CONFIG.html" />
     <link rel="prev" title="Contiv-VPP Vagrant Installation" href="Vagrant.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -129,6 +123,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -203,16 +198,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="manual-installation">
-<h1>Manual Installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h1>
+<span id="manual-installation"></span><h1>Manual Installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h1>
 <p>This document describes how to clone the Contiv respository and then use <a class="reference external" href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">kubeadm</a> to manually install Kubernetes
 with Contiv-VPP networking on one or more bare metal or VM hosts.</p>
 <div class="section" id="clone-the-contiv-respository">
-<h2>Clone the Contiv Respository<a class="headerlink" href="#clone-the-contiv-respository" title="Permalink to this headline">¶</a></h2>
+<span id="clone-the-contiv-respository"></span><h2>Clone the Contiv Respository<a class="headerlink" href="#clone-the-contiv-respository" title="Permalink to this headline">¶</a></h2>
 <p>To clone the Contiv respository enter the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">contiv</span><span class="o">/</span><span class="n">vpp</span><span class="o">/&lt;</span><span class="n">repository</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p><strong>Note:</strong> Replace <em><repository-name></em> with the name you want assigned to your cloned contiv repository.</p>
+<p><strong>Note:</strong> Replace <em>&lt;repository-name&gt;</em> with the name you want assigned to your cloned contiv repository.</p>
 <p>The cloned repository has important folders that contain content that are referenced in this Contiv documentation; those folders are noted below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vpp-contiv2$ ls
 build       build-root  doxygen  gmod       LICENSE      Makefile   RELEASE.md   src
@@ -221,27 +216,27 @@ build-data  docs        extras   INFO.yaml  MAINTAINERS  README.md  sphinx_venv 
 </div>
 </div>
 <div class="section" id="preparing-your-hosts">
-<h2>Preparing Your Hosts<a class="headerlink" href="#preparing-your-hosts" title="Permalink to this headline">¶</a></h2>
+<span id="preparing-your-hosts"></span><h2>Preparing Your Hosts<a class="headerlink" href="#preparing-your-hosts" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="host-specific-configurations">
-<h3>Host-specific Configurations<a class="headerlink" href="#host-specific-configurations" title="Permalink to this headline">¶</a></h3>
+<span id="host-specific-configurations"></span><h3>Host-specific Configurations<a class="headerlink" href="#host-specific-configurations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>VmWare VMs</strong>: the vmxnet3 driver is required on each interface that will
-be used by VPP. Please see <a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/VMWARE_FUSION_HOST">here</a> for instructions how to install the
-vmxnet3 driver on VmWare Fusion.</p></li>
+<li><strong>VmWare VMs</strong>: the vmxnet3 driver is required on each interface that will
+be used by VPP. Please see <a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/VMWARE_FUSION_HOST.md">here</a> for instructions how to install the
+vmxnet3 driver on VmWare Fusion.</li>
 </ul>
 </div>
 <div class="section" id="setting-up-network-adapter-s">
-<h3>Setting up Network Adapter(s)<a class="headerlink" href="#setting-up-network-adapter-s" title="Permalink to this headline">¶</a></h3>
+<span id="setting-up-network-adapter-s"></span><h3>Setting up Network Adapter(s)<a class="headerlink" href="#setting-up-network-adapter-s" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="setting-up-dpdk">
-<h4>Setting up DPDK<a class="headerlink" href="#setting-up-dpdk" title="Permalink to this headline">¶</a></h4>
+<span id="setting-up-dpdk"></span><h4>Setting up DPDK<a class="headerlink" href="#setting-up-dpdk" title="Permalink to this headline">¶</a></h4>
 <p>DPDK setup must be completed <strong>on each node</strong> as follows:</p>
 <ul>
-<li><p>Load the PCI UIO driver:</p>
+<li><p class="first">Load the PCI UIO driver:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo modprobe uio_pci_generic
 </pre></div>
 </div>
 </li>
-<li><p>Verify that the PCI UIO driver has loaded successfully:</p>
+<li><p class="first">Verify that the PCI UIO driver has loaded successfully:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lsmod | grep uio
 uio_pci_generic        16384  0
 uio                    20480  1 uio_pci_generic
@@ -262,7 +257,7 @@ or a file in the <code class="docutils literal notranslate"><span class="pre">/e
 </ul>
 </div>
 <div class="section" id="determining-network-adapter-pci-addresses">
-<h4>Determining Network Adapter PCI Addresses<a class="headerlink" href="#determining-network-adapter-pci-addresses" title="Permalink to this headline">¶</a></h4>
+<span id="determining-network-adapter-pci-addresses"></span><h4>Determining Network Adapter PCI Addresses<a class="headerlink" href="#determining-network-adapter-pci-addresses" title="Permalink to this headline">¶</a></h4>
 <p>You need the PCI address of the network interface that VPP will use for the multi-node pod interconnect. On Debian-based
 distributions, you can use <code class="docutils literal notranslate"><span class="pre">lshw</span></code>(*):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo lshw -class network -businfo
@@ -276,63 +271,63 @@ pci@0000:00:04.0  ens4        network    Virtio network device
 <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">-y</span> <span class="pre">install</span> <span class="pre">lshw</span></code></p>
 </div>
 <div class="section" id="configuring-vswitch-to-use-network-adapters">
-<h4>Configuring vswitch to Use Network Adapters<a class="headerlink" href="#configuring-vswitch-to-use-network-adapters" title="Permalink to this headline">¶</a></h4>
+<span id="configuring-vswitch-to-use-network-adapters"></span><h4>Configuring vswitch to Use Network Adapters<a class="headerlink" href="#configuring-vswitch-to-use-network-adapters" title="Permalink to this headline">¶</a></h4>
 <p>Finally, you need to set up the vswitch to use the network adapters:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/SINGLE_NIC_SETUP">Setup on a node with a single NIC</a></p></li>
-<li><p><a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/MULTI_NIC_SETUP">Setup a node with multiple NICs</a></p></li>
+<li><a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/SINGLE_NIC_SETUP.md">Setup on a node with a single NIC</a></li>
+<li><a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/MULTI_NIC_SETUP.md">Setup a node with multiple NICs</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="using-a-node-setup-script">
-<h3>Using a Node Setup Script<a class="headerlink" href="#using-a-node-setup-script" title="Permalink to this headline">¶</a></h3>
+<span id="using-a-node-setup-script"></span><h3>Using a Node Setup Script<a class="headerlink" href="#using-a-node-setup-script" title="Permalink to this headline">¶</a></h3>
 <p>You can perform the above steps using the <a class="reference external" href="https://github.com/contiv/vpp/tree/master/k8s/README.md#setup-node-sh">node setup script</a>.</p>
 </div>
 </div>
 <div class="section" id="installing-kubernetes-with-contiv-vpp-cni-plugin">
-<h2>Installing Kubernetes with Contiv-VPP CNI plugin<a class="headerlink" href="#installing-kubernetes-with-contiv-vpp-cni-plugin" title="Permalink to this headline">¶</a></h2>
+<span id="installing-kubernetes-with-contiv-vpp-cni-plugin"></span><h2>Installing Kubernetes with Contiv-VPP CNI plugin<a class="headerlink" href="#installing-kubernetes-with-contiv-vpp-cni-plugin" title="Permalink to this headline">¶</a></h2>
 <p>After the nodes you will be using in your K8s cluster are prepared, you can
 install the cluster using <a class="reference external" href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">kubeadm</a>.</p>
 <div class="section" id="installing-kubeadm-on-your-hosts">
-<h3>(1/4) Installing Kubeadm on Your Hosts<a class="headerlink" href="#installing-kubeadm-on-your-hosts" title="Permalink to this headline">¶</a></h3>
+<span id="installing-kubeadm-on-your-hosts"></span><h3>(1/4) Installing Kubeadm on Your Hosts<a class="headerlink" href="#installing-kubeadm-on-your-hosts" title="Permalink to this headline">¶</a></h3>
 <p>For first-time installation, see <a class="reference external" href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">Installing kubeadm</a>. To update an
 existing installation,  you should do a <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">apt-get</span> <span class="pre">upgrade</span></code>
 or <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">update</span></code> to get the latest version of kubeadm.</p>
 <p>On each host with multiple NICs where the NIC that will be used for Kubernetes
 management traffic is not the one pointed to by the default route out of the
-host, a <a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/CUSTOM_MGMT_NETWORK">custom management network</a> for Kubernetes must be configured.</p>
+host, a <a class="reference external" href="https://github.com/contiv/vpp/tree/master/docs/CUSTOM_MGMT_NETWORK.md">custom management network</a> for Kubernetes must be configured.</p>
 <div class="section" id="using-kubernetes-1-10-and-above">
-<h4>Using Kubernetes 1.10 and Above<a class="headerlink" href="#using-kubernetes-1-10-and-above" title="Permalink to this headline">¶</a></h4>
+<span id="using-kubernetes-1-10-and-above"></span><h4>Using Kubernetes 1.10 and Above<a class="headerlink" href="#using-kubernetes-1-10-and-above" title="Permalink to this headline">¶</a></h4>
 <p>In K8s 1.10, support for huge pages in a pod has been introduced. For now, this
 feature must be either disabled or memory limit must be defined for vswitch container.</p>
 <p>To disable huge pages, perform the following
 steps as root:</p>
 <ul class="simple">
-<li><p>Using your favorite editor, disable huge pages in the kubelet configuration
-file (<code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</span></code> or <code class="docutils literal notranslate"><span class="pre">/etc/default/kubelet</span></code> for version 1.11+):</p></li>
+<li>Using your favorite editor, disable huge pages in the kubelet configuration
+file (<code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</span></code> or <code class="docutils literal notranslate"><span class="pre">/etc/default/kubelet</span></code> for version 1.11+):</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Environment</span><span class="o">=</span><span class="s2">&quot;KUBELET_EXTRA_ARGS=--feature-gates HugePages=false&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Restart the kubelet daemon:</p></li>
+<li>Restart the kubelet daemon:</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
   <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">kubelet</span>
 </pre></div>
 </div>
 <p>To define memory limit, append the following snippet to vswitch container in deployment yaml file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>			<span class="n">resources</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            <span class="n">resources</span><span class="p">:</span>
               <span class="n">limits</span><span class="p">:</span>
                 <span class="n">hugepages</span><span class="o">-</span><span class="mi">2</span><span class="n">Mi</span><span class="p">:</span> <span class="mi">1024</span><span class="n">Mi</span>
                 <span class="n">memory</span><span class="p">:</span> <span class="mi">1024</span><span class="n">Mi</span>
 </pre></div>
 </div>
-<p>or set <code class="docutils literal notranslate"><span class="pre">contiv.vswitch.defineMemoryLimits</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <a class="reference external" href="https://github.com/contiv/vpp/blob/master/k8s/contiv-vpp/README">helm values</a>.</p>
+<p>or set <code class="docutils literal notranslate"><span class="pre">contiv.vswitch.defineMemoryLimits</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <a class="reference external" href="https://github.com/contiv/vpp/blob/master/k8s/contiv-vpp/README.md">helm values</a>.</p>
 </div>
 </div>
 <div class="section" id="initializing-your-master">
-<h3>(2/4) Initializing Your Master<a class="headerlink" href="#initializing-your-master" title="Permalink to this headline">¶</a></h3>
+<span id="initializing-your-master"></span><h3>(2/4) Initializing Your Master<a class="headerlink" href="#initializing-your-master" title="Permalink to this headline">¶</a></h3>
 <p>Before initializing the master, you may want to <a class="reference external" href="#tearing-down-kubernetes">remove</a> any
 previously installed K8s components. Then, proceed with master initialization
 as described in the <a class="reference external" href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#initializing-your-master">kubeadm manual</a>. Execute the following command as
@@ -376,7 +371,7 @@ sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k
 </div>
 </div>
 <div class="section" id="installing-the-contiv-vpp-pod-network">
-<h3>(3/4) Installing the Contiv-VPP Pod Network<a class="headerlink" href="#installing-the-contiv-vpp-pod-network" title="Permalink to this headline">¶</a></h3>
+<span id="installing-the-contiv-vpp-pod-network"></span><h3>(3/4) Installing the Contiv-VPP Pod Network<a class="headerlink" href="#installing-the-contiv-vpp-pod-network" title="Permalink to this headline">¶</a></h3>
 <p>If you have already used the Contiv-VPP plugin before, you may need to pull
 the most recent Docker images on each node:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">contiv</span><span class="o">/</span><span class="n">vpp</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">pull</span><span class="o">-</span><span class="n">images</span><span class="o">.</span><span class="n">sh</span><span class="p">)</span>
@@ -384,12 +379,12 @@ the most recent Docker images on each node:</p>
 </div>
 <p>Install the Contiv-VPP network for your cluster as follows:</p>
 <ul>
-<li><p>If you do not use the STN feature, install Contiv-vpp as follows:</p>
+<li><p class="first">If you do not use the STN feature, install Contiv-vpp as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">contiv</span><span class="o">/</span><span class="n">vpp</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">contiv</span><span class="o">-</span><span class="n">vpp</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 </li>
-<li><p>If you use the STN feature, download the <code class="docutils literal notranslate"><span class="pre">contiv-vpp.yaml</span></code> file:</p>
+<li><p class="first">If you use the STN feature, download the <code class="docutils literal notranslate"><span class="pre">contiv-vpp.yaml</span></code> file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">contiv</span><span class="o">/</span><span class="n">vpp</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">contiv</span><span class="o">-</span><span class="n">vpp</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
@@ -407,7 +402,7 @@ Otherwise outdated data will be loaded by a subsequent deployment.</p>
 </pre></div>
 </div>
 <div class="section" id="deployment-verification">
-<h4>Deployment Verification<a class="headerlink" href="#deployment-verification" title="Permalink to this headline">¶</a></h4>
+<span id="deployment-verification"></span><h4>Deployment Verification<a class="headerlink" href="#deployment-verification" title="Permalink to this headline">¶</a></h4>
 <p>After some time, all contiv containers should enter the running state:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@cvpp</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jan</span><span class="c1"># kubectl get pods -n kube-system -o wide | grep contiv</span>
 <span class="n">NAME</span>                           <span class="n">READY</span>     <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>       <span class="n">IP</span>               <span class="n">NODE</span>
@@ -452,7 +447,7 @@ local0                            0        down
 node’s IP stack (<code class="docutils literal notranslate"><span class="pre">host-vppv2</span></code>).</p>
 </div>
 <div class="section" id="master-isolation-optional">
-<h4>Master Isolation (Optional)<a class="headerlink" href="#master-isolation-optional" title="Permalink to this headline">¶</a></h4>
+<span id="master-isolation-optional"></span><h4>Master Isolation (Optional)<a class="headerlink" href="#master-isolation-optional" title="Permalink to this headline">¶</a></h4>
 <p>By default, your cluster will not schedule pods on the master for security
 reasons. If you want to be able to schedule pods on the master, (e.g., for a
 single-machine Kubernetes cluster for development), then run:</p>
@@ -464,15 +459,15 @@ single-machine Kubernetes cluster for development), then run:</p>
 </div>
 </div>
 <div class="section" id="joining-your-nodes">
-<h3>(4/4) Joining Your Nodes<a class="headerlink" href="#joining-your-nodes" title="Permalink to this headline">¶</a></h3>
+<span id="joining-your-nodes"></span><h3>(4/4) Joining Your Nodes<a class="headerlink" href="#joining-your-nodes" title="Permalink to this headline">¶</a></h3>
 <p>To add a new node to your cluster, run as root the command that was output
 by kubeadm init. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubeadm</span> <span class="n">join</span> <span class="o">--</span><span class="n">token</span> <span class="o">&lt;</span><span class="n">token</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">master</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">master</span><span class="o">-</span><span class="n">port</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">discovery</span><span class="o">-</span><span class="n">token</span><span class="o">-</span><span class="n">ca</span><span class="o">-</span><span class="n">cert</span><span class="o">-</span><span class="nb">hash</span> <span class="n">sha256</span><span class="p">:</span><span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>More details can be found int the <a class="reference external" href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#joining-your-nodes">kubeadm manual</a>.</p>
-<div class="section" id="id1">
-<h4>Deployment Verification<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="deployment-verification">
+<span id="id1"></span><h4>Deployment Verification<a class="headerlink" href="#deployment-verification" title="Permalink to this headline">¶</a></h4>
 <p>After some time, all contiv containers should enter the running state:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@cvpp</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jan</span><span class="c1"># kubectl get pods -n kube-system -o wide | grep contiv</span>
 <span class="n">NAME</span>                           <span class="n">READY</span>     <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>       <span class="n">IP</span>               <span class="n">NODE</span>
@@ -516,9 +511,9 @@ node-to-node connectivity. For example:</p>
 </div>
 </div>
 <div class="section" id="deploying-example-applications">
-<h3>Deploying Example Applications<a class="headerlink" href="#deploying-example-applications" title="Permalink to this headline">¶</a></h3>
+<span id="deploying-example-applications"></span><h3>Deploying Example Applications<a class="headerlink" href="#deploying-example-applications" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="simple-deployment">
-<h4>Simple Deployment<a class="headerlink" href="#simple-deployment" title="Permalink to this headline">¶</a></h4>
+<span id="simple-deployment"></span><h4>Simple Deployment<a class="headerlink" href="#simple-deployment" title="Permalink to this headline">¶</a></h4>
 <p>You can go ahead and create a simple deployment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl run nginx --image=nginx --replicas=2
 </pre></div>
@@ -528,20 +523,20 @@ node-to-node connectivity. For example:</p>
 </pre></div>
 </div>
 <p>You should see two ip addresses, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IP</span><span class="p">:</span>		<span class="mf">10.1</span><span class="o">.</span><span class="mf">1.3</span>
-<span class="n">IP</span><span class="p">:</span>		<span class="mf">10.1</span><span class="o">.</span><span class="mf">1.4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IP</span><span class="p">:</span>     <span class="mf">10.1</span><span class="o">.</span><span class="mf">1.3</span>
+<span class="n">IP</span><span class="p">:</span>     <span class="mf">10.1</span><span class="o">.</span><span class="mf">1.4</span>
 </pre></div>
 </div>
 <p>You can check the pods’ connectivity in one of the following ways:</p>
 <ul class="simple">
-<li><p>Connect to the VPP debug CLI and ping any pod:</p></li>
+<li>Connect to the VPP debug CLI and ping any pod:</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">sudo</span> <span class="n">vppctl</span>
   <span class="n">vpp</span><span class="c1"># ping 10.1.1.3</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Start busybox and ping any pod:</p></li>
+<li>Start busybox and ping any pod:</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">kubectl</span> <span class="n">run</span> <span class="n">busybox</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">ti</span> <span class="o">--</span><span class="n">image</span><span class="o">=</span><span class="n">busybox</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span>
   <span class="n">If</span> <span class="n">you</span> <span class="n">don</span><span class="s1">&#39;t see a command prompt, try pressing enter.</span>
@@ -550,14 +545,14 @@ node-to-node connectivity. For example:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>You should be able to ping any pod from the host:</p></li>
+<li>You should be able to ping any pod from the host:</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">ping</span> <span class="mf">10.1</span><span class="o">.</span><span class="mf">1.3</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="deploying-pods-on-different-nodes">
-<h4>Deploying Pods on Different Nodes<a class="headerlink" href="#deploying-pods-on-different-nodes" title="Permalink to this headline">¶</a></h4>
+<span id="deploying-pods-on-different-nodes"></span><h4>Deploying Pods on Different Nodes<a class="headerlink" href="#deploying-pods-on-different-nodes" title="Permalink to this headline">¶</a></h4>
 <p>to enable pod deployment on the master, untaint the master first:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">taint</span> <span class="n">nodes</span> <span class="o">--</span><span class="nb">all</span> <span class="n">node</span><span class="o">-</span><span class="n">role</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">master</span><span class="o">-</span>
 </pre></div>
@@ -582,7 +577,7 @@ preferred node hostnames, e.g.:</p>
   <span class="n">containers</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">nginx</span>
       
-	  <span class="p">:</span> <span class="n">nginx</span>
+      <span class="p">:</span> <span class="n">nginx</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
@@ -621,24 +616,24 @@ nginx2    1/1       Running   0          13m       10.1.219.3   vm6
 </div>
 </div>
 <div class="section" id="uninstalling-contiv-vpp">
-<h3>Uninstalling Contiv-VPP<a class="headerlink" href="#uninstalling-contiv-vpp" title="Permalink to this headline">¶</a></h3>
+<span id="uninstalling-contiv-vpp"></span><h3>Uninstalling Contiv-VPP<a class="headerlink" href="#uninstalling-contiv-vpp" title="Permalink to this headline">¶</a></h3>
 <p>To uninstall the network plugin itself, use <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">delete</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">contiv</span><span class="o">/</span><span class="n">vpp</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">contiv</span><span class="o">-</span><span class="n">vpp</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="tearing-down-kubernetes">
-<h3>Tearing down Kubernetes<a class="headerlink" href="#tearing-down-kubernetes" title="Permalink to this headline">¶</a></h3>
+<span id="tearing-down-kubernetes"></span><h3>Tearing down Kubernetes<a class="headerlink" href="#tearing-down-kubernetes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>First, drain the node and make sure that the node is empty before
-shutting it down:</p></li>
+<li>First, drain the node and make sure that the node is empty before
+shutting it down:</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">kubectl</span> <span class="n">drain</span> <span class="o">&lt;</span><span class="n">node</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">delete</span><span class="o">-</span><span class="n">local</span><span class="o">-</span><span class="n">data</span> <span class="o">--</span><span class="n">force</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">daemonsets</span>
   <span class="n">kubectl</span> <span class="n">delete</span> <span class="n">node</span> <span class="o">&lt;</span><span class="n">node</span> <span class="n">name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Next, on the node being removed, reset all kubeadm installed state:</p></li>
+<li>Next, on the node being removed, reset all kubeadm installed state:</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  rm -rf $HOME/.kube
   sudo su
@@ -646,15 +641,15 @@ shutting it down:</p></li>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>If you added environment variable definitions into
-<code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</span></code>, this would have been a process from the <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/CUSTOM_MGMT_NETWORK.md#setting-up-a-custom-management-network-on-multi-homed-nodes">Custom Management Network file</a>, then remove the definitions now.</p></li>
+<li>If you added environment variable definitions into
+<code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</span></code>, this would have been a process from the <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/CUSTOM_MGMT_NETWORK.md#setting-up-a-custom-management-network-on-multi-homed-nodes">Custom Management Network file</a>, then remove the definitions now.</li>
 </ul>
 </div>
 <div class="section" id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+<span id="troubleshooting"></span><h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
 <p>Some of the issues that can occur during the installation are:</p>
 <ul>
-<li><p>Forgetting to create and initialize the <code class="docutils literal notranslate"><span class="pre">.kube</span></code> directory in your home
+<li><p class="first">Forgetting to create and initialize the <code class="docutils literal notranslate"><span class="pre">.kube</span></code> directory in your home
 directory (As instructed by <code class="docutils literal notranslate"><span class="pre">kubeadm</span> <span class="pre">init</span> <span class="pre">--token-ttl</span> <span class="pre">0</span></code>). This can manifest
 itself as the following error:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W1017</span> <span class="mi">09</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mf">43.403159</span>    <span class="mi">2233</span> <span class="n">factory_object_mapping</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">423</span><span class="p">]</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">download</span> <span class="n">OpenAPI</span> <span class="p">(</span><span class="n">Get</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">209.128</span><span class="p">:</span><span class="mi">6443</span><span class="o">/</span><span class="n">swagger</span><span class="o">-</span><span class="mf">2.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">pb</span><span class="o">-</span><span class="n">v1</span><span class="p">:</span> <span class="n">x509</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">signed</span> <span class="n">by</span> <span class="n">unknown</span> <span class="n">authority</span> <span class="p">(</span><span class="n">possibly</span> <span class="n">because</span> <span class="n">of</span> <span class="s2">&quot;crypto/rsa: verification error&quot;</span> <span class="k">while</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">candidate</span> <span class="n">authority</span> <span class="n">certificate</span> <span class="s2">&quot;kubernetes&quot;</span><span class="p">)),</span> <span class="n">falling</span> <span class="n">back</span> <span class="n">to</span> <span class="n">swagger</span>
@@ -662,7 +657,7 @@ itself as the following error:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Previous installation lingering on the file system.
+<li><p class="first">Previous installation lingering on the file system.
 <code class="docutils literal notranslate"><span class="pre">'kubeadm</span> <span class="pre">init</span> <span class="pre">--token-ttl</span> <span class="pre">0</span></code> fails to initialize kubelet with one or more
 of the following error messages:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
@@ -685,12 +680,12 @@ rm -rf /var/bolt/bolt.db
 </div>
 </div>
 <div class="section" id="contiv-specific-kubeadm-installation-on-aarch64">
-<h2>Contiv-specific kubeadm installation on Aarch64<a class="headerlink" href="#contiv-specific-kubeadm-installation-on-aarch64" title="Permalink to this headline">¶</a></h2>
+<span id="contiv-specific-kubeadm-installation-on-aarch64"></span><h2>Contiv-specific kubeadm installation on Aarch64<a class="headerlink" href="#contiv-specific-kubeadm-installation-on-aarch64" title="Permalink to this headline">¶</a></h2>
 <p>Supplemental instructions apply when using Contiv-VPP for Aarch64. Most
 installation steps for Aarch64 are the same as that described earlier in this
 chapter, so you should firstly read it before you start the installation on
 Aarch64 platform.</p>
-<p>Use the <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/arm64/MANUAL_INSTALL_ARM64">Aarch64-specific kubeadm install instructions</a> to manually install
+<p>Use the <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/arm64/MANUAL_INSTALL_ARM64.md">Aarch64-specific kubeadm install instructions</a> to manually install
 Kubernetes with Contiv-VPP networking on one or more bare-metals of Aarch64 platform.</p>
 </div>
 </div>
@@ -706,7 +701,7 @@ Kubernetes with Contiv-VPP networking on one or more bare-metals of Aarch64 plat
         <a href="VPP_CONFIG.html" class="btn btn-neutral float-right" title="Creating VPP Startup Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Vagrant.html" class="btn btn-neutral float-left" title="Contiv-VPP Vagrant Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Vagrant.html" class="btn btn-neutral" title="Contiv-VPP Vagrant Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -732,16 +727,25 @@ Kubernetes with Contiv-VPP networking on one or more bare-metals of Aarch64 plat
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

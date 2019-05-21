@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to build a vpp dispatch trace aware Wireshark &mdash; Vector Packet Processor 01 documentation</title>
+  <title>How to build a vpp dispatch trace aware Wireshark &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Writing Documents" href="../writingdocs/index.html" />
     <link rel="prev" title="Fast Convergence" href="fib20/fastconvergence.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -134,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -208,19 +203,19 @@
            <div itemprop="articleBody">
             
   <div class="section" id="how-to-build-a-vpp-dispatch-trace-aware-wireshark">
-<h1>How to build a vpp dispatch trace aware Wireshark<a class="headerlink" href="#how-to-build-a-vpp-dispatch-trace-aware-wireshark" title="Permalink to this headline">¶</a></h1>
+<span id="how-to-build-a-vpp-dispatch-trace-aware-wireshark"></span><h1>How to build a vpp dispatch trace aware Wireshark<a class="headerlink" href="#how-to-build-a-vpp-dispatch-trace-aware-wireshark" title="Permalink to this headline">¶</a></h1>
 <p>The vpp pcap dispatch trace dissector has been merged into the wireshark
 main branch, so the process is simple. Download wireshark, compile it,
 and install it.</p>
 <div class="section" id="download-wireshark-source-code">
-<h2>Download wireshark source code<a class="headerlink" href="#download-wireshark-source-code" title="Permalink to this headline">¶</a></h2>
+<span id="download-wireshark-source-code"></span><h2>Download wireshark source code<a class="headerlink" href="#download-wireshark-source-code" title="Permalink to this headline">¶</a></h2>
 <p>The wireshark git repo is large, so it takes a while to clone.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">code</span><span class="o">.</span><span class="n">wireshark</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">review</span><span class="o">/</span><span class="n">wireshark</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-prerequisite-packages">
-<h2>Install prerequisite packages<a class="headerlink" href="#install-prerequisite-packages" title="Permalink to this headline">¶</a></h2>
+<span id="install-prerequisite-packages"></span><h2>Install prerequisite packages<a class="headerlink" href="#install-prerequisite-packages" title="Permalink to this headline">¶</a></h2>
 <p>Here is a list of prerequisite packages which must be present in order
 to compile wireshark, beyond what’s typically installed on an Ubuntu
 18.04 system:</p>
@@ -230,7 +225,7 @@ to compile wireshark, beyond what’s typically installed on an Ubuntu
 </div>
 </div>
 <div class="section" id="compile-wireshark">
-<h2>Compile Wireshark<a class="headerlink" href="#compile-wireshark" title="Permalink to this headline">¶</a></h2>
+<span id="compile-wireshark"></span><h2>Compile Wireshark<a class="headerlink" href="#compile-wireshark" title="Permalink to this headline">¶</a></h2>
 <p>Mercifully, Wireshark uses cmake, so it’s relatively easy to build, at
 least on Ubuntu 18.04.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    $ cd wireshark
@@ -243,7 +238,7 @@ least on Ubuntu 18.04.</p>
 </div>
 </div>
 <div class="section" id="make-a-pcap-dispatch-trace">
-<h2>Make a pcap dispatch trace<a class="headerlink" href="#make-a-pcap-dispatch-trace" title="Permalink to this headline">¶</a></h2>
+<span id="make-a-pcap-dispatch-trace"></span><h2>Make a pcap dispatch trace<a class="headerlink" href="#make-a-pcap-dispatch-trace" title="Permalink to this headline">¶</a></h2>
 <p>Configure vpp to pass traffic in some fashion or other, and then:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">vpp</span><span class="c1"># pcap dispatch trace on max 10000 file vppcapture buffer-trace dpdk-input 1000</span>
 </pre></div>
@@ -255,7 +250,7 @@ dispatch trace capture like so:</p>
 </div>
 </div>
 <div class="section" id="display-in-wireshark">
-<h2>Display in Wireshark<a class="headerlink" href="#display-in-wireshark" title="Permalink to this headline">¶</a></h2>
+<span id="display-in-wireshark"></span><h2>Display in Wireshark<a class="headerlink" href="#display-in-wireshark" title="Permalink to this headline">¶</a></h2>
 <p>Display /tmp/vppcapture in the vpp-enabled version of wireshark. With
 any luck, normal version of wireshark will refuse to process vpp
 dispatch trace pcap files because they won’t understand the encap type.</p>
@@ -276,7 +271,7 @@ in e.g. ip4-lookup, then a vector of packets in ip4-rewrite, etc.</p>
         <a href="../writingdocs/index.html" class="btn btn-neutral float-right" title="Writing Documents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fib20/fastconvergence.html" class="btn btn-neutral float-left" title="Fast Convergence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fib20/fastconvergence.html" class="btn btn-neutral" title="Fast Convergence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -302,16 +297,25 @@ in e.g. ip4-lookup, then a vector of packets in ip4-rewrite, etc.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

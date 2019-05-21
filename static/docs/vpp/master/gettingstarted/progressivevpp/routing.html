@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Routing &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Routing &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Switching" href="switching.html" />
     <link rel="prev" title="Connecting Two FD.io VPP Instances" href="twovppinstances.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -121,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -202,31 +197,31 @@
 <h2>Skills to be Learned<a class="headerlink" href="#skills-to-be-learned" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise you will learn these new skills:</p>
 <ol class="arabic simple">
-<li><p>Add route to Linux Host routing table</p></li>
-<li><p>Add route to FD.io VPP routing table</p></li>
+<li>Add route to Linux Host routing table</li>
+<li>Add route to FD.io VPP routing table</li>
 </ol>
 <p>And revisit the old ones:</p>
 <ol class="arabic simple">
-<li><p>Examine FD.io VPP routing table</p></li>
-<li><p>Enable trace on vpp1 and vpp2</p></li>
-<li><p>ping from host to FD.io VPP</p></li>
-<li><p>Examine and clear trace on vpp1 and vpp2</p></li>
-<li><p>ping from FD.io VPP to host</p></li>
-<li><p>Examine and clear trace on vpp1 and vpp2</p></li>
+<li>Examine FD.io VPP routing table</li>
+<li>Enable trace on vpp1 and vpp2</li>
+<li>ping from host to FD.io VPP</li>
+<li>Examine and clear trace on vpp1 and vpp2</li>
+<li>ping from FD.io VPP to host</li>
+<li>Examine and clear trace on vpp1 and vpp2</li>
 </ol>
 </div>
 <div class="section" id="vpp-command-learned-in-this-exercise">
 <h2>VPP command learned in this exercise<a class="headerlink" href="#vpp-command-learned-in-this-exercise" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_ip.html#clicmd_ip_route">ip route
-add</a></p></li>
+<li><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_ip.html#clicmd_ip_route">ip route
+add</a></li>
 </ol>
 </div>
 <div class="section" id="topology">
 <h2>Topology<a class="headerlink" href="#topology" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id2">
+<div class="figure" id="id2">
 <img alt="Connect two FD.io VPP topology" src="../../_images/Connecting_two_vpp_instances_with_memif.png" />
-<p class="caption"><span class="caption-text">Connect two FD.io VPP topology</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Connect two FD.io VPP topology</span></p>
 </div>
 </div>
 <div class="section" id="initial-state">
@@ -259,10 +254,10 @@ instances</a></p>
 uses the <strong>af-packet</strong> driver. To trace packets from the host we use <strong>af-packet-input</strong> from
 vpp1 to vpp2 we use <strong>memif-input</strong>.</p>
 <ol class="arabic simple">
-<li><p>Setup a trace on vpp1 and vpp2</p></li>
-<li><p>Ping 10.10.2.2 from the host</p></li>
-<li><p>Examine the trace on vpp1 and vpp2</p></li>
-<li><p>Clear the trace on vpp1 and vpp2</p></li>
+<li>Setup a trace on vpp1 and vpp2</li>
+<li>Ping 10.10.2.2 from the host</li>
+<li>Examine the trace on vpp1 and vpp2</li>
+<li>Clear the trace on vpp1 and vpp2</li>
 </ol>
 </div>
 </div>
@@ -278,7 +273,7 @@ vpp1 to vpp2 we use <strong>memif-input</strong>.</p>
         <a href="switching.html" class="btn btn-neutral float-right" title="Switching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="twovppinstances.html" class="btn btn-neutral float-left" title="Connecting Two FD.io VPP Instances" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="twovppinstances.html" class="btn btn-neutral" title="Connecting Two FD.io VPP Instances" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -304,16 +299,25 @@ vpp1 to vpp2 we use <strong>memif-input</strong>.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

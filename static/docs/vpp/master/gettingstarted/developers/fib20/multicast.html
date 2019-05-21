@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>IP Multicast FIB &mdash; Vector Packet Processor 01 documentation</title>
+  <title>IP Multicast FIB &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Fast Convergence" href="fastconvergence.html" />
     <link rel="prev" title="MPLS FIB" href="mplsfib.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -135,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../relatedprojects/index.html">Related Projects</a></li>
@@ -254,14 +249,14 @@ the group address a mask:</p>
 </div>
 <p>only some of these are relevant over the API/CLI:</p>
 <ol class="arabic simple">
-<li><p>Signal - packets that match this entry will generate an event that
+<li>Signal - packets that match this entry will generate an event that
 is sent to the control plane (which can be retrieved via the signal
-dump API)</p></li>
-<li><p>Connected - indicates that the control plane should be informed of
-connected sources (also retrieved via the signal dump API)</p></li>
-<li><p>Accept-all-itf - the entry shall accept packets from all
-interfaces, thus eliminating the RPF check</p></li>
-<li><p>Drop - Drop all packet matching this entry.</p></li>
+dump API)</li>
+<li>Connected - indicates that the control plane should be informed of
+connected sources (also retrieved via the signal dump API)</li>
+<li>Accept-all-itf - the entry shall accept packets from all
+interfaces, thus eliminating the RPF check</li>
+<li>Drop - Drop all packet matching this entry.</li>
 </ol>
 <p>flags on an entry can be changed with:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ip mroute &lt;PREFIX&gt; &lt;FLAG&gt;
@@ -289,7 +284,7 @@ MPLS-tunnel or a BIER table disposition entry.</p>
         <a href="fastconvergence.html" class="btn btn-neutral float-right" title="Fast Convergence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mplsfib.html" class="btn btn-neutral float-left" title="MPLS FIB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mplsfib.html" class="btn btn-neutral" title="MPLS FIB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -315,16 +310,25 @@ MPLS-tunnel or a BIER table disposition entry.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

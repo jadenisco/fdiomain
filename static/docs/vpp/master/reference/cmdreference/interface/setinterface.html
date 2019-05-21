@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Set Interface Commands &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Set Interface Commands &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="IP Commands" href="../ip/index.html" />
     <link rel="prev" title="Create Interfaces Commands" href="create_interface.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -96,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Useful Debug CLI</a><ul class="current">
@@ -196,16 +191,16 @@
 <h1>Set Interface Commands<a class="headerlink" href="#set-interface-commands" title="Permalink to this headline">¶</a></h1>
 <p>This section covers those commands that are related to setting an interface:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#set-interface">Set Interface</a></p></li>
-<li><p><a class="reference internal" href="#set-interface-ip-address">Set Interface IP Address</a></p></li>
-<li><p><a class="reference internal" href="#set-interface-l2-bridge">Set Interface L2 Bridge</a></p></li>
-<li><p><a class="reference internal" href="#set-interface-mtu">Set Interface MTU</a></p></li>
-<li><p><a class="reference internal" href="#set-interface-promiscuous">Set Interface Promiscuous</a></p></li>
-<li><p><a class="reference internal" href="#set-interface-state">Set Interface State</a></p></li>
+<li><a class="reference internal" href="#set-interface">Set Interface</a></li>
+<li><a class="reference internal" href="#set-interface-ip-address">Set Interface IP Address</a></li>
+<li><a class="reference internal" href="#set-interface-l2-bridge">Set Interface L2 Bridge</a></li>
+<li><a class="reference internal" href="#set-interface-mtu">Set Interface MTU</a></li>
+<li><a class="reference internal" href="#set-interface-promiscuous">Set Interface Promiscuous</a></li>
+<li><a class="reference internal" href="#set-interface-state">Set Interface State</a></li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For a complete list of CLI Debug commands refer to the Debug CLI section of the <a class="reference external" href="https://docs.fd.io/vpp/18.07/clicmd.html">Source Code Documents</a> .</p>
+<p class="first admonition-title">Note</p>
+<p class="last">For a complete list of CLI Debug commands refer to the Debug CLI section of the <a class="reference external" href="https://docs.fd.io/vpp/18.07/clicmd.html">Source Code Documents</a> .</p>
 </div>
 <div class="section" id="set-interface">
 <h2>Set Interface<a class="headerlink" href="#set-interface" title="Permalink to this headline">¶</a></h2>
@@ -231,8 +226,8 @@ The IP Address can be an IPv4 or an IPv6 address. Interfaces may have multiple I
 addresses. There is no concept of primary vs. secondary interface addresses; they’re just addresses.</p>
 <p>To display the addresses associated with a given interface, use the command <strong>show interface address</strong> &lt;<em>interface</em>&gt;.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The debug CLI does not enforce classful mask-width / addressing constraints.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The debug CLI does not enforce classful mask-width / addressing constraints.</p>
 </div>
 </div>
 <div class="section" id="example-usage">
@@ -358,7 +353,7 @@ all traffic to slow-path. Use the <em>enable</em> flag to clear <em>punt</em> fl
         <a href="../ip/index.html" class="btn btn-neutral float-right" title="IP Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="create_interface.html" class="btn btn-neutral float-left" title="Create Interfaces Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="create_interface.html" class="btn btn-neutral" title="Create Interfaces Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -384,16 +379,25 @@ all traffic to slow-path. Use the <em>enable</em> flag to clear <em>punt</em> fl
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to do VPP Packet Tracing in Kubernetes &mdash; Vector Packet Processor 01 documentation</title>
+  <title>How to do VPP Packet Tracing in Kubernetes &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Using vpptrace.sh for VPP Packet Tracing" href="VPPTRACE.html" />
     <link rel="prev" title="Prometheus Statistics" href="Prometheus.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -133,6 +127,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -207,21 +202,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="how-to-do-vpp-packet-tracing-in-kubernetes">
-<h1>How to do VPP Packet Tracing in Kubernetes<a class="headerlink" href="#how-to-do-vpp-packet-tracing-in-kubernetes" title="Permalink to this headline">¶</a></h1>
+<span id="how-to-do-vpp-packet-tracing-in-kubernetes"></span><h1>How to do VPP Packet Tracing in Kubernetes<a class="headerlink" href="#how-to-do-vpp-packet-tracing-in-kubernetes" title="Permalink to this headline">¶</a></h1>
 <p>This document describes the steps to do <em>manual</em> packet tracing (capture) using
 VPP in Kubernetes. Contiv/VPP also ships with a simple bash script
 <a class="reference external" href="https://github.com/contiv/vpp/blob/master/scripts/vpptrace.sh">vpptrace.sh</a>,
 which allows to <em>continuously</em> trace and
 <em>filter</em> packets incoming through a given set of interface types.
-Documentation for vpptrace.sh is available <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/VPPTRACE">here</a>.</p>
+Documentation for vpptrace.sh is available <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/VPPTRACE.md">here</a>.</p>
 <p>More information about VPP packet tracing is in:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://wiki.fd.io/view/VPP/Command-line_Interface_(CLI)_Guide#packet_tracer">https://wiki.fd.io/view/VPP/Command-line_Interface_(CLI)_Guide#packet_tracer</a></p></li>
-<li><p><a class="reference external" href="https://wiki.fd.io/view/VPP/How_To_Use_The_Packet_Generator_and_Packet_Tracer">https://wiki.fd.io/view/VPP/How_To_Use_The_Packet_Generator_and_Packet_Tracer</a></p></li>
-<li><p><a class="reference external" href="https://wiki.fd.io/view/VPP/Tutorial_Routing_and_Switching">https://wiki.fd.io/view/VPP/Tutorial_Routing_and_Switching</a></p></li>
+<li><a class="reference external" href="https://wiki.fd.io/view/VPP/Command-line_Interface_(CLI)_Guide#packet_tracer">https://wiki.fd.io/view/VPP/Command-line_Interface_(CLI)_Guide#packet_tracer</a></li>
+<li><a class="reference external" href="https://wiki.fd.io/view/VPP/How_To_Use_The_Packet_Generator_and_Packet_Tracer">https://wiki.fd.io/view/VPP/How_To_Use_The_Packet_Generator_and_Packet_Tracer</a></li>
+<li><a class="reference external" href="https://wiki.fd.io/view/VPP/Tutorial_Routing_and_Switching">https://wiki.fd.io/view/VPP/Tutorial_Routing_and_Switching</a></li>
 </ul>
 <div class="section" id="ssh-into-the-node">
-<h2>SSH into the Node<a class="headerlink" href="#ssh-into-the-node" title="Permalink to this headline">¶</a></h2>
+<span id="ssh-into-the-node"></span><h2>SSH into the Node<a class="headerlink" href="#ssh-into-the-node" title="Permalink to this headline">¶</a></h2>
 <p>Perform the following commands to SSH into the node:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">vpp</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">vagrant</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span>
 <span class="n">vagrant</span> <span class="n">ssh</span> <span class="n">k8s</span><span class="o">-</span><span class="n">worker1</span>
@@ -229,7 +224,7 @@ Documentation for vpptrace.sh is available <a class="reference external" href="h
 </div>
 </div>
 <div class="section" id="check-the-vpp-graph-nodes-input-and-output-queues">
-<h2>Check the VPP Graph Nodes (Input and Output Queues)<a class="headerlink" href="#check-the-vpp-graph-nodes-input-and-output-queues" title="Permalink to this headline">¶</a></h2>
+<span id="check-the-vpp-graph-nodes-input-and-output-queues"></span><h2>Check the VPP Graph Nodes (Input and Output Queues)<a class="headerlink" href="#check-the-vpp-graph-nodes-input-and-output-queues" title="Permalink to this headline">¶</a></h2>
 <p>The following content shows what is running on VPP, via the <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">run</span></code> command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vagrant@k8s-worker1:~$ sudo vppctl
     _______    _        _   _____  ___ 
@@ -328,14 +323,14 @@ wildcard-ip4-arp-publisher-pro event wait                0               0      
 <p>Each pod and node has two queues, one for rx (<code class="docutils literal notranslate"><span class="pre">tapcli-X-output</span></code>), and one for tx (<code class="docutils literal notranslate"><span class="pre">tapcli-X-tx</span></code>). The above output is with two <code class="docutils literal notranslate"><span class="pre">nginx</span></code> pods in kubernetes.</p>
 </div>
 <div class="section" id="clear-existing-vpp-packet-trace">
-<h2>Clear Existing VPP Packet Trace<a class="headerlink" href="#clear-existing-vpp-packet-trace" title="Permalink to this headline">¶</a></h2>
+<span id="clear-existing-vpp-packet-trace"></span><h2>Clear Existing VPP Packet Trace<a class="headerlink" href="#clear-existing-vpp-packet-trace" title="Permalink to this headline">¶</a></h2>
 <p>Enter the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vpp</span><span class="c1"># clear trace             </span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-turn-on-vpp-packet-tracing">
-<h2>How to Turn on VPP Packet Tracing<a class="headerlink" href="#how-to-turn-on-vpp-packet-tracing" title="Permalink to this headline">¶</a></h2>
+<span id="how-to-turn-on-vpp-packet-tracing"></span><h2>How to Turn on VPP Packet Tracing<a class="headerlink" href="#how-to-turn-on-vpp-packet-tracing" title="Permalink to this headline">¶</a></h2>
 <p>Enter the following commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vpp</span><span class="c1"># trace add &lt;input or output queue name&gt; &lt;number of packets to capture&gt;</span>
 
@@ -346,7 +341,7 @@ wildcard-ip4-arp-publisher-pro event wait                0               0      
 </div>
 </div>
 <div class="section" id="send-traffic-to-the-pods">
-<h2>Send Traffic to the Pods<a class="headerlink" href="#send-traffic-to-the-pods" title="Permalink to this headline">¶</a></h2>
+<span id="send-traffic-to-the-pods"></span><h2>Send Traffic to the Pods<a class="headerlink" href="#send-traffic-to-the-pods" title="Permalink to this headline">¶</a></h2>
 <p>Open another terminal, SSH into the master node, refer the documentation in <code class="docutils literal notranslate"><span class="pre">vpp/vagrant/README.md</span></code> and send traffic to the two <code class="docutils literal notranslate"><span class="pre">nginx</span></code> pods using <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd vpp/vagrant/vagrant-scripts/
 vagrant ssh k8s-master
@@ -377,7 +372,7 @@ index.html.1                     100%[==========================================
 </div>
 </div>
 <div class="section" id="check-the-packets-captured-by-vpp">
-<h2>Check the Packets Captured by VPP<a class="headerlink" href="#check-the-packets-captured-by-vpp" title="Permalink to this headline">¶</a></h2>
+<span id="check-the-packets-captured-by-vpp"></span><h2>Check the Packets Captured by VPP<a class="headerlink" href="#check-the-packets-captured-by-vpp" title="Permalink to this headline">¶</a></h2>
 <p>Back in the first terminal, check the packets captured by VPP.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vpp</span><span class="c1"># show trace</span>
 <span class="o">...</span>
@@ -474,19 +469,19 @@ index.html.1                     100%[==========================================
 </div>
 <p>In the above captured packet, we can see:</p>
 <ul class="simple">
-<li><p>Input queue name <code class="docutils literal notranslate"><span class="pre">tapcli-rx</span></code></p></li>
-<li><p>Pod’s IP address <code class="docutils literal notranslate"><span class="pre">10.1.2.3</span></code></p></li>
-<li><p>IP address of the master node <code class="docutils literal notranslate"><span class="pre">172.30.1.2</span></code>, which sent the <code class="docutils literal notranslate"><span class="pre">wget</span></code> traffic to the two pods</p></li>
-<li><p>HTTP port <code class="docutils literal notranslate"><span class="pre">80</span></code>, destination port and TCP protocol (<code class="docutils literal notranslate"><span class="pre">TCP:</span> <span class="pre">80</span> <span class="pre">-&gt;</span> <span class="pre">58430</span></code>)</p></li>
-<li><p>NAT queue name <code class="docutils literal notranslate"><span class="pre">nat44-out2in</span></code></p></li>
-<li><p>VXLAN VNI ID <code class="docutils literal notranslate"><span class="pre">VXLAN</span> <span class="pre">encap</span> <span class="pre">to</span> <span class="pre">vxlan_tunnel0</span> <span class="pre">vni</span> <span class="pre">10</span></code></p></li>
-<li><p>VXLAN UDP port <code class="docutils literal notranslate"><span class="pre">4789</span></code></p></li>
-<li><p>IP address of <code class="docutils literal notranslate"><span class="pre">GigabitEthernet0/8/0</span></code> interface (<code class="docutils literal notranslate"><span class="pre">192.168.16.2</span></code>)</p></li>
-<li><p>Packet on the outgoing queue <code class="docutils literal notranslate"><span class="pre">GigabitEthernet0/8/0-tx</span></code></p></li>
+<li>Input queue name <code class="docutils literal notranslate"><span class="pre">tapcli-rx</span></code></li>
+<li>Pod’s IP address <code class="docutils literal notranslate"><span class="pre">10.1.2.3</span></code></li>
+<li>IP address of the master node <code class="docutils literal notranslate"><span class="pre">172.30.1.2</span></code>, which sent the <code class="docutils literal notranslate"><span class="pre">wget</span></code> traffic to the two pods</li>
+<li>HTTP port <code class="docutils literal notranslate"><span class="pre">80</span></code>, destination port and TCP protocol (<code class="docutils literal notranslate"><span class="pre">TCP:</span> <span class="pre">80</span> <span class="pre">-&gt;</span> <span class="pre">58430</span></code>)</li>
+<li>NAT queue name <code class="docutils literal notranslate"><span class="pre">nat44-out2in</span></code></li>
+<li>VXLAN VNI ID <code class="docutils literal notranslate"><span class="pre">VXLAN</span> <span class="pre">encap</span> <span class="pre">to</span> <span class="pre">vxlan_tunnel0</span> <span class="pre">vni</span> <span class="pre">10</span></code></li>
+<li>VXLAN UDP port <code class="docutils literal notranslate"><span class="pre">4789</span></code></li>
+<li>IP address of <code class="docutils literal notranslate"><span class="pre">GigabitEthernet0/8/0</span></code> interface (<code class="docutils literal notranslate"><span class="pre">192.168.16.2</span></code>)</li>
+<li>Packet on the outgoing queue <code class="docutils literal notranslate"><span class="pre">GigabitEthernet0/8/0-tx</span></code></li>
 </ul>
 </div>
 <div class="section" id="find-ip-addresses-of-gigabitethernet-and-the-tap-interfaces">
-<h2>Find IP Addresses of GigabitEthernet and the Tap Interfaces<a class="headerlink" href="#find-ip-addresses-of-gigabitethernet-and-the-tap-interfaces" title="Permalink to this headline">¶</a></h2>
+<span id="find-ip-addresses-of-gigabitethernet-and-the-tap-interfaces"></span><h2>Find IP Addresses of GigabitEthernet and the Tap Interfaces<a class="headerlink" href="#find-ip-addresses-of-gigabitethernet-and-the-tap-interfaces" title="Permalink to this headline">¶</a></h2>
 <p>Enter the following commands to find the IP addresses and Tap interfaces:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vpp</span><span class="c1"># show int address</span>
 <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="n">up</span><span class="p">):</span>
@@ -507,7 +502,7 @@ index.html.1                     100%[==========================================
 </div>
 </div>
 <div class="section" id="other-useful-vpp-clis">
-<h2>Other Useful VPP CLIs<a class="headerlink" href="#other-useful-vpp-clis" title="Permalink to this headline">¶</a></h2>
+<span id="other-useful-vpp-clis"></span><h2>Other Useful VPP CLIs<a class="headerlink" href="#other-useful-vpp-clis" title="Permalink to this headline">¶</a></h2>
 <p>Enter the following commands to see additional information about VPP:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vpp</span><span class="c1"># show int</span>
               <span class="n">Name</span>               <span class="n">Idx</span>       <span class="n">State</span>          <span class="n">Counter</span>          <span class="n">Count</span>     
@@ -721,7 +716,7 @@ index.html.1                     100%[==========================================
         <a href="VPPTRACE.html" class="btn btn-neutral float-right" title="Using vpptrace.sh for VPP Packet Tracing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Prometheus.html" class="btn btn-neutral float-left" title="Prometheus Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Prometheus.html" class="btn btn-neutral" title="Prometheus Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -747,16 +742,25 @@ index.html.1                     100%[==========================================
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

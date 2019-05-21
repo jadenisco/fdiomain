@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Binary API Support &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Binary API Support &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Build System" href="buildsystem/index.html" />
     <link rel="prev" title="VPP API module" href="vpp_api_module.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -135,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -286,9 +281,9 @@ vl_api_sw_interface_set_flags_reply_t message.</p>
 <p>Multiple layers of software, transport types, and shared libraries
 implement a variety of features:</p>
 <ul class="simple">
-<li><p>API message allocation, tracing, pretty-printing, and replay.</p></li>
-<li><p>Message transport via global shared memory, pairwise/private shared memory, and sockets.</p></li>
-<li><p>Barrier synchronization of worker threads across thread-unsafe message handlers.</p></li>
+<li>API message allocation, tracing, pretty-printing, and replay.</li>
+<li>Message transport via global shared memory, pairwise/private shared memory, and sockets.</li>
+<li>Barrier synchronization of worker threads across thread-unsafe message handlers.</li>
 </ul>
 <p>Correctly-coded message handlers know nothing about the transport used
 to deliver messages to/from VPP. It’s reasonably straighforward to use
@@ -467,11 +462,11 @@ admin status of an interface:</p>
 </div>
 <p>Key points:</p>
 <ul class="simple">
-<li><p>Use <a class="reference external" href="https://docs.fd.io/vpp/18.11/dc/d5a/memory__shared_8h.html#a109ff1e95ebb2c968d43c100c4a1c55a">vl_msg_api_alloc</a> to allocate message buffers</p></li>
-<li><p>Allocated message buffers are not initialized, and must be presumed to contain trash.</p></li>
-<li><p>Don’t forget to set the _vl_msg_id field!</p></li>
-<li><p>As of this writing, binary API message IDs and data are sent in network byte order</p></li>
-<li><p>The client-library global data structure <a class="reference external" href="https://docs.fd.io/vpp/18.11/d6/dd1/api__shared_8c.html#af58e3e46b569573e9622b826b2f47a22">api_main</a> keeps track of sufficient pointers and handles used to communicate with VPP</p></li>
+<li>Use <a class="reference external" href="https://docs.fd.io/vpp/18.11/dc/d5a/memory__shared_8h.html#a109ff1e95ebb2c968d43c100c4a1c55a">vl_msg_api_alloc</a> to allocate message buffers</li>
+<li>Allocated message buffers are not initialized, and must be presumed to contain trash.</li>
+<li>Don’t forget to set the _vl_msg_id field!</li>
+<li>As of this writing, binary API message IDs and data are sent in network byte order</li>
+<li>The client-library global data structure <a class="reference external" href="https://docs.fd.io/vpp/18.11/d6/dd1/api__shared_8c.html#af58e3e46b569573e9622b826b2f47a22">api_main</a> keeps track of sufficient pointers and handles used to communicate with VPP</li>
 </ul>
 </div>
 <div class="section" id="receiving-binary-api-messages-from-vpp">
@@ -575,7 +570,7 @@ remember to #define REPLY_MSG_ID_BASE before #including the file:</p>
         <a href="buildsystem/index.html" class="btn btn-neutral float-right" title="Build System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp_api_module.html" class="btn btn-neutral float-left" title="VPP API module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp_api_module.html" class="btn btn-neutral" title="VPP API module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -601,16 +596,25 @@ remember to #define REPLY_MSG_ID_BASE before #including the file:</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

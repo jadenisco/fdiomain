@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Traffic Management &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Traffic Management &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Layer 2" href="l2.html" />
     <link rel="prev" title="SDN &amp; Cloud Integrations" href="integrations.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -121,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -200,55 +195,52 @@
 <div class="section" id="ip-layer-input-checks">
 <h2>IP Layer Input Checks<a class="headerlink" href="#ip-layer-input-checks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Source Reverse Path Forwarding</p></li>
-<li><p>Time To Live expiration</p></li>
-<li><p>IP header checksum</p></li>
-<li><p>Layer 2 Length &lt; IP Length</p></li>
+<li>Source Reverse Path Forwarding</li>
+<li>Time To Live expiration</li>
+<li>IP header checksum</li>
+<li>Layer 2 Length &lt; IP Length</li>
 </ul>
 </div>
 <div class="section" id="classifiers">
 <h2>Classifiers<a class="headerlink" href="#classifiers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Multiple million Classifiers - Arbitrary N-tuple</p></li>
+<li>Multiple million Classifiers - Arbitrary N-tuple</li>
 </ul>
 </div>
 <div class="section" id="policers">
 <h2>Policers<a class="headerlink" href="#policers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Colour Aware &amp; Token Bucket</p></li>
-<li><p>Rounding Closest/Up/Down</p></li>
-<li><p>Limits in PPS/KBPS</p></li>
-<li><p>Types:</p>
-<ul>
-<li><p>Single Rate Two Colour</p></li>
-<li><p>Single Rate Three Colour</p></li>
-<li><p>Dual Rate Three Colour</p></li>
+<li>Colour Aware &amp; Token Bucket</li>
+<li>Rounding Closest/Up/Down</li>
+<li>Limits in PPS/KBPS</li>
+<li>Types:<ul>
+<li>Single Rate Two Colour</li>
+<li>Single Rate Three Colour</li>
+<li>Dual Rate Three Colour</li>
 </ul>
 </li>
-<li><p>Action Triggers</p>
-<ul>
-<li><p>Conform</p></li>
-<li><p>Exceed</p></li>
-<li><p>Violate</p></li>
+<li>Action Triggers<ul>
+<li>Conform</li>
+<li>Exceed</li>
+<li>Violate</li>
 </ul>
 </li>
-<li><p>Actions Type</p>
-<ul>
-<li><p>Drop</p></li>
-<li><p>Transmit</p></li>
-<li><p>Mark-and-transmit</p></li>
+<li>Actions Type<ul>
+<li>Drop</li>
+<li>Transmit</li>
+<li>Mark-and-transmit</li>
 </ul>
 </li>
 </ul>
-<p>Switched Port Analyzer (SPAN)
+<p>Switched Port Analyzer&nbsp;(SPAN)
 * mirror traffic to another switch port</p>
 </div>
 <div class="section" id="acls">
 <h2>ACLs<a class="headerlink" href="#acls" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>Stateful</p></li>
-<li><p>Stateless</p></li>
+<li>Stateful</li>
+<li>Stateless</li>
 </ul>
 </div></blockquote>
 </div>
@@ -272,7 +264,7 @@
         <a href="l2.html" class="btn btn-neutral float-right" title="Layer 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="integrations.html" class="btn btn-neutral float-left" title="SDN &amp; Cloud Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="integrations.html" class="btn btn-neutral" title="SDN &amp; Cloud Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -298,16 +290,25 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

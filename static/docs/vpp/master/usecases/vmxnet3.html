@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VPP with VMware/Vmxnet3 &mdash; Vector Packet Processor 01 documentation</title>
+  <title>VPP with VMware/Vmxnet3 &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="VPP inside the Cloud" href="vppcloud.html" />
     <link rel="prev" title="The XML File" href="vhost/xmlexample.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -119,6 +113,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../relatedprojects/index.html">Related Projects</a></li>
@@ -199,29 +194,29 @@ This driver is written as a plugin and is found in src/plugin/vmxnet3.</p>
 <p>The native VPP native vmxnet3 driver provides the following features
 that are not provided with the standard dpdk vmxnet3 driver.</p>
 <ul class="simple">
-<li><p>Interrupt mode</p></li>
-<li><p>Adaptive mode</p></li>
-<li><p>LRO/TSO mode</p></li>
+<li>Interrupt mode</li>
+<li>Adaptive mode</li>
+<li>LRO/TSO mode</li>
 </ul>
 </div>
 <div class="section" id="does-not-support">
 <h2>Does not support<a class="headerlink" href="#does-not-support" title="Permalink to this headline">¶</a></h2>
 <p>This driver does yet support the following features.</p>
 <ul class="simple">
-<li><p>VLAN filter</p></li>
+<li>VLAN filter</li>
 </ul>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>This code is tested with vfio-pci driver installed with Ubuntu 18.04
-which has kernel version 4.15.0-33-generic.</p></li>
-<li><p>This code is tested with ESXi vSwitch version 6.5 and 6.7 for LRO/TSO support,
-VMware Workstation 15 Pro (no LRO/TSO), and VMware Fusion 11 Pro (no LRO/TSO).</p></li>
-<li><p>Driver requires MSI-X interrupt support, which is not supported by
+<li>This code is tested with vfio-pci driver installed with Ubuntu 18.04
+which has kernel version 4.15.0-33-generic.</li>
+<li>This code is tested with ESXi vSwitch version 6.5 and 6.7 for LRO/TSO support,
+VMware Workstation 15 Pro (no LRO/TSO), and VMware Fusion 11 Pro (no LRO/TSO).</li>
+<li>Driver requires MSI-X interrupt support, which is not supported by
 uio_pci_generic driver, so vfio-pci needs to be used. On systems
 without IOMMU vfio driver can still be used with recent kernels which
-support no-iommu mode.</p></li>
+support no-iommu mode.</li>
 </ul>
 </div>
 <div class="section" id="vmware-fusion-for-mac">
@@ -230,14 +225,14 @@ support no-iommu mode.</p></li>
 to the <strong>vmxnet3</strong> driver. VPP supports the <strong>vmxnet3</strong> driver.</p>
 <p>These instructions describe how to change the e1000 driver for VMware fusion.</p>
 <ul class="simple">
-<li><p>From the VMware Fusion menu bar select <strong>Window</strong> then <strong>Virtual Machine
-Library</strong>.</p></li>
-<li><p>From the Virtual Machine menu right click on the Virtual Machine you are using
-and select <strong>Show in Finder</strong></p></li>
-<li><p>Find the name associated with the VM you are using, right click on it and
-select <strong>Show Package Contents</strong></p></li>
-<li><p>Find the <strong>.vmx</strong> file and edit it.</p></li>
-<li><p>Find all the occurrences of <strong>e1000</strong> and change them to <strong>vmxnet3</strong></p></li>
+<li>From the VMware Fusion menu bar select <strong>Window</strong> then <strong>Virtual Machine
+Library</strong>.</li>
+<li>From the Virtual Machine menu right click on the Virtual Machine you are using
+and select <strong>Show in Finder</strong></li>
+<li>Find the name associated with the VM you are using, right click on it and
+select <strong>Show Package Contents</strong></li>
+<li>Find the <strong>.vmx</strong> file and edit it.</li>
+<li>Find all the occurrences of <strong>e1000</strong> and change them to <strong>vmxnet3</strong></li>
 </ul>
 <p>If you are concerned more with configuration not performance the vmxnet3 driver
 can be set to <strong>interrupt</strong> mode in VPP. This will save a great deal on battery
@@ -251,15 +246,15 @@ usage. Do this with the following</p>
 Workstation PRO 15 Linux. You may need to be a superuser for performing these
 steps.</p>
 <ul class="simple">
-<li><p>Shut down the VM you are about to change.</p></li>
-<li><p>From the vmware folder where vmware creates and stores the VM’s, change the
+<li>Shut down the VM you are about to change.</li>
+<li>From the vmware folder where vmware creates and stores the VM’s, change the
 directory to the specific VM which you want to modify, and use your favorite
 text editor to open the corresponding VM’s .vmx file. By default, it is
-$HOME/vmware/&lt;vm-name&gt;/&lt;vm-name&gt;.vmx</p></li>
-<li><p>Locate the line for the interface which you want to modify. For example, if it
+$HOME/vmware/&lt;vm-name&gt;/&lt;vm-name&gt;.vmx</li>
+<li>Locate the line for the interface which you want to modify. For example, if it
 is ethernet1, then change the line <strong>ethernet1.virtualDev = “e1000”</strong> to
-<strong>ethernet1.virtualDev = “vmxnet3”</strong></p></li>
-<li><p>Save the file and power on the VM.</p></li>
+<strong>ethernet1.virtualDev = “vmxnet3”</strong></li>
+<li>Save the file and power on the VM.</li>
 </ul>
 <p>If you are concerned more with configuration not performance the vmxnet3 driver
 can be set to <strong>interrupt</strong> mode in VPP. This will save a great deal on battery
@@ -361,7 +356,7 @@ specified if pci is not already bound manually by above steps.</p>
         <a href="vppcloud.html" class="btn btn-neutral float-right" title="VPP inside the Cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vhost/xmlexample.html" class="btn btn-neutral float-left" title="The XML File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vhost/xmlexample.html" class="btn btn-neutral" title="The XML File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -387,16 +382,25 @@ specified if pci is not already bound manually by above steps.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

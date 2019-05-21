@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Packages &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Packages &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Progressive VPP Tutorial" href="../progressivevpp/index.html" />
     <link rel="prev" title="Installing" href="opensuse.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -112,6 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -195,9 +190,9 @@
 <p>Vector Packet Processing executables. This is the primary package that must be
 installed to use VPP. This package contains:</p>
 <ul class="simple">
-<li><p>vpp - the vector packet engine</p></li>
-<li><p>vpp_api_test - vector packet engine API test tool</p></li>
-<li><p>vpp_json_test - vector packet engine JSON test tool</p></li>
+<li>vpp - the vector packet engine</li>
+<li>vpp_api_test - vector packet engine API test tool</li>
+<li>vpp_json_test - vector packet engine JSON test tool</li>
 </ul>
 </div>
 <div class="section" id="vpp-lib">
@@ -206,30 +201,30 @@ installed to use VPP. This package contains:</p>
 package, so it will always be installed. This package contains the VPP shared
 libraries, including:</p>
 <ul class="simple">
-<li><p>vppinfra - Foundation library supporting vectors, hashes, bitmaps, pools, and string formatting.</p></li>
-<li><p>svm - vm library</p></li>
-<li><p>vlib - vector processing library</p></li>
-<li><p>vlib-api - binary API library</p></li>
-<li><p>vnet -  network stack library</p></li>
+<li>vppinfra - Foundation library supporting vectors, hashes, bitmaps, pools, and string formatting.</li>
+<li>svm - vm library</li>
+<li>vlib - vector processing library</li>
+<li>vlib-api - binary API library</li>
+<li>vnet -  network stack library</li>
 </ul>
 </div>
 <div class="section" id="vpp-plugins">
 <h2>vpp-plugins<a class="headerlink" href="#vpp-plugins" title="Permalink to this headline">¶</a></h2>
 <p>Vector Packet Processing plugin modules.</p>
 <ul class="simple">
-<li><p>acl</p></li>
-<li><p>dpdk</p></li>
-<li><p>flowprobe</p></li>
-<li><p>gtpu</p></li>
-<li><p>ixge</p></li>
-<li><p>kubeproxy</p></li>
-<li><p>l2e</p></li>
-<li><p>lb</p></li>
-<li><p>memif</p></li>
-<li><p>nat</p></li>
-<li><p>pppoe</p></li>
-<li><p>sixrd</p></li>
-<li><p>stn</p></li>
+<li>acl</li>
+<li>dpdk</li>
+<li>flowprobe</li>
+<li>gtpu</li>
+<li>ixge</li>
+<li>kubeproxy</li>
+<li>l2e</li>
+<li>lb</li>
+<li>memif</li>
+<li>nat</li>
+<li>pppoe</li>
+<li>sixrd</li>
+<li>stn</li>
 </ul>
 </div>
 <div class="section" id="vpp-dbg">
@@ -270,7 +265,7 @@ SELinux is enabled at any time.</p>
         <a href="../progressivevpp/index.html" class="btn btn-neutral float-right" title="Progressive VPP Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="opensuse.html" class="btn btn-neutral float-left" title="Installing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="opensuse.html" class="btn btn-neutral" title="Installing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -296,16 +291,25 @@ SELinux is enabled at any time.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

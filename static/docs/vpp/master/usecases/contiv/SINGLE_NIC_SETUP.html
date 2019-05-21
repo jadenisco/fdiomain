@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up a Node with a Single NIC &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Setting up a Node with a Single NIC &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Setting Up a Node with Multiple NICs" href="MULTI_NIC_SETUP.html" />
     <link rel="prev" title="Contiv/VPP Network Operation" href="NETWORKING.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -129,6 +123,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -203,9 +198,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="setting-up-a-node-with-a-single-nic">
-<h1>Setting up a Node with a Single NIC<a class="headerlink" href="#setting-up-a-node-with-a-single-nic" title="Permalink to this headline">¶</a></h1>
+<span id="setting-up-a-node-with-a-single-nic"></span><h1>Setting up a Node with a Single NIC<a class="headerlink" href="#setting-up-a-node-with-a-single-nic" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installing-the-stn-daemon">
-<h2>Installing the STN Daemon<a class="headerlink" href="#installing-the-stn-daemon" title="Permalink to this headline">¶</a></h2>
+<span id="installing-the-stn-daemon"></span><h2>Installing the STN Daemon<a class="headerlink" href="#installing-the-stn-daemon" title="Permalink to this headline">¶</a></h2>
 <p>The STN (Steal the NIC) daemon must be installed on every node in the cluster that has only
 one NIC. The STN daemon installation(*) should be performed before deployment
 of the Contiv-VPP plugin.</p>
@@ -240,20 +235,20 @@ On CentOS, this may not be the case by default.  You can enable it by following 
 and <a class="reference external" href="https://github.com/contiv/vpp/blob/master/cmd/contiv-init/doc.go">contiv-init</a>.</p>
 </div>
 <div class="section" id="creating-a-vpp-interface-configuration">
-<h2>Creating a VPP Interface Configuration<a class="headerlink" href="#creating-a-vpp-interface-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="creating-a-vpp-interface-configuration"></span><h2>Creating a VPP Interface Configuration<a class="headerlink" href="#creating-a-vpp-interface-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Create the VPP configuration for the hardware interface as described
 <a class="reference external" href="https://github.com/contiv/vpp/blob/master/docs/VPP_CONFIG.md#single-nic-configuration">here</a>.</p>
 </div>
 <div class="section" id="configuring-stn-in-contiv-vpp-k8s-deployment-files">
-<h2>Configuring STN in Contiv-VPP K8s Deployment Files<a class="headerlink" href="#configuring-stn-in-contiv-vpp-k8s-deployment-files" title="Permalink to this headline">¶</a></h2>
+<span id="configuring-stn-in-contiv-vpp-k8s-deployment-files"></span><h2>Configuring STN in Contiv-VPP K8s Deployment Files<a class="headerlink" href="#configuring-stn-in-contiv-vpp-k8s-deployment-files" title="Permalink to this headline">¶</a></h2>
 <p>The STN feature is disabled by default. It needs to be enabled either globally,
 or individually for every node in the cluster.</p>
 <div class="section" id="global-configuration">
-<h3>Global Configuration:<a class="headerlink" href="#global-configuration" title="Permalink to this headline">¶</a></h3>
+<span id="global-configuration"></span><h3>Global Configuration:<a class="headerlink" href="#global-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Global configuration is used in homogeneous environments where all nodes in
 a given cluster have the same hardware configuration, for example only a single
 Network Adapter. To enable the STN feature globally, put the <code class="docutils literal notranslate"><span class="pre">StealFirstNIC:</span> <span class="pre">True</span></code>
-stanza into the [<code class="docutils literal notranslate"><span class="pre">contiv-vpp.yaml</span></code>][1] deployment file, for example:</p>
+stanza into the <a class="reference external" href="../k8s/contiv-vpp.yaml"><code class="docutils literal notranslate"><span class="pre">contiv-vpp.yaml</span></code></a> deployment file, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">:</span>
   <span class="n">contiv</span><span class="o">.</span><span class="n">yaml</span><span class="p">:</span> <span class="o">|-</span>
     <span class="n">TCPstackDisabled</span><span class="p">:</span> <span class="n">true</span>
@@ -267,14 +262,14 @@ stanza into the [<code class="docutils literal notranslate"><span class="pre">co
 cluster to steal the first NIC from the kernel and assign it to VPP. Note that
 the Network Adapters on different nodes do not need to be of the same type. You
 still need to create the respective vswitch configurations on every node in the
-cluster, as shown [above](#creating-a-vpp-interface-configuration).</p>
+cluster, as shown <a class="reference external" href="#creating-a-vpp-interface-configuration">above</a>.</p>
 </div>
 <div class="section" id="individual-configuration">
-<h3>Individual Configuration:<a class="headerlink" href="#individual-configuration" title="Permalink to this headline">¶</a></h3>
+<span id="individual-configuration"></span><h3>Individual Configuration:<a class="headerlink" href="#individual-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Individual configuration is used in heterogeneous environments where each node
 in a given cluster may be configured differently. To enable the STN feature
 for a specific node in the cluster, put the following stanza into its Node
-Configuration in the [<code class="docutils literal notranslate"><span class="pre">contiv-vpp.yaml</span></code>][1] deployment file, for example:</p>
+Configuration in the <a class="reference external" href="../k8s/contiv-vpp.yaml"><code class="docutils literal notranslate"><span class="pre">contiv-vpp.yaml</span></code></a> deployment file, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
     <span class="n">NodeConfig</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">NodeName</span><span class="p">:</span> <span class="s2">&quot;ubuntu-1&quot;</span>
@@ -289,7 +284,7 @@ shown <a class="reference external" href="#creating-a-vpp-interface-configuratio
 </div>
 </div>
 <div class="section" id="uninstalling-the-stn-daemon">
-<h2>Uninstalling the STN Daemon<a class="headerlink" href="#uninstalling-the-stn-daemon" title="Permalink to this headline">¶</a></h2>
+<span id="uninstalling-the-stn-daemon"></span><h2>Uninstalling the STN Daemon<a class="headerlink" href="#uninstalling-the-stn-daemon" title="Permalink to this headline">¶</a></h2>
 <p>Run as root (not using sudo):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">contiv</span><span class="o">/</span><span class="n">vpp</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">k8s</span><span class="o">/</span><span class="n">stn</span><span class="o">-</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span><span class="p">)</span> <span class="o">--</span><span class="n">uninstall</span>
 </pre></div>
@@ -321,7 +316,7 @@ shown <a class="reference external" href="#creating-a-vpp-interface-configuratio
         <a href="MULTI_NIC_SETUP.html" class="btn btn-neutral float-right" title="Setting Up a Node with Multiple NICs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="NETWORKING.html" class="btn btn-neutral float-left" title="Contiv/VPP Network Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="NETWORKING.html" class="btn btn-neutral" title="Contiv/VPP Network Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -347,16 +342,25 @@ shown <a class="reference external" href="#creating-a-vpp-interface-configuratio
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

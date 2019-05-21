@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>What is vector packet processing? &mdash; Vector Packet Processor 01 documentation</title>
+  <title>What is vector packet processing? &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,36 +17,34 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -61,10 +59,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -94,6 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -184,12 +179,12 @@ fooC and so on.</p>
 </div>
 <p>Scalar packet processing is simple, but inefficent in these ways:</p>
 <ul class="simple">
-<li><p>When the code path length exceeds the size of the Microprocessor’s instruction
+<li>When the code path length exceeds the size of the Microprocessor’s instruction
 cache (I-cache), <a class="reference external" href="https://en.wikipedia.org/wiki/Thrashing_(computer_science)">thrashing</a> occurs as the
 Microprocessor is continually loading new instructions. In this model, each
-packet incurs an identical set of I-cache misses.</p></li>
-<li><p>The associated deep call stack will also add load-store-unit pressure as
-stack-locals fall out of the Microprocessor’s Layer 1 Data Cache (D-cache).</p></li>
+packet incurs an identical set of I-cache misses.</li>
+<li>The associated deep call stack will also add load-store-unit pressure as
+stack-locals fall out of the Microprocessor’s Layer 1 Data Cache (D-cache).</li>
 </ul>
 <p><strong>Vector Packet Processing</strong></p>
 <p>In contrast, a vector packet processing network stack processes multiple packets
@@ -205,12 +200,12 @@ so on.</p>
 </div>
 <p>This approach fixes:</p>
 <ul class="simple">
-<li><p>The I-cache thrashing problem described above, by ammoritizing the cost of
-I-cache loads across multiple packets.</p></li>
-<li><p>The ineffeciences associated with the deep call stack by recieving vectors
+<li>The I-cache thrashing problem described above, by ammoritizing the cost of
+I-cache loads across multiple packets.</li>
+<li>The ineffeciences associated with the deep call stack by recieving vectors
 of up to 256 packets at a time from the Network Interface, and processes them
 using a directed graph of node. The graph scheduler invokes one node dispatch
-function at a time, restricting stack depth to a few stack frames.</p></li>
+function at a time, restricting stack depth to a few stack frames.</li>
 </ul>
 <p>The further optimizations that this approaches enables are pipelining and
 prefetching to minimize read latency on table data and parallelize packet loads
@@ -245,16 +240,25 @@ needed to process packets.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

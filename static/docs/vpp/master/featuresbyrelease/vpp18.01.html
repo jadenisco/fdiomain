@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 18.01 &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Features for Release VPP 18.01 &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 17.10" href="vpp17.10.html" />
     <link rel="prev" title="Features for Release VPP 18.04" href="vpp18.04.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -95,8 +89,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../links/index.html">VPP Wiki, Doxygen and Other Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Features by Release</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="vpp1904.html">Features for Release VPP 19.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vpp1901.html">Features for Release VPP 19.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.10.html">Features for Release VPP 18.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.07.html">Features for Release VPP 18.07</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.04.html">Features for Release VPP 18.04</a></li>
@@ -124,6 +116,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../relatedprojects/index.html">Related Projects</a></li>
@@ -203,70 +196,70 @@
 <div class="section" id="infrastructure">
 <h3>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>DPDK 17.11</p></li>
-<li><p>TCP Checksum Offload</p></li>
-<li><p>Arm64/Arm-v8 support</p></li>
-<li><p>SUSE packaging</p></li>
-<li><p>bihash_vec8_8 variant</p></li>
-<li><p>PCI rework to support VFIO</p></li>
-<li><p>chi-squared test calculator</p></li>
+<li>DPDK 17.11</li>
+<li>TCP Checksum Offload</li>
+<li>Arm64/Arm-v8 support</li>
+<li>SUSE packaging</li>
+<li>bihash_vec8_8 variant</li>
+<li>PCI rework to support VFIO</li>
+<li>chi-squared test calculator</li>
 </ul>
 </div>
 <div class="section" id="snat-nat">
 <h3>SNAT / NAT<a class="headerlink" href="#snat-nat" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>One armed NAT</p></li>
-<li><p>Twice NAT44</p></li>
-<li><p>NAT hairpinning rework</p></li>
-<li><p>NAT64 multi-thread</p></li>
-<li><p>NAT64 IPFIX</p></li>
-<li><p>NAT64 Fragmentation</p></li>
-<li><p>NAT: DS-Lite</p></li>
-<li><p>Remove old SNAT API</p></li>
-<li><p>ACL-based NAT</p></li>
+<li>One armed NAT</li>
+<li>Twice NAT44</li>
+<li>NAT hairpinning rework</li>
+<li>NAT64 multi-thread</li>
+<li>NAT64 IPFIX</li>
+<li>NAT64 Fragmentation</li>
+<li>NAT: DS-Lite</li>
+<li>Remove old SNAT API</li>
+<li>ACL-based NAT</li>
 </ul>
 </div>
 <div class="section" id="vnet">
 <h3>VNET<a class="headerlink" href="#vnet" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>DNS name resolver</p></li>
-<li><p>BIER</p></li>
-<li><p>GENEVE Tunnel</p></li>
-<li><p>IPSec Openssl 1.1.0 api support</p></li>
-<li><p>FIB improvements</p></li>
-<li><p>tap v2</p></li>
+<li>DNS name resolver</li>
+<li>BIER</li>
+<li>GENEVE Tunnel</li>
+<li>IPSec Openssl 1.1.0 api support</li>
+<li>FIB improvements</li>
+<li>tap v2</li>
 </ul>
 </div>
 <div class="section" id="api">
 <h3>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>VPP stats (Broadcast &amp; Multicast support)</p></li>
-<li><p>SR MPLS</p></li>
-<li><p>VPP Object Model (VOM)</p></li>
+<li>VPP stats (Broadcast &amp; Multicast support)</li>
+<li>SR MPLS</li>
+<li>VPP Object Model (VOM)</li>
 </ul>
 </div>
 <div class="section" id="host-stack">
 <h3>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>VPP TCP Stack scale / congestion improvements</p></li>
-<li><p>Refactor UDP</p></li>
-<li><p>Namespace support</p></li>
-<li><p>Session rules table</p></li>
-<li><p>VPP Comms Library (VCL) improvements</p></li>
+<li>VPP TCP Stack scale / congestion improvements</li>
+<li>Refactor UDP</li>
+<li>Namespace support</li>
+<li>Session rules table</li>
+<li>VPP Comms Library (VCL) improvements</li>
 </ul>
 </div>
 <div class="section" id="acl">
 <h3>ACL<a class="headerlink" href="#acl" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>ACL stats</p></li>
+<li>ACL stats</li>
 </ul>
 </div>
 <div class="section" id="plugins">
 <h3>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Kube-proxy</p></li>
-<li><p>L2 Emulation</p></li>
-<li><p>Memif</p></li>
+<li>Kube-proxy</li>
+<li>L2 Emulation</li>
+<li>Memif</li>
 </ul>
 </div>
 </div>
@@ -278,8 +271,8 @@
 <h2>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h2>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
-<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1801">commit log</a></p></li>
+<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
+<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1801">commit log</a></li>
 </ul>
 </div>
 </div>
@@ -295,7 +288,7 @@
         <a href="vpp17.10.html" class="btn btn-neutral float-right" title="Features for Release VPP 17.10" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp18.04.html" class="btn btn-neutral float-left" title="Features for Release VPP 18.04" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp18.04.html" class="btn btn-neutral" title="Features for Release VPP 18.04" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -321,16 +314,25 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Layer 3 &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Layer 3 &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Layer 4" href="l4.html" />
     <link rel="prev" title="Layer 2" href="l2.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -122,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -201,64 +196,64 @@
 <div class="section" id="ip-layer">
 <h2>IP Layer<a class="headerlink" href="#ip-layer" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>ICMP</p></li>
-<li><p>IPv4</p></li>
-<li><p>IPv6</p></li>
-<li><p>IPSEC</p></li>
-<li><p>Link Local Addressing</p></li>
+<li>ICMP</li>
+<li>IPv4</li>
+<li>IPv6</li>
+<li>IPSEC</li>
+<li>Link Local Addressing</li>
 </ul>
 </div>
 <div class="section" id="multicast">
 <h2>MultiCast<a class="headerlink" href="#multicast" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Multicast FiB</p></li>
-<li><p>IGMP</p></li>
+<li>Multicast FiB</li>
+<li>IGMP</li>
 </ul>
 </div>
 <div class="section" id="virtual-routing-and-forwarding-vrf">
 <h2>Virtual Routing and forwarding (VRF)<a class="headerlink" href="#virtual-routing-and-forwarding-vrf" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>VRF scaling, thousands of tables.</p></li>
-<li><p>Controlled cross-VRF lookups</p></li>
+<li>VRF scaling, thousands of tables.</li>
+<li>Controlled cross-VRF lookups</li>
 </ul>
 </div>
 <div class="section" id="multi-path">
 <h2>Multi-path<a class="headerlink" href="#multi-path" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Equal Cost Multi Path (ECMP)</p></li>
-<li><p>Unequal Cost Multi Path (UCMP)</p></li>
+<li>Equal Cost Multi Path (ECMP)</li>
+<li>Unequal Cost Multi Path (UCMP)</li>
 </ul>
 </div>
 <div class="section" id="ipv4">
 <h2>IPv4<a class="headerlink" href="#ipv4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>ARP</p></li>
-<li><p>ARP Proxy</p></li>
-<li><p>ARP Snooping</p></li>
+<li>ARP</li>
+<li>ARP Proxy</li>
+<li>ARP Snooping</li>
 </ul>
 </div>
 <div class="section" id="ipv6">
 <h2>IPv6<a class="headerlink" href="#ipv6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Neighbour discovery (ND)</p></li>
-<li><p>ND Proxy</p></li>
-<li><p>Router Advertisement</p></li>
-<li><p>Segment Routing</p></li>
-<li><p>Distributed Virtual Routing Resolution</p></li>
+<li>Neighbour discovery (ND)</li>
+<li>ND Proxy</li>
+<li>Router Advertisement</li>
+<li>Segment Routing</li>
+<li>Distributed Virtual Routing Resolution</li>
 </ul>
 </div>
 <div class="section" id="forwarding-information-base-fib">
 <h2>Forwarding Information Base (FIB)<a class="headerlink" href="#forwarding-information-base-fib" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Hierarchical FIB</p></li>
-<li><p>Memory efficient</p></li>
-<li><p>Multi-million entry scalable</p></li>
-<li><p>Lockless/concurrent updates</p></li>
-<li><p>Recursive lookups</p></li>
-<li><p>Next hop failure detection</p></li>
-<li><p>Shared FIB adjacencies</p></li>
-<li><p>Multicast support</p></li>
-<li><p>MPLS support</p></li>
+<li>Hierarchical FIB</li>
+<li>Memory efficient</li>
+<li>Multi-million entry scalable</li>
+<li>Lockless/concurrent updates</li>
+<li>Recursive lookups</li>
+<li>Next hop failure detection</li>
+<li>Shared FIB adjacencies</li>
+<li>Multicast support</li>
+<li>MPLS support</li>
 </ul>
 </div>
 </div>
@@ -274,7 +269,7 @@
         <a href="l4.html" class="btn btn-neutral float-right" title="Layer 4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="l2.html" class="btn btn-neutral float-left" title="Layer 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="l2.html" class="btn btn-neutral" title="Layer 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -300,16 +295,25 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

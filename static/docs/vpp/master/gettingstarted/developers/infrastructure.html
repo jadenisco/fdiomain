@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VPPINFRA (Infrastructure) &mdash; Vector Packet Processor 01 documentation</title>
+  <title>VPPINFRA (Infrastructure) &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="VLIB (Vector Processing Library)" href="vlib.html" />
     <link rel="prev" title="Software Architecture" href="softwarearchitecture.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -137,6 +131,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -211,7 +206,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="vppinfra-infrastructure">
-<h1>VPPINFRA (Infrastructure)<a class="headerlink" href="#vppinfra-infrastructure" title="Permalink to this headline">¶</a></h1>
+<span id="vppinfra-infrastructure"></span><h1>VPPINFRA (Infrastructure)<a class="headerlink" href="#vppinfra-infrastructure" title="Permalink to this headline">¶</a></h1>
 <p>The files associated with the VPP Infrastructure layer are located in
 the ./src/vppinfra folder.</p>
 <p>VPPinfra is a collection of basic c-library services, quite
@@ -227,7 +222,7 @@ cause (intentional) side-effects.</p>
 frequently. The VPP Infrastructure layer contains the following
 functions:</p>
 <div class="section" id="vectors">
-<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
+<span id="vectors"></span><h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra vectors are ubiquitous dynamically resized arrays with by user
 defined “headers”. Many vpppinfra data structures (e.g. hash, heap,
 pool) are vectors with various different headers.</p>
@@ -249,7 +244,7 @@ length field to zero via the vec_reset_length(v) macro. [Use the
 macro! It’s smart about NULL pointers.]</p>
 <p>Typically, the user header is not present. User headers allow for other
 data structures to be built atop vppinfra vectors. Users may specify the
-alignment for first data element of a vector via the [vec]()*_aligned
+alignment for first data element of a vector via the <a class="reference external" href="#">vec</a>*_aligned
 macros.</p>
 <p>Vector elements can be any C type e.g. (int, double, struct bar). This
 is also true for data types built atop vectors (e.g. heap, pool, etc.).
@@ -257,7 +252,7 @@ Many macros have _a variants supporting alignment of vector elements
 and _h variants supporting non-zero-length vector headers. The _ha
 variants support both.  Additionally cacheline alignment within a
 vector element structure can be specified using the
-[CLIB_CACHE_LINE_ALIGN_MARK]() macro.</p>
+<a class="reference external" href="#">CLIB_CACHE_LINE_ALIGN_MARK</a> macro.</p>
 <p>Inconsistent usage of header and/or alignment related macro variants
 will cause delayed, confusing failures.</p>
 <p>Standard programming error: memorize a pointer to the ith element of a
@@ -267,26 +262,26 @@ memorizes vector <strong>indices</strong> which are invariant across reallocatio
 <p>In typical application images, one supplies a set of global functions
 designed to be called from gdb. Here are a few examples:</p>
 <ul class="simple">
-<li><p>vl(v) - prints vec_len(v)</p></li>
-<li><p>pe(p) - prints pool_elts(p)</p></li>
-<li><p>pifi(p, index) - prints pool_is_free_index(p, index)</p></li>
-<li><p>debug_hex_bytes (p, nbytes) - hex memory dump nbytes starting at p</p></li>
+<li>vl(v) - prints vec_len(v)</li>
+<li>pe(p) - prints pool_elts(p)</li>
+<li>pifi(p, index) - prints pool_is_free_index(p, index)</li>
+<li>debug_hex_bytes (p, nbytes) - hex memory dump nbytes starting at p</li>
 </ul>
 <p>Use the “show gdb” debug CLI command to print the current set.</p>
 </div>
 <div class="section" id="bitmaps">
-<h2>Bitmaps<a class="headerlink" href="#bitmaps" title="Permalink to this headline">¶</a></h2>
+<span id="bitmaps"></span><h2>Bitmaps<a class="headerlink" href="#bitmaps" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra bitmaps are dynamic, built using the vppinfra vector APIs.
 Quite handy for a variety jobs.</p>
 </div>
 <div class="section" id="pools">
-<h2>Pools<a class="headerlink" href="#pools" title="Permalink to this headline">¶</a></h2>
+<span id="pools"></span><h2>Pools<a class="headerlink" href="#pools" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra pools combine vectors and bitmaps to rapidly allocate and free
 fixed-size data structures with independent lifetimes. Pools are perfect
 for allocating per-session structures.</p>
 </div>
 <div class="section" id="hashes">
-<h2>Hashes<a class="headerlink" href="#hashes" title="Permalink to this headline">¶</a></h2>
+<span id="hashes"></span><h2>Hashes<a class="headerlink" href="#hashes" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra provides several hash flavors. Data plane problems involving
 packet classification / session lookup often use
 ./src/vppinfra/bihash_template.[ch] bounded-index extensible
@@ -306,7 +301,7 @@ vector element as the second argument to hash_set_mem. It is perfectly
 fine to memorize constant string addresses in the text segment.</p>
 </div>
 <div class="section" id="format">
-<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
+<span id="format"></span><h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra format is roughly equivalent to printf.</p>
 <p>Format has a few properties worth mentioning. Format’s first argument is
 a (u8 *) vector to which it appends the result of the current format
@@ -347,7 +342,7 @@ typical for user format functions to blow up if the va_arg(va,
 type) macros don’t match the caller’s idea of reality.</p>
 </div>
 <div class="section" id="unformat">
-<h2>Unformat<a class="headerlink" href="#unformat" title="Permalink to this headline">¶</a></h2>
+<span id="unformat"></span><h2>Unformat<a class="headerlink" href="#unformat" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra unformat is vaguely related to scanf, but considerably more
 general.</p>
 <p>A typical use case involves initializing an unformat_input_t from
@@ -377,7 +372,7 @@ follows:</p>
 via a “%U” user unformat function scheme.</p>
 </div>
 <div class="section" id="vppinfra-errors-and-warnings">
-<h2>Vppinfra errors and warnings<a class="headerlink" href="#vppinfra-errors-and-warnings" title="Permalink to this headline">¶</a></h2>
+<span id="vppinfra-errors-and-warnings"></span><h2>Vppinfra errors and warnings<a class="headerlink" href="#vppinfra-errors-and-warnings" title="Permalink to this headline">¶</a></h2>
 <p>Many functions within the vpp dataplane have return-values of type
 clib_error_t *. Clib_error_t’s are arbitrary strings with a bit of
 metadata [fatal, warning] and are easy to announce. Returning a NULL
@@ -389,7 +384,7 @@ system-call information. In production images, clib_warnings result in
 syslog entries.</p>
 </div>
 <div class="section" id="serialization">
-<h2>Serialization<a class="headerlink" href="#serialization" title="Permalink to this headline">¶</a></h2>
+<span id="serialization"></span><h2>Serialization<a class="headerlink" href="#serialization" title="Permalink to this headline">¶</a></h2>
 <p>Vppinfra serialization support allows the programmer to easily serialize
 and unserialize complex data structures.</p>
 <p>The underlying primitive serialize/unserialize functions use network
@@ -409,7 +404,7 @@ little-endian host and unserializing on a big-endian host.</p>
         <a href="vlib.html" class="btn btn-neutral float-right" title="VLIB (Vector Processing Library)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="softwarearchitecture.html" class="btn btn-neutral float-left" title="Software Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="softwarearchitecture.html" class="btn btn-neutral" title="Software Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -435,16 +430,25 @@ little-endian host and unserializing on a big-endian host.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

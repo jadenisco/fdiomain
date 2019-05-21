@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Control Plane &mdash; Vector Packet Processor 01 documentation</title>
+  <title>The Control Plane &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="ARP Entries" href="arpentries.html" />
     <link rel="prev" title="The Data Model" href="thedatamodel.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -135,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../relatedprojects/index.html">Related Projects</a></li>
@@ -218,7 +213,7 @@
 model starting from the lowest layer. The description uses IPv4 addresses and
 protocols, but all concepts apply equally to the IPv6 equivalents. The diagrams
 all portray the CLI command to install the information in VPP and an
-[approximation of] a UML diagram <a class="footnote-reference brackets" href="#f1" id="id1">1</a> of the data structures used to represent that
+[approximation of] a UML diagram <a class="footnote-reference" href="#f1" id="id1">[1]</a> of the data structures used to represent that
 information.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -235,11 +230,12 @@ information.</p>
 </ul>
 </div>
 <p class="rubric">Footnotes:</p>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>The arrow indicates a ‘has-a’ relationship. The object attached to the arrow head ‘has-a’ instance of the other. The numbers next to the arrows indicate the multiplicity, i.e. object A has n to m instances of object B. The difference between a UML association and aggregation is not conveyed in any diagrams. To UML aficionados, I apologize. Word is not the best drawing tool.</p>
-</dd>
-</dl>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The arrow indicates a ‘has-a’ relationship. The object attached to the arrow head ‘has-a’ instance of the other. The numbers next to the arrows indicate the multiplicity, i.e. object A has n to m instances of object B. The difference between a UML association and aggregation is not conveyed in any diagrams. To UML aficionados, I apologize. Word is not the best drawing tool.</td></tr>
+</tbody>
+</table>
 </div>
 
 
@@ -253,7 +249,7 @@ information.</p>
         <a href="arpentries.html" class="btn btn-neutral float-right" title="ARP Entries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="thedatamodel.html" class="btn btn-neutral float-left" title="The Data Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="thedatamodel.html" class="btn btn-neutral" title="The Data Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -279,16 +275,25 @@ information.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Graph Walks &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Graph Walks &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="The Data Plane" href="dataplane.html" />
     <link rel="prev" title="Attached Export" href="attachedexport.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -135,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../relatedprojects/index.html">Related Projects</a></li>
@@ -216,7 +211,7 @@
             
   <div class="section" id="graph-walks">
 <span id="graphwalks"></span><h1>Graph Walks<a class="headerlink" href="#graph-walks" title="Permalink to this headline">¶</a></h1>
-<p>All FIB object types are allocated from a VPP memory pool <a class="footnote-reference brackets" href="#f13" id="id1">1</a>. The objects are thus
+<p>All FIB object types are allocated from a VPP memory pool <a class="footnote-reference" href="#f13" id="id1">[1]</a>. The objects are thus
 susceptible to memory re-allocation, therefore the use of a bare “C” pointer to refer
 to a child or parent is not possible. Instead there is the concept of a <em>fib_node_ptr_t</em>
 which is a tuple of type,index. The type indicates what type of object it is
@@ -234,9 +229,9 @@ that the child may itself need to update.</p>
 <p>To support the many to one, child to parent, relationship a parent must maintain a
 list of its children. The requirements of this list are;</p>
 <ul class="simple">
-<li><p>O(1) insertion and delete time. Several child-parent relationships are made/broken during route addition/deletion.</p></li>
-<li><p>Ordering. High priority children are at the front, low priority at the back (see section Fast Convergence)</p></li>
-<li><p>Insertion at arbitrary locations.</p></li>
+<li>O(1) insertion and delete time. Several child-parent relationships are made/broken during route addition/deletion.</li>
+<li>Ordering. High priority children are at the front, low priority at the back (see section Fast Convergence)</li>
+<li>Insertion at arbitrary locations.</li>
 </ul>
 <p>To realise these requirements the child-list is a doubly linked-list, where each element
 contains a <em>fib_node_ptr_t</em>. The VPP pool memory model applies to the list elements, so
@@ -274,20 +269,27 @@ time it takes to act on a single route update. For example, if a route update wh
 affect millions of child recursive routes, then the rate at which such updates could be
 processed would be dependent on the number of child recursive route Рwhich would not be
 good. At the time of writing FIB2.0 uses synchronous walk in all locations except when
-walking the children of a path-list, and it has more than 32 <a class="footnote-reference brackets" href="#f15" id="id2">3</a> children. This avoids the
+walking the children of a path-list, and it has more than 32 <a class="footnote-reference" href="#f15" id="id2">[3]</a> children. This avoids the
 case mentioned above.</p>
 <p class="rubric">Footnotes:</p>
-<dl class="footnote brackets">
-<dt class="label" id="f13"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Fast memory allocation is crucial to fast route update times.</p>
-</dd>
-<dt class="label" id="f14"><span class="brackets">2</span></dt>
-<dd><p>VPP may be written in C and not C++ but inheritance is still possible.</p>
-</dd>
-<dt class="label" id="f15"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
-<dd><p>The value is arbitrary and yet to be tuned.</p>
-</dd>
-</dl>
+<table class="docutils footnote" frame="void" id="f13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Fast memory allocation is crucial to fast route update times.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>VPP may be written in C and not C++ but inheritance is still possible.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>The value is arbitrary and yet to be tuned.</td></tr>
+</tbody>
+</table>
 </div>
 
 
@@ -301,7 +303,7 @@ case mentioned above.</p>
         <a href="dataplane.html" class="btn btn-neutral float-right" title="The Data Plane" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="attachedexport.html" class="btn btn-neutral float-left" title="Attached Export" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="attachedexport.html" class="btn btn-neutral" title="Attached Export" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -327,16 +329,25 @@ case mentioned above.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

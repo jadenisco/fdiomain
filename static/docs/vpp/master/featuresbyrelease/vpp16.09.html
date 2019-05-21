@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 16.09 &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Features for Release VPP 16.09 &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 16.06" href="vpp16.06.html" />
     <link rel="prev" title="Features for Release VPP 17.01" href="vpp17.01.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -95,8 +89,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../links/index.html">VPP Wiki, Doxygen and Other Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Features by Release</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="vpp1904.html">Features for Release VPP 19.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vpp1901.html">Features for Release VPP 19.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.10.html">Features for Release VPP 18.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.07.html">Features for Release VPP 18.07</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.04.html">Features for Release VPP 18.04</a></li>
@@ -114,6 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../relatedprojects/index.html">Related Projects</a></li>
@@ -189,15 +182,17 @@
 <span id="vpp16-09"></span><h1>Features for Release VPP 16.09<a class="headerlink" href="#features-for-release-vpp-16-09" title="Permalink to this headline">¶</a></h1>
 <p>This section lists those features that became available in VPP Release 16.09:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Integrated July 2016 DPDK release</dt><dd><ul>
-<li><p>DPDK-vhost is depreciated pending a complete rework of the original integration and addressing of rx performance deltas</p></li>
-<li><dl class="simple">
-<dt>Patches required for DPDK 16.07:</dt><dd><ul>
-<li><p>Correctly setting the Packet Type in the IGB, IXGBE and i40e drivers</p></li>
-<li><p>Correctly setting checksum in the i40e driver</p></li>
-<li><p>NXP DPAA2 PMD Driver</p></li>
-<li><p>rte_delay (yield) functionality</p></li>
+<li><dl class="first docutils">
+<dt>Integrated July 2016 DPDK release</dt>
+<dd><ul class="first last">
+<li>DPDK-vhost is depreciated pending a complete rework of the original integration and addressing of rx performance deltas</li>
+<li><dl class="first docutils">
+<dt>Patches required for DPDK 16.07:</dt>
+<dd><ul class="first last">
+<li>Correctly setting the Packet Type in the IGB, IXGBE and i40e drivers</li>
+<li>Correctly setting checksum in the i40e driver</li>
+<li>NXP DPAA2 PMD Driver</li>
+<li>rte_delay (yield) functionality</li>
 </ul>
 </dd>
 </dl>
@@ -206,78 +201,87 @@
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Add “in tree” plugins:</dt><dd><ul>
-<li><p>IPv6 ILA</p></li>
-<li><p>iOAM</p></li>
-<li><p>Load Balancer</p></li>
-<li><p>SNAT</p></li>
+<li><dl class="first docutils">
+<dt>Add “in tree” plugins:</dt>
+<dd><ul class="first last">
+<li>IPv6 ILA</li>
+<li>iOAM</li>
+<li>Load Balancer</li>
+<li>SNAT</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>High-performance (line-rate) “neutron like” L4 port-filtering</p></li>
-<li><dl class="simple">
-<dt>API refactoring - addressing some of the issues around JVPP bindings</dt><dd><ul>
-<li><p>Accommodating plugins (e.g. NSH_SFC)</p></li>
-<li><p>Binding for python</p></li>
+<li>High-performance (line-rate) “neutron like” L4 port-filtering</li>
+<li><dl class="first docutils">
+<dt>API refactoring - addressing some of the issues around JVPP bindings</dt>
+<dd><ul class="first last">
+<li>Accommodating plugins (e.g. NSH_SFC)</li>
+<li>Binding for python</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>LISP</dt><dd><ul>
-<li><p>L2 LISP overlays</p></li>
-<li><p>Multitenancy</p></li>
-<li><p>Multihoming</p></li>
-<li><p>RTR mode</p></li>
-<li><p>Map-resolver failover algorithm</p></li>
+<li><dl class="first docutils">
+<dt>LISP</dt>
+<dd><ul class="first last">
+<li>L2 LISP overlays</li>
+<li>Multitenancy</li>
+<li>Multihoming</li>
+<li>RTR mode</li>
+<li>Map-resolver failover algorithm</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>Support 64-bit vector lengths, huge shared-memory segments</p></li>
-<li><dl class="simple">
-<dt>Dynamic IP Feature ordering</dt><dd><ul>
-<li><p>IP Features can now specify features they appear before and after</p></li>
+<li>Support 64-bit vector lengths, huge shared-memory segments</li>
+<li><dl class="first docutils">
+<dt>Dynamic IP Feature ordering</dt>
+<dd><ul class="first last">
+<li>IP Features can now specify features they appear before and after</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>16.09 Builds</dt><dd><ul>
-<li><p>Ubuntu 14.04 LTS - Trusty Tahr</p></li>
-<li><p>Ubuntu 16.04 LTS - Xenial Xerus</p></li>
-<li><p>CentOS 7</p></li>
-<li><p>More information on VPP wiki</p></li>
+<li><dl class="first docutils">
+<dt>16.09 Builds</dt>
+<dd><ul class="first last">
+<li>Ubuntu 14.04 LTS - Trusty Tahr</li>
+<li>Ubuntu 16.04 LTS - Xenial Xerus</li>
+<li>CentOS 7</li>
+<li>More information on VPP wiki</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Performance, characterize and document performance for this release (more information on CSIT page)</dt><dd><ul>
-<li><dl class="simple">
-<dt>IPv4 and IPv6 Scale - performance tests</dt><dd><ul>
-<li><p>Bidirectional 10k/100k/1M flows</p></li>
-<li><p>64B,570B, 1518B,9000B packet sizes</p></li>
+<li><dl class="first docutils">
+<dt>Performance, characterize and document performance for this release (more information on CSIT page)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>IPv4 and IPv6 Scale - performance tests</dt>
+<dd><ul class="first last">
+<li>Bidirectional 10k/100k/1M flows</li>
+<li>64B,570B, 1518B,9000B packet sizes</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>IPv6 iACL - performance</dt><dd><ul>
-<li><p>DUT1 and DUT2 are configured with IPv6 routing, two static IPv6 /64 routes and IPv6 iAcl security whitelist ingress /64 filter entries applied on links</p></li>
-<li><p>TG traffic profile contains two L3 flow-groups (flow-group per direction, 253 flows per flow-group) with all packets containing Ethernet header, IPv6 header and generated payload</p></li>
-<li><p>MAC addresses are matching MAC addresses of the TG node interfaces</p></li>
+<li><dl class="first docutils">
+<dt>IPv6 iACL - performance</dt>
+<dd><ul class="first last">
+<li>DUT1 and DUT2 are configured with IPv6 routing, two static IPv6 /64 routes and IPv6 iAcl security whitelist ingress /64 filter entries applied on links</li>
+<li>TG traffic profile contains two L3 flow-groups (flow-group per direction, 253 flows per flow-group) with all packets containing Ethernet header, IPv6 header and generated payload</li>
+<li>MAC addresses are matching MAC addresses of the TG node interfaces</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>L2XC VXLANoIPv4 - performance</dt><dd><ul>
-<li><p>DUT1 and DUT2 are configured with L2 cross-connect. VXLAN tunnels are configured between L2XCs on DUT1 and DUT2</p></li>
-<li><p>TG traffic profile contains two L3 flow-groups (flow-group per direction, 253 flows per flow-group) with all packets containing Ethernet header, IPv4 header with IP protocol=61 and generated payload</p></li>
-<li><p>MAC addresses are matching MAC addresses of the TG node interfaces</p></li>
+<li><dl class="first docutils">
+<dt>L2XC VXLANoIPv4 - performance</dt>
+<dd><ul class="first last">
+<li>DUT1 and DUT2 are configured with L2 cross-connect. VXLAN tunnels are configured between L2XCs on DUT1 and DUT2</li>
+<li>TG traffic profile contains two L3 flow-groups (flow-group per direction, 253 flows per flow-group) with all packets containing Ethernet header, IPv4 header with IP protocol=61 and generated payload</li>
+<li>MAC addresses are matching MAC addresses of the TG node interfaces</li>
 </ul>
 </dd>
 </dl>
@@ -286,19 +290,21 @@
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Documentation</dt><dd><ul>
-<li><p>Autogenerated CLI documentation</p></li>
-<li><p>Using doxygen to automate API/Node documentation</p></li>
-<li><p>(available online)</p></li>
+<li><dl class="first docutils">
+<dt>Documentation</dt>
+<dd><ul class="first last">
+<li>Autogenerated CLI documentation</li>
+<li>Using doxygen to automate API/Node documentation</li>
+<li>(available online)</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Resolved all static analysis issues found by Coverity</dt><dd><ul>
-<li><p>Beginning of 16.09 cycle: 505 issues</p></li>
-<li><p>Release: 0 outstanding issues</p></li>
+<li><dl class="first docutils">
+<dt>Resolved all static analysis issues found by Coverity</dt>
+<dd><ul class="first last">
+<li>Beginning of 16.09 cycle: 505 issues</li>
+<li>Release: 0 outstanding issues</li>
 </ul>
 </dd>
 </dl>
@@ -312,8 +318,8 @@
 <h2>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h2>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
-<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1609">commit log</a></p></li>
+<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
+<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1609">commit log</a></li>
 </ul>
 </div>
 </div>
@@ -329,7 +335,7 @@
         <a href="vpp16.06.html" class="btn btn-neutral float-right" title="Features for Release VPP 16.06" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp17.01.html" class="btn btn-neutral float-left" title="Features for Release VPP 17.01" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp17.01.html" class="btn btn-neutral" title="Features for Release VPP 17.01" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -355,16 +361,25 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

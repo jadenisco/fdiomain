@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Switching &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Switching &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="For Users" href="../users/index.html" />
     <link rel="prev" title="Routing" href="routing.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -126,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -206,30 +201,30 @@
 <div class="section" id="skills-to-be-learned">
 <h2>Skills to be Learned<a class="headerlink" href="#skills-to-be-learned" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Associate an interface with a bridge domain</p></li>
-<li><p>Create a loopback interaface</p></li>
-<li><p>Create a BVI (Bridge Virtual Interface) for a bridge domain</p></li>
-<li><p>Examine a bridge domain</p></li>
+<li>Associate an interface with a bridge domain</li>
+<li>Create a loopback interaface</li>
+<li>Create a BVI (Bridge Virtual Interface) for a bridge domain</li>
+<li>Examine a bridge domain</li>
 </ol>
 </div>
 <div class="section" id="fd-io-vpp-command-learned-in-this-exercise">
 <h2>FD.io VPP command learned in this exercise<a class="headerlink" href="#fd-io-vpp-command-learned-in-this-exercise" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_show_bridge-domain">show
-bridge</a></p></li>
-<li><p><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_show_bridge-domain">show bridge
-detail</a></p></li>
-<li><p><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_set_interface_l2_bridge">set int l2
-bridge</a></p></li>
-<li><p><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_show_l2fib">show l2fib
-verbose</a></p></li>
+<li><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_show_bridge-domain">show
+bridge</a></li>
+<li><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_show_bridge-domain">show bridge
+detail</a></li>
+<li><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_set_interface_l2_bridge">set int l2
+bridge</a></li>
+<li><a class="reference external" href="https://docs.fd.io/vpp/17.04/clicmd_src_vnet_l2.html#clicmd_show_l2fib">show l2fib
+verbose</a></li>
 </ol>
 </div>
 <div class="section" id="topology">
 <h2>Topology<a class="headerlink" href="#topology" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id2">
+<div class="figure" id="id2">
 <img alt="Switching Topology" src="../../_images/Switching_Topology.jpg" />
-<p class="caption"><span class="caption-text">Switching Topology</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Switching Topology</span></p>
 </div>
 </div>
 <div class="section" id="initial-state">
@@ -247,26 +242,26 @@ verbose</a></p></li>
 <div class="section" id="run-fd-io-vpp-instances">
 <h2>Run FD.io VPP instances<a class="headerlink" href="#run-fd-io-vpp-instances" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Run a vpp instance named <strong>vpp1</strong></p></li>
-<li><p>Run a vpp instance named <strong>vpp2</strong></p></li>
+<li>Run a vpp instance named <strong>vpp1</strong></li>
+<li>Run a vpp instance named <strong>vpp2</strong></li>
 </ol>
 </div>
 <div class="section" id="connect-vpp1-to-host">
 <h2>Connect vpp1 to host<a class="headerlink" href="#connect-vpp1-to-host" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Create a veth with one end named vpp1host and the other named
-vpp1out.</p></li>
-<li><p>Connect vpp1out to vpp1</p></li>
-<li><p>Add ip address 10.10.1.1/24 on vpp1host</p></li>
+<li>Create a veth with one end named vpp1host and the other named
+vpp1out.</li>
+<li>Connect vpp1out to vpp1</li>
+<li>Add ip address 10.10.1.1/24 on vpp1host</li>
 </ol>
 </div>
 <div class="section" id="connect-vpp1-to-vpp2">
 <h2>Connect vpp1 to vpp2<a class="headerlink" href="#connect-vpp1-to-vpp2" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Create a veth with one end named vpp1vpp2 and the other named
-vpp2vpp1.</p></li>
-<li><p>Connect vpp1vpp2 to vpp1.</p></li>
-<li><p>Connect vpp2vpp1 to vpp2.</p></li>
+<li>Create a veth with one end named vpp1vpp2 and the other named
+vpp2vpp1.</li>
+<li>Connect vpp1vpp2 to vpp1.</li>
+<li>Connect vpp2vpp1 to vpp2.</li>
 </ol>
 </div>
 <div class="section" id="configure-bridge-domain-on-vpp1">
@@ -340,11 +335,11 @@ case)</p>
 <div class="section" id="ping-from-host-to-vpp-and-vpp-to-host">
 <h2>Ping from host to vpp and vpp to host<a class="headerlink" href="#ping-from-host-to-vpp-and-vpp-to-host" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Add trace on vpp1 and vpp2</p></li>
-<li><p>ping from host to 10.10.1.2</p></li>
-<li><p>Examine and clear trace on vpp1 and vpp2</p></li>
-<li><p>ping from vpp2 to 10.10.1.1</p></li>
-<li><p>Examine and clear trace on vpp1 and vpp2</p></li>
+<li>Add trace on vpp1 and vpp2</li>
+<li>ping from host to 10.10.1.2</li>
+<li>Examine and clear trace on vpp1 and vpp2</li>
+<li>ping from vpp2 to 10.10.1.1</li>
+<li>Examine and clear trace on vpp1 and vpp2</li>
 </ol>
 </div>
 <div class="section" id="examine-l2-fib">
@@ -377,7 +372,7 @@ case)</p>
         <a href="../users/index.html" class="btn btn-neutral float-right" title="For Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="routing.html" class="btn btn-neutral float-left" title="Routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="routing.html" class="btn btn-neutral" title="Routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -403,16 +398,25 @@ case)</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

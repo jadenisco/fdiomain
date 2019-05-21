@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features for Release VPP 18.07 &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Features for Release VPP 18.07 &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features for Release VPP 18.04" href="vpp18.04.html" />
     <link rel="prev" title="Features for Release VPP 18.10" href="vpp18.10.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -95,8 +89,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../links/index.html">VPP Wiki, Doxygen and Other Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Features by Release</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="vpp1904.html">Features for Release VPP 19.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vpp1901.html">Features for Release VPP 19.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vpp18.10.html">Features for Release VPP 18.10</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Features for Release VPP 18.07</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
@@ -119,6 +111,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../relatedprojects/index.html">Related Projects</a></li>
@@ -196,27 +189,30 @@
 <div class="section" id="infrastructure">
 <h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>DPDK 18.02.1</p>
+<li><p class="first">DPDK 18.02.1</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Complete rework of the dpdk-input node</p></li>
-<li><p>Display rx/tx burst function name in “show hardware detail”</p></li>
-<li><dl class="simple">
-<dt>Improve buffer alloc perfomance</dt><dd><ul>
-<li><p>This is ~50% improvement in buffer alloc performance. For a 256 buffer allocation, it was ~10 clocks/buffer, now is &lt; 5 clocks.</p></li>
+<li>Complete rework of the dpdk-input node</li>
+<li>Display rx/tx burst function name in “show hardware detail”</li>
+<li><dl class="first docutils">
+<dt>Improve buffer alloc perfomance</dt>
+<dd><ul class="first last">
+<li>This is ~50% improvement in buffer alloc performance. For a 256 buffer allocation, it was ~10 clocks/buffer, now is &lt; 5 clocks.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>Add per-numa page allocation info to ‘show memory’</p></li>
-<li><dl class="simple">
-<dt>Vectorized bihash_{48,40,24,16}_8 key compare</dt><dd><ul>
-<li><dl class="simple">
-<dt>bihash_48_8 case:</dt><dd><ul>
-<li><p>Scalar code: 6 clocks</p></li>
-<li><p>SSE4.2 code: 3 clocks</p></li>
-<li><p>AVX2 code: 2.27 clocks</p></li>
-<li><p>AVX512 code: 1.5 clocks</p></li>
+<li>Add per-numa page allocation info to ‘show memory’</li>
+<li><dl class="first docutils">
+<dt>Vectorized bihash_{48,40,24,16}_8 key compare</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>bihash_48_8 case:</dt>
+<dd><ul class="first last">
+<li>Scalar code: 6 clocks</li>
+<li>SSE4.2 code: 3 clocks</li>
+<li>AVX2 code: 2.27 clocks</li>
+<li>AVX512 code: 1.5 clocks</li>
 </ul>
 </dd>
 </dl>
@@ -225,9 +221,10 @@
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Pollable Stats</dt><dd><ul>
-<li><p>Stats are now available to a client in a shared memory segment and in the form of a directory, allowing very high performance polling of stats without directly querying VPP.</p></li>
+<li><dl class="first docutils">
+<dt>Pollable Stats</dt>
+<dd><ul class="first last">
+<li>Stats are now available to a client in a shared memory segment and in the form of a directory, allowing very high performance polling of stats without directly querying VPP.</li>
 </ul>
 </dd>
 </dl>
@@ -240,52 +237,55 @@
 <div class="section" id="vnet-plugins">
 <h2>VNET &amp; Plugins<a class="headerlink" href="#vnet-plugins" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="simple">
-<dt>IGMP improvements</dt><dd><ul>
-<li><p>Enable/Disable an interface for IGMP</p></li>
-<li><p>improve logging</p></li>
-<li><p>refactor common code</p></li>
-<li><p>no orphaned timers</p></li>
-<li><p>IGMP state changes in main thread only</p></li>
-<li><p>Large groups split over multiple state-change reports</p></li>
-<li><p>SSM range configuration API.</p></li>
-<li><p>more tests</p></li>
+<li><dl class="first docutils">
+<dt>IGMP improvements</dt>
+<dd><ul class="first last">
+<li>Enable/Disable an interface for IGMP</li>
+<li>improve logging</li>
+<li>refactor common code</li>
+<li>no orphaned timers</li>
+<li>IGMP state changes in main thread only</li>
+<li>Large groups split over multiple state-change reports</li>
+<li>SSM range configuration API.</li>
+<li>more tests</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>IP: vectorized IP checksum</p></li>
-<li><p>VXLAN : HW offload RX flow</p></li>
-<li><p>Rework kube-proxy into LB plugin and add NATA66</p></li>
-<li><dl class="simple">
-<dt>NAT:</dt><dd><ul>
-<li><p>Code refactor</p></li>
-<li><p>Syslog</p></li>
-<li><p>Multiple outside interfaces</p></li>
-<li><p>Endpoint dependent filtering and mapping</p></li>
+<li>IP: vectorized IP checksum</li>
+<li>VXLAN : HW offload RX flow</li>
+<li>Rework kube-proxy into LB plugin and add NATA66</li>
+<li><dl class="first docutils">
+<dt>NAT:</dt>
+<dd><ul class="first last">
+<li>Code refactor</li>
+<li>Syslog</li>
+<li>Multiple outside interfaces</li>
+<li>Endpoint dependent filtering and mapping</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>ACL:</dt><dd><ul>
-<li><p>Tuple Merge algorithm cleanup and integration</p></li>
-<li><p>Processing pipeline optimizations</p></li>
-<li><p>Refactoring</p></li>
+<li><dl class="first docutils">
+<dt>ACL:</dt>
+<dd><ul class="first last">
+<li>Tuple Merge algorithm cleanup and integration</li>
+<li>Processing pipeline optimizations</li>
+<li>Refactoring</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>Experimental AVF driver</p></li>
+<li>Experimental AVF driver</li>
 </ul>
 </div>
 <div class="section" id="host-stack">
 <h2>Host stack<a class="headerlink" href="#host-stack" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Session: performance improvements, add support for connectionless transports, datagram reception and transmission</p></li>
-<li><p>TCP: congestion control improvements and overall fixes</p></li>
-<li><p>UDP: datagram mode</p></li>
-<li><p>TLS async support</p></li>
+<li>Session: performance improvements, add support for connectionless transports, datagram reception and transmission</li>
+<li>TCP: congestion control improvements and overall fixes</li>
+<li>UDP: datagram mode</li>
+<li>TLS async support</li>
 </ul>
 <div class="section" id="known-issues">
 <h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
@@ -295,8 +295,8 @@
 <h3>Issues fixed<a class="headerlink" href="#issues-fixed" title="Permalink to this headline">¶</a></h3>
 <p>For the full list of fixed issues please refer to:</p>
 <ul class="simple">
-<li><p>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></p></li>
-<li><p>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1807">commit log</a></p></li>
+<li>fd.io <a class="reference external" href="https://jira.fd.io/">JIRA</a></li>
+<li>git <a class="reference external" href="https://git.fd.io/vpp/log/?h=stable/1807">commit log</a></li>
 </ul>
 </div>
 </div>
@@ -313,7 +313,7 @@
         <a href="vpp18.04.html" class="btn btn-neutral float-right" title="Features for Release VPP 18.04" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vpp18.10.html" class="btn btn-neutral float-left" title="Features for Release VPP 18.10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vpp18.10.html" class="btn btn-neutral" title="Features for Release VPP 18.10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -339,16 +339,25 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Feature Arcs &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Feature Arcs &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Buffer Metadata" href="metadata.html" />
     <link rel="prev" title="VNET (VPP Network Stack)" href="vnet.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -134,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -208,7 +203,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="feature-arcs">
-<h1>Feature Arcs<a class="headerlink" href="#feature-arcs" title="Permalink to this headline">¶</a></h1>
+<span id="feature-arcs"></span><h1>Feature Arcs<a class="headerlink" href="#feature-arcs" title="Permalink to this headline">¶</a></h1>
 <p>A significant number of vpp features are configurable on a per-interface
 or per-system basis. Rather than ask feature coders to manually
 construct the required graph arcs, we built a general mechanism to
@@ -230,7 +225,7 @@ order. Missing dependencies <strong>will</strong> lead to runtime disorder. See
 loops of the form “a then b, b then c, c then a” are impossible to
 satisfy.</p>
 <div class="section" id="adding-a-feature-to-an-existing-feature-arc">
-<h2>Adding a feature to an existing feature arc<a class="headerlink" href="#adding-a-feature-to-an-existing-feature-arc" title="Permalink to this headline">¶</a></h2>
+<span id="adding-a-feature-to-an-existing-feature-arc"></span><h2>Adding a feature to an existing feature arc<a class="headerlink" href="#adding-a-feature-to-an-existing-feature-arc" title="Permalink to this headline">¶</a></h2>
 <p>To nobody’s great surprise, we set up feature arcs using the typical
 “macro -&gt; constructor function -&gt; list of declarations” pattern:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">VNET_FEATURE_INIT</span> <span class="p">(</span><span class="n">mactime</span><span class="p">,</span> <span class="k">static</span><span class="p">)</span> <span class="o">=</span>
@@ -272,7 +267,7 @@ them for cause:</p>
 </div>
 </div>
 <div class="section" id="creating-a-feature-arc">
-<h2>Creating a feature arc<a class="headerlink" href="#creating-a-feature-arc" title="Permalink to this headline">¶</a></h2>
+<span id="creating-a-feature-arc"></span><h2>Creating a feature arc<a class="headerlink" href="#creating-a-feature-arc" title="Permalink to this headline">¶</a></h2>
 <p>Once again, we create feature arcs using constructor macros:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">VNET_FEATURE_ARC_INIT</span> <span class="p">(</span><span class="n">ip4_unicast</span><span class="p">,</span> <span class="k">static</span><span class="p">)</span> <span class="o">=</span>
     <span class="p">{</span>
@@ -297,12 +292,12 @@ feature arc:</p>
 </div>
 </div>
 <div class="section" id="enabling-disabling-features">
-<h2>Enabling / Disabling features<a class="headerlink" href="#enabling-disabling-features" title="Permalink to this headline">¶</a></h2>
+<span id="enabling-disabling-features"></span><h2>Enabling / Disabling features<a class="headerlink" href="#enabling-disabling-features" title="Permalink to this headline">¶</a></h2>
 <p>Simply call vnet_feature_enable_disable to enable or disable a specific
 feature:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="n">vnet_feature_enable_disable</span> <span class="p">(</span><span class="s">&quot;device-input&quot;</span><span class="p">,</span> <span class="cm">/* arc name */</span>
                                  <span class="s">&quot;mactime&quot;</span><span class="p">,</span>      <span class="cm">/* feature name */</span>
-           		             <span class="n">sw_if_index</span><span class="p">,</span>    <span class="cm">/* Interface sw_if_index */</span>
+                             <span class="n">sw_if_index</span><span class="p">,</span>    <span class="cm">/* Interface sw_if_index */</span>
                                  <span class="n">enable_disable</span><span class="p">,</span> <span class="cm">/* 1 =&gt; enable */</span>
                                  <span class="mi">0</span> <span class="cm">/* (void *) feature_configuration */</span><span class="p">,</span> 
                                  <span class="mi">0</span> <span class="cm">/* feature_configuration_nbytes */</span><span class="p">);</span>
@@ -314,7 +309,7 @@ sw_if_index=0 at all times. Sw_if_index 0 is always valid, and
 corresponds to the “local” interface.</p>
 </div>
 <div class="section" id="related-show-commands">
-<h2>Related “show” commands<a class="headerlink" href="#related-show-commands" title="Permalink to this headline">¶</a></h2>
+<span id="related-show-commands"></span><h2>Related “show” commands<a class="headerlink" href="#related-show-commands" title="Permalink to this headline">¶</a></h2>
 <p>To display the entire set of features, use “show features [verbose]”. The
 verbose form displays arc indices, and feature indicies within the arcs</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vppctl show features verbose
@@ -371,7 +366,7 @@ ip4-unicast:
 </div>
 </div>
 <div class="section" id="table-of-feature-arcs">
-<h2>Table of Feature Arcs<a class="headerlink" href="#table-of-feature-arcs" title="Permalink to this headline">¶</a></h2>
+<span id="table-of-feature-arcs"></span><h2>Table of Feature Arcs<a class="headerlink" href="#table-of-feature-arcs" title="Permalink to this headline">¶</a></h2>
 <p>Simply search for name-strings to track down the arc definition, location of
 the arc index, etc.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            <span class="o">|</span>    <span class="n">Arc</span> <span class="n">Name</span>      <span class="o">|</span>
@@ -410,7 +405,7 @@ the arc index, etc.</p>
         <a href="metadata.html" class="btn btn-neutral float-right" title="Buffer Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vnet.html" class="btn btn-neutral float-left" title="VNET (VPP Network Stack)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vnet.html" class="btn btn-neutral" title="VNET (VPP Network Stack)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -436,16 +431,25 @@ the arc index, etc.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

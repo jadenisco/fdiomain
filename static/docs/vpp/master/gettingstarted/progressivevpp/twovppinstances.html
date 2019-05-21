@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connecting Two FD.io VPP Instances &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Connecting Two FD.io VPP Instances &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Routing" href="routing.html" />
     <link rel="prev" title="Using the trace command" href="traces.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -121,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -205,21 +200,21 @@ to set up shared memory.</p>
 <span id="skills-to-be-learned-1"></span><h2>Skills to be Learned<a class="headerlink" href="#skills-to-be-learned" title="Permalink to this headline">¶</a></h2>
 <p>You will learn the following new skill in this exercise:</p>
 <ol class="arabic simple">
-<li><p>Create a memif interface between two FD.io VPP instances</p></li>
+<li>Create a memif interface between two FD.io VPP instances</li>
 </ol>
 <p>You should be able to perform this exercise with the following skills
 learned in previous exercises:</p>
 <ol class="arabic simple">
-<li><p>Run a second FD.io VPP instance</p></li>
-<li><p>Add an ip address to a FD.io VPP interface</p></li>
-<li><p>Ping from FD.io VPP</p></li>
+<li>Run a second FD.io VPP instance</li>
+<li>Add an ip address to a FD.io VPP interface</li>
+<li>Ping from FD.io VPP</li>
 </ol>
 </div>
 <div class="section" id="topology">
 <span id="topology-1"></span><h2>Topology<a class="headerlink" href="#topology" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id1">
+<div class="figure" id="id1">
 <img alt="Connect two FD.io VPP topology" src="../../_images/Connecting_two_vpp_instances_with_memif.png" />
-<p class="caption"><span class="caption-text">Connect two FD.io VPP topology</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Connect two FD.io VPP topology</span></p>
 </div>
 </div>
 <div class="section" id="initial-state">
@@ -258,9 +253,9 @@ socket <strong>/run/vpp/cli-vpp1.sock</strong></p>
 its socket file. The role of vpp1 for this memif inteface is ‘master’.</p>
 <p>With what you have learned:</p>
 <ol class="arabic simple">
-<li><p>Set the memif0/0 state to up.</p></li>
-<li><p>Assign IP address 10.10.2.1/24 to memif0/0</p></li>
-<li><p>Examine memif0/0 via show commands</p></li>
+<li>Set the memif0/0 state to up.</li>
+<li>Assign IP address 10.10.2.1/24 to memif0/0</li>
+<li>Examine memif0/0 via show commands</li>
 </ol>
 </div>
 <div class="section" id="create-memif-interface-on-vpp2">
@@ -274,9 +269,9 @@ run/vpp/memif-vpp1vpp2 socket file</p>
 its socket file. The role of vpp1 for this memif inteface is ‘slave’.</p>
 <p>Use your previously used skills to:</p>
 <ol class="arabic simple">
-<li><p>Set the memif0/0 state to up.</p></li>
-<li><p>Assign IP address 10.10.2.2/24 to memif0/0</p></li>
-<li><p>Examine memif0/0 via show commands</p></li>
+<li>Set the memif0/0 state to up.</li>
+<li>Assign IP address 10.10.2.2/24 to memif0/0</li>
+<li>Examine memif0/0 via show commands</li>
 </ol>
 </div>
 <div class="section" id="ping-from-vpp1-to-vpp2">
@@ -303,7 +298,7 @@ its socket file. The role of vpp1 for this memif inteface is ‘slave’.</p>
         <a href="routing.html" class="btn btn-neutral float-right" title="Routing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="traces.html" class="btn btn-neutral float-left" title="Using the trace command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="traces.html" class="btn btn-neutral" title="Using the trace command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -329,16 +324,25 @@ its socket file. The role of vpp1 for this memif inteface is ‘slave’.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

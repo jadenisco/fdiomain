@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ubuntu 18.04 - Setup the FD.io Repository &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Ubuntu 18.04 - Setup the FD.io Repository &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Setup the FD.io Repository - Centos 7" href="centos.html" />
     <link rel="prev" title="Downloading and Installing VPP" href="index.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -115,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../relatedprojects/index.html">Related Projects</a></li>
@@ -192,6 +187,9 @@
 </div>
 <div class="section" id="ubuntu-18-04-setup-the-fd-io-repository">
 <h1>Ubuntu 18.04 - Setup the FD.io Repository<a class="headerlink" href="#ubuntu-18-04-setup-the-fd-io-repository" title="Permalink to this headline">¶</a></h1>
+<p>FD.io VPP is installed using Package Cloud. For a complete set of
+instructuctions on how to install VPP with package cloud please refer
+to <a class="reference external" href="https://packagecloud.io/fdio/release">Package Cloud</a></p>
 <p>Choose one of the following releases to install.</p>
 <div class="section" id="update-the-os">
 <h2>Update the OS<a class="headerlink" href="#update-the-os" title="Permalink to this headline">¶</a></h2>
@@ -208,7 +206,7 @@ the version needed. The contents needed are shown below.</p>
 <div class="section" id="vpp-latest-release">
 <span id="install-vpp"></span><h3>VPP latest Release<a class="headerlink" href="#vpp-latest-release" title="Permalink to this headline">¶</a></h3>
 <p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/release/ubuntu bionic main</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/release/ubuntu xenial main</span>
 </pre></div>
 </div>
 <p>Get the key:</p>
@@ -219,7 +217,7 @@ the version needed. The contents needed are shown below.</p>
 <div class="section" id="vpp-master-branch">
 <h3>VPP master Branch<a class="headerlink" href="#vpp-master-branch" title="Permalink to this headline">¶</a></h3>
 <p>Create the file <strong>/etc/apt/sources.list.d/99fd.io.list</strong> that contain the following contents:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/master/ubuntu bionic main</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb [trusted=yes] https://packagecloud.io/fdio/master/ubuntu xenial main</span>
 </pre></div>
 </div>
 <p>Get the key:</p>
@@ -233,14 +231,19 @@ the version needed. The contents needed are shown below.</p>
 <h1>Install the Mandatory Packages<a class="headerlink" href="#install-the-mandatory-packages" title="Permalink to this headline">¶</a></h1>
 <p>Install the mandatory packages by running the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get update</span>
-<span class="go">sudo apt-get install vpp vpp-plugin-core vpp-plugin-dpdk</span>
+<span class="go">sudo apt-get install vpp</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-the-optional-packages">
 <h1>Install the Optional Packages<a class="headerlink" href="#install-the-optional-packages" title="Permalink to this headline">¶</a></h1>
 <p>Install the optional packages by running the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-api-python python3-vpp-api vpp-dbg vpp-dev</span>
+<p>For the release packages:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-plugins vpp-api-java vpp-api-lua vpp-api-python vpp-dbg vpp-dev</span>
+</pre></div>
+</div>
+<p>For the master packages:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install vpp-plugin-core vpp-api-python vpp-dbg vpp-dev vpp-plugin-dpdk</span>
 </pre></div>
 </div>
 </div>
@@ -263,7 +266,7 @@ the version needed. The contents needed are shown below.</p>
         <a href="centos.html" class="btn btn-neutral float-right" title="Setup the FD.io Repository - Centos 7" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Downloading and Installing VPP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Downloading and Installing VPP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -289,16 +292,25 @@ the version needed. The contents needed are shown below.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

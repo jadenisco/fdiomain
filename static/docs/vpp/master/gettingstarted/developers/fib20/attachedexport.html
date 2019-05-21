@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Attached Export &mdash; Vector Packet Processor 01 documentation</title>
+  <title>Attached Export &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Graph Walks" href="graphwalks.html" />
     <link rel="prev" title="Routes" href="routes.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -135,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../relatedprojects/index.html">Related Projects</a></li>
@@ -223,8 +218,8 @@ B the import. Consider this route in the export VRF;</p>
 </div>
 <p>there are two ways one might consider representing this route in the import VRF:</p>
 <ol class="arabic simple">
-<li><p>ip route add table 3 1.1.1.0/24 via 10.10.10.0 GigabitEthernet0/8/0</p></li>
-<li><p>ip route add table 3 1.1.1.0/24 via lookup-in-table 2</p></li>
+<li>ip route add table 3 1.1.1.0/24 via 10.10.10.0 GigabitEthernet0/8/0</li>
+<li>ip route add table 3 1.1.1.0/24 via lookup-in-table 2</li>
 </ol>
 <p>where option 2) is an example of a de-aggregate route where a second lookup is
 performed in table 2, the export VRF. Option 2) is clearly less efficient, since
@@ -238,16 +233,16 @@ covers, and only the adj-fibs and locals, not any covered more specific
 (sourced e.g. by API). The imported FIB entries are sourced as <em>attached-export</em>
 this is a low priority source, so if those prefixes already exist in the import
 VRF, sourced by the API, then they will continue to forward with that information.</p>
-<div class="figure align-center">
+<div class="figure">
 <img alt="../../../_images/fib20fig6.png" src="../../../_images/fib20fig6.png" />
 </div>
 <p>Figure 6: Attached Export Class diagram.</p>
 <p>Figure 6 shows the data structures used to perform attached export.</p>
 <ul class="simple">
-<li><p><em>fib_import_t</em>. A representation of the need to import covered prefixes. An instance is associated with the FIB entry in the import VRF. The need to import prefixes is recognised when an attached route is added to a table that is different to the table of the interface to which it t is attached. The creation of a <em>fib_import_t</em> will trigger the creation of a <em>fib_export_t</em>.</p></li>
-<li><p><em>fib_export_t</em>. A representation of the need to export prefixes. An instance is associated with the attached entry in the export VRF. A <em>fib_export_t</em> can have many associated <em>fib_import_t</em> objects representing multiple VRFs into which the prefix is exported.</p></li>
+<li><em>fib_import_t</em>. A representation of the need to import covered prefixes. An instance is associated with the FIB entry in the import VRF. The need to import prefixes is recognised when an attached route is added to a table that is different to the table of the interface to which it t is attached. The creation of a <em>fib_import_t</em> will trigger the creation of a <em>fib_export_t</em>.</li>
+<li><em>fib_export_t</em>. A representation of the need to export prefixes. An instance is associated with the attached entry in the export VRF. A <em>fib_export_t</em> can have many associated <em>fib_import_t</em> objects representing multiple VRFs into which the prefix is exported.</li>
 </ul>
-<div class="figure align-center">
+<div class="figure">
 <img alt="../../../_images/fib20fig6.png" src="../../../_images/fib20fig6.png" />
 </div>
 <p>Figure 7: Attached Export object diagram</p>
@@ -271,7 +266,7 @@ removal the imported covered prefixes.</p>
         <a href="graphwalks.html" class="btn btn-neutral float-right" title="Graph Walks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="routes.html" class="btn btn-neutral float-left" title="Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="routes.html" class="btn btn-neutral" title="Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -297,16 +292,25 @@ removal the imported covered prefixes.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

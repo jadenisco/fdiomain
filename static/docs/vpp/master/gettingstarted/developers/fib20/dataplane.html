@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Data Plane &mdash; Vector Packet Processor 01 documentation</title>
+  <title>The Data Plane &mdash; Vector Packet Processor 1.0 documentation</title>
   
 
   
@@ -17,20 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/css/rules.css" type="text/css" />
@@ -39,16 +32,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Tunnels" href="tunnels.html" />
     <link rel="prev" title="Graph Walks" href="graphwalks.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -63,10 +61,6 @@
 
           
             
-            
-              <div class="version">
-                19.08
-              </div>
             
           
 
@@ -135,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usecases/index.html">Use Cases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../featuresbyrelease/index.html">Features by Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/index.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../events/index.html">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../relatedprojects/index.html">Related Projects</a></li>
@@ -214,7 +209,7 @@
             
   <div class="section" id="the-data-plane">
 <span id="dataplane"></span><h1>The Data Plane<a class="headerlink" href="#the-data-plane" title="Permalink to this headline">¶</a></h1>
-<p>The data-plane data model is a directed, acyclic <a class="footnote-reference brackets" href="#f16" id="id1">1</a> graph of heterogeneous objects.
+<p>The data-plane data model is a directed, acyclic <a class="footnote-reference" href="#f16" id="id1">[1]</a> graph of heterogeneous objects.
 A packet will forward walk the graph as it is switched. Each object describes
 the actions to perform on the packet. Each object type has an associated VLIB
 graph node. For a packet to forward walk the graph is therefore to move from one
@@ -224,13 +219,13 @@ heart of the VPP model.</p>
 DPO is identified by the tuple:{type,index,next_node}. The <em>next_node</em> parameter
 is the index of the VLIB node to which the packets should be sent next, this is
 present to maximise performance - it is important to ensure that the parent does
-not need to be read <a class="footnote-reference brackets" href="#f17" id="id2">2</a> whilst processing the child. Specialisations <a class="footnote-reference brackets" href="#f18" id="id3">3</a> of the DPO
+not need to be read <a class="footnote-reference" href="#f17" id="id2">[2]</a> whilst processing the child. Specialisations <a class="footnote-reference" href="#f18" id="id3">[3]</a> of the DPO
 perform distinct actions. The most common DPOs and briefly what they represent are:</p>
 <ul class="simple">
-<li><p>Load-balance: a choice in an ECMP set.</p></li>
-<li><p>Adjacency:  apply a rewrite and forward through an interface</p></li>
-<li><p>MPLS-label: impose an MPLS label.</p></li>
-<li><p>Lookup: perform another lookup in a different table.</p></li>
+<li>Load-balance: a choice in an ECMP set.</li>
+<li>Adjacency:  apply a rewrite and forward through an interface</li>
+<li>MPLS-label: impose an MPLS label.</li>
+<li>Lookup: perform another lookup in a different table.</li>
 </ul>
 <p>The data-plane graph is derived from the control-plane graph by the objects
 therein ‘contributing’ a DPO to the data-plane graph. Objects in the data-plane
@@ -242,7 +237,7 @@ the difference between a <em>fib_path_list_t</em> and a <em>load_balance_t</em> 
 expresses the control-plane’s desired state, the latter the data-plane available
 state. If some paths in the path-list are unresolved or down, then the
 load-balance will not include them in the forwarding choice.</p>
-<div class="figure align-center">
+<div class="figure">
 <img alt="../../../_images/fib20fig8.png" src="../../../_images/fib20fig8.png" />
 </div>
 <p>Figure 8: DPO contributions for a non-recursive route</p>
@@ -250,23 +245,23 @@ load-balance will not include them in the forwarding choice.</p>
 objects that contribute DPOs. Also shown are the VLIB node graphs at which the DPO is used.</p>
 <p>Each <em>fib_entry_t</em> contributes it own <em>load_balance_t</em>, for three reasons;</p>
 <ul class="simple">
-<li><p>The result of a lookup in a IPv[46] table is a single 32 bit unsigned integer. This is an index into a memory pool. Consequently the object type must be the same for each result. Some routes will need a load-balance and some will not, but to insert another object in the graph to represent this choice is a waste of cycles, so the load-balance object is always the result. If the route does not have ECMP, then the load-balance has only one choice.</p></li>
-<li><p>In order to collect per-route counters, the lookup result must in some way uniquely identify the <em>fib_entry_t</em>. A shared load-balance (contributed by the path-list) would not allow this.</p></li>
-<li><p>In the case the <em>fib_entry_t</em> has MPLS out labels, and hence a <em>fib_path_ext_t</em>, then the load-balance must be per-prefix, since the MPLS labels that are its parents are themselves per-fib_entry_t.</p></li>
+<li>The result of a lookup in a IPv[46] table is a single 32 bit unsigned integer. This is an index into a memory pool. Consequently the object type must be the same for each result. Some routes will need a load-balance and some will not, but to insert another object in the graph to represent this choice is a waste of cycles, so the load-balance object is always the result. If the route does not have ECMP, then the load-balance has only one choice.</li>
+<li>In order to collect per-route counters, the lookup result must in some way uniquely identify the <em>fib_entry_t</em>. A shared load-balance (contributed by the path-list) would not allow this.</li>
+<li>In the case the <em>fib_entry_t</em> has MPLS out labels, and hence a <em>fib_path_ext_t</em>, then the load-balance must be per-prefix, since the MPLS labels that are its parents are themselves per-fib_entry_t.</li>
 </ul>
-<div class="figure align-center">
+<div class="figure">
 <img alt="../../../_images/fib20fig9.png" src="../../../_images/fib20fig9.png" />
 </div>
 <p>Figure 9: DPO contribution for a recursive route.</p>
 <p>Figure 9 shows the load-balance objects contributed for a recursive route.</p>
-<div class="figure align-center">
+<div class="figure">
 <img alt="../../../_images/fib20fig10.png" src="../../../_images/fib20fig10.png" />
 </div>
 <p>Figure 10: DPO Contributions from labelled recursive routes.</p>
 <p>Figure 10 shows the derived data-plane graph for a labelled recursive route.
 There can be as many MPLS-label DPO instances as there are routes multiplied by
 the number of paths per-route. For this reason the mpls-label DPO should be as
-small as possible <a class="footnote-reference brackets" href="#f19" id="id4">4</a>.</p>
+small as possible <a class="footnote-reference" href="#f19" id="id4">[4]</a>.</p>
 <p>The data-plane graph is constructed by ‘stacking’ one
 instance of a DPO on another to form the child-parent relationship. When this
 stacking occurs, the necessary VLIB graph arcs are automatically constructed
@@ -292,20 +287,30 @@ custom format function.</p>
 <p>In my opinion a strongly defined object model will be easier for contributors to
 understand, and more robust to implement.</p>
 <p class="rubric">Footnotes:</p>
-<dl class="footnote brackets">
-<dt class="label" id="f16"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Directed implies it cannot be back-walked. It is acyclic even in the presence of a recursion loop.</p>
-</dd>
-<dt class="label" id="f17"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Loaded into cache, and hence potentially incurring a d-cache miss.</p>
-</dd>
-<dt class="label" id="f18"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>The engaged reader is directed to vnet/vnet/dpo/*</p>
-</dd>
-<dt class="label" id="f19"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>i.e. we should not re-use the adjacency structure.</p>
-</dd>
-</dl>
+<table class="docutils footnote" frame="void" id="f16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Directed implies it cannot be back-walked. It is acyclic even in the presence of a recursion loop.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Loaded into cache, and hence potentially incurring a d-cache miss.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>The engaged reader is directed to vnet/vnet/dpo/*</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f19" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>i.e. we should not re-use the adjacency structure.</td></tr>
+</tbody>
+</table>
 </div>
 
 
@@ -319,7 +324,7 @@ understand, and more robust to implement.</p>
         <a href="tunnels.html" class="btn btn-neutral float-right" title="Tunnels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="graphwalks.html" class="btn btn-neutral float-left" title="Graph Walks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="graphwalks.html" class="btn btn-neutral" title="Graph Walks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -345,16 +350,25 @@ understand, and more robust to implement.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
