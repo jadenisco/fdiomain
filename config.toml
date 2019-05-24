@@ -10,7 +10,7 @@ publishDir = "public"
   [[menu.header]]
     weight = 1
     name = "PROJECTS"
-    url = "/projects01"
+    url = "/projects"
 
   [[menu.header]]
     weight = 4
