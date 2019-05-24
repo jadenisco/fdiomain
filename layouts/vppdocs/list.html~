@@ -5,17 +5,18 @@
     </head>
     <body>
 	{{ partial "header.html" . }}
-	{{ partial "global-header.html" . }}
+	{{ partial "projects-header.html" . }}
 
 	<section class="blog section">
 	    <div class="container">
 		<div class="row">
-		    {{ range (.Paginator 6).Pages }}
+		    {{ range (.Paginator 6).Pages.ByDate }}
+		    {{ if eq .Type "concepts"}}
 		    <div class="col-md-6">
 			<article class="blog-post">
 			    {{ if isset .Params "image" }}
 			    {{ $url := trim (index (split .Params.latest ",") 1) " "}}
-			    <a class="post-title" href="{{ .Params.PRJurl | absURL }}">
+			    <a class="post-title" href="{{ $url | absURL }}">
 				<img src="{{ .Params.image | absURL }}" class="img-responsive" alt="post-thumb">
 			    </a>
 			    {{ end }}
@@ -26,9 +27,10 @@
 			    <p>
 				{{ partial "summary" .}}
 			    </p>
-			    <a href="{{ .Params.prjURL }}" class="btn btn-main">{{ .Params.btntxt }}</a>
+			    {{ partial "btn-dropdown" . }}
 			</article>
 		    </div>
+		    {{ end }}
 		    {{ end }}
 		</div>
 		<div class="col-12 text-center">
@@ -36,7 +38,7 @@
 		</div>
 	    </div>
 	</section>
-
+	
 	{{ partial "footer.html" . }}
     </body>
 </html>

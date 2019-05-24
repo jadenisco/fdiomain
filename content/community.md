@@ -1,5 +1,5 @@
 +++
-title = "Community"
+title = "COMMUNITY"
 bgImage = "img/fdio_bg_tech2.jpg"
 id = "community"
 +++
