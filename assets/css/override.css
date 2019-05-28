@@ -1,5 +1,3 @@
-
-
 #slider .block h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
@@ -55,6 +53,7 @@
     position: relative;
     background-attachment: fixed;
 }
+
 #docs-header:before {
     content: "";
     position: absolute;
@@ -79,6 +78,43 @@
 
 #docs-header .row > [class*='col-'] a {
     color: #FFFFFF;
+}
+
+#global-header .block h1 {
+    font-family: 'open', sans-serif;
+    font-weight: 100;
+    font-size: 25px;
+    line-height: 1.43;
+  }
+
+#global-header {
+    padding-top: 25px;
+    padding-bottom: 0px;
+    position: relative;
+    text-align: center;
+    background-attachment: fixed;
+}
+
+#global-header:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, #928dab, #1f1c2c 70%);
+    opacity: 0.8;
+}
+
+#global-header .row > [class*='col-'] {
+    padding: 0px 25px;
+    font-weight: 100;
+    font-size: 25px;
+    text-transform: capitalize;
+    position: relative;
+    text-align: center;
 }
 
 header .navbar-brand img {
@@ -125,14 +161,6 @@ header .container {
 .navbar-brand {
     height: 80px;
     width: 130px;
-}
-
-#global-header .block h1 {
-    text-align:center;
-}
-
-#global-header .block {
-    padding-left:0;
 }
 
 .eventsection {
