@@ -1,5 +1,5 @@
 +++
-title = "This is a not really a New Event"
+title = "This is a New Event"
 dates = "October 18-21, 2019"
 image = "/img/events/logo_kubecon_na_2019.png"
 summary = "The event summary goes here!!!"
